@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
-project(bennett_fitting)
+project(eesunhong)
 enable_language(Fortran)
 
 set(BUILD_TESTING OFF)
