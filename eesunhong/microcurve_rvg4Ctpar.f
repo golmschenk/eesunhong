@@ -158,8 +158,8 @@ c    a(7) = 1/Tbin = inverse period of binary orbit
 c    a(8) = v_sep = velocity in seperation direction.
 c    a(9) = Rstar = stellar radius in days
 c    a(10)= t_fix (not a fit parameter)
-c    a(11)= piEr
-c    a(12)= piEtheta
+c    a(11)= piEx
+c    a(12)= piEy
 c    
        eps1 = a(6)
        eps2 = 1.d0-eps1
@@ -170,10 +170,10 @@ c
        ctheta=cos(theta)
        stheta=sin(theta)
        tfix=a(10)
-       piEr = a(11)
-       piEtheta = a(12)
-       piex = piEr*cos(piEtheta)
-       piey = piEr*sin(piEtheta)
+ccc       piEr = a(11)
+ccc       piEtheta = a(12)
+       piex = a(11)
+       piey = a(12)
        if(v_sep.eq.0..and.tfix.eq.tfix0.and.sep_in.eq.sep_in0) then
          isep0=1
        else
@@ -883,11 +883,11 @@ ccc               endif
          if(ncausin2.eq.0) nimcaus = 0
 ccc         iextra_caus = 0
 ccc         do while (ncausin2.gt.0)
-         do
+         do 
            if(ncausin2.le.0) exit
 ccc           iextra_caus = iextra_caus + 1
            nimcaus = nimcaus + 1
-           im = nimage + nimcaus
+           im = nimage + nimcaus 
            nimages = nimage + nimcaus
            if(nimages.gt.5) then
              write(6,*) nimages,' images at t =',t
@@ -2524,7 +2524,7 @@ c==============================================================================
      &                    tol,ssx,ssy,Ustar2,sep,eps1,bgridfine)
 
 c==============================================================================
-       use grackle_recipes_replacements,
+       use eesunhong_recipes_replacements,
      &     only: brent_wrapper_with_additional_lens_arguments
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        external starbndr
@@ -2545,7 +2545,7 @@ c==============================================================================
      &                    tol,ssx,ssy,Ustar2,sep,eps1,bgridfine)
 
 c==============================================================================
-       use grackle_recipes_replacements,
+       use eesunhong_recipes_replacements,
      &     only: brent_wrapper_with_additional_lens_arguments
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        external starbndphi

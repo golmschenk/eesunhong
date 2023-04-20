@@ -10,7 +10,7 @@ c
 c   Author: David P. Bennett
 c
 c------------------------------------------------------------------------------
-       use grackle_recipes_replacements,
+       use eesunhong_recipes_replacements,
      &     only : sort_light_curve_data_by_time
        use stdlib_random, only: random_seed
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)

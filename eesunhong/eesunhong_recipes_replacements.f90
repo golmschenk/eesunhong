@@ -1,4 +1,4 @@
-module grackle_recipes_replacements
+module eesunhong_recipes_replacements
     implicit none
 contains
     subroutine sort_light_curve_data_by_time(number_of_data_points, time, magnification, sig, iclr, iclrind)
@@ -101,4 +101,4 @@ contains
             result = FUNC(A, y1, y2, ssx, ssy, Ustar2, sep, eps1)
         end function partial
     end function brent_wrapper_with_additional_lens_arguments
-end module grackle_recipes_replacements
+end module eesunhong_recipes_replacements

@@ -1,11 +1,11 @@
 from ctypes import CDLL, POINTER, c_int, c_float
 from pathlib import Path
 
-library_path = Path('./build/libgrackle.dylib')
+library_path = Path('./build/libeesunhong.dylib')
 if not library_path.exists():
-    library_path = Path('./build/libgrackle.so')
+    library_path = Path('./build/libeesunhong.so')
 if not library_path.exists():
-    library_path = Path('./build/libgrackle.dll')
+    library_path = Path('./build/libeesunhong.dll')
 if not library_path.exists():
     raise FileNotFoundError
 
@@ -17,18 +17,3 @@ sort_light_curve_data_by_time.argtypes = [POINTER(c_int),
                                           POINTER(c_float),
                                           POINTER(c_int),
                                           POINTER(c_int)]
-
-sort5 = fortran_library.sort5
-sort5.argtypes = [POINTER(c_int),
-                  POINTER(c_float),
-                  POINTER(c_float),
-                  POINTER(c_float),
-                  POINTER(c_int),
-                  POINTER(c_int),
-                  POINTER(c_float),
-                  POINTER(c_int),
-                  POINTER(c_int)]
-
-# gasdev = fortran_library.gasdev
-# gasdev.argtypes = [POINTER(c_int)]
-# gasdev.restype = [POINTER(c_float)]
