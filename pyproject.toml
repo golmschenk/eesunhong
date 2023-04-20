@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "grackle"
+version = "0.1.0"
+description = ""
+authors = ["Greg Olmschenk <greg@olmschenk.com>"]
+readme = "readme.md"
+packages = [
+    {include = "tests"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.2.1"
+pytest-pycharm = "^0.7.0"
+numpy = "^1.24.2"
+
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: Marks tests as slow."
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
