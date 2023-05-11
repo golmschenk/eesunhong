@@ -816,6 +816,9 @@ c      nchar_mcmc = # of fit parameters + 1 for chi2
  562     format('A0',a6,' =',f12.3,' +/-',f11.3,
      &         '  A2',a6,' =',f12.3,' +/-',f11.3)
 
+c        TODO: Remove this hack workaround after properly
+         daymin = daymin + 1
+         daymin = daymin - 1
 c        determine caustic crossing times
 c        --------------------------------
          umin=a(3)
