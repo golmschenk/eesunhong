@@ -4493,17 +4493,7 @@ C        default page dimensions and 'new page' carriage control integer
       UPDFLT = UP
 C                   determine machine accuracy epsmac
       EPSTRY = 0.5
-      DO 33 I= 1, 100
-      EPSTRY = EPSTRY * 0.5
-      EPSP1 = ONE + EPSTRY
-      CALL MNTINY(EPSP1, EPSBAK)
-      IF (EPSBAK .LT. EPSTRY)  GO TO 35
-   33 CONTINUE
-      EPSTRY = 1.0E-7
-      EPSMAC = 4.0*EPSTRY
-      WRITE (ISYSWR,'(A,A,E10.2)') ' MNINIT UNABLE TO DETERMINE',
-     + ' ARITHMETIC PRECISION. WILL ASSUME:',EPSMAC
-   35 EPSMAC = 8.0 * EPSTRY
+      EPSMAC = epsilon(EPSTRY)
       EPSMA2 = 2.0 * SQRT(EPSMAC)
 C                 the vlims are a non-negligible distance from pi/2
 C         used by MNPINT to set variables "near" the physical limits
