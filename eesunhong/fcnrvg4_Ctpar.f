@@ -17,6 +17,7 @@ c------------------------------------------------------------------------------
 
        parameter (mmax=30,maxdata=50000,ngmax=12000000)
        parameter (nmcmc=100)
+       integer, parameter :: nstep_max=4000
        double precision x(maxdata),y(maxdata),sig(maxdata)
        integer iclr(maxdata),nimage(maxdata),iwork(maxdata),
      &         jwork(maxdata)
@@ -29,7 +30,9 @@ c------------------------------------------------------------------------------
      &                  A0sig(0:mxclr),A0fix(0:mxclr)
        double precision yfit(maxdata,0:mxclr),xclr(maxdata,0:mxclr),
      &                  yclr(maxdata,0:mxclr),eclr(maxdata,0:mxclr)
-       double precision fmin(0:mxclr),fmax(0:mxclr),scaus(20),tcaus(20)
+       double precision fmin(0:mxclr),fmax(0:mxclr)
+       double precision scaus(nstep_max * 2)
+       double precision tcaus(nstep_max * 2)
        double precision fudge(0:mxclr),errmin(0:mxclr),dayoff(0:mxclr)
        double precision lon_obs(0:mxclr),lat_obs(0:mxclr)
        character*6 sfx(0:mxclr)
@@ -837,7 +840,7 @@ c        --------------------------------
          nim00=3
          ncaus=0
          ds=0.001
-         nstep=4000
+         nstep=nstep_max
          dst2=ds*2.
          dst22=dst2**2
          dsx=ds*ctheta
