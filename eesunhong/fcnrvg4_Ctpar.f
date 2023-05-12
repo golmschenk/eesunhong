@@ -136,7 +136,8 @@ c ---
            limb_tab = 1
          endif
          write(6,*)
-     &    'Enter RA & DEC precessed to time of maximum magnification',
+     &    'Enter RA & DEC precessed to time of maximum magnification'
+         write(6,*)
      &    'format: hh mm ss.s  deg mm ss.ss'
          read(5,*) rah,ram,ras,decd,decm,decs
          alpha = (rah +  ram/60. + ras/3600.)*15
@@ -146,8 +147,8 @@ c ---
            delta = (abs(decd) + abs(decm)/60. + abs(decs)/3600.)
          endif
 
-         write(6,*) 'enter 1 for integration grid, 0 to skip;',
-     &      ' and name of optional MCMC output file'
+         write(6,*) 'enter 1 for integration grid, 0 to skip;'
+         write(6,*) ' and name of optional MCMC output file'
          read(5,'(a)') line
          read(line(1:2),*) make_grid_in
          make_grid = make_grid_in
@@ -248,8 +249,8 @@ ccc     &               rasat(is,isat),decsat(is,isat),rsat(is,isat)
              enddo
  7           continue
              ndatsat(isat) = is - 1
-             write(6,*) 'read in ',ndatsat(isat),
-     &                  ' satellite position points'
+             write(6,*) 'read in ', ndatsat(isat)
+             write(6,*) ' satellite position points'
              close(3)
            endif
          enddo

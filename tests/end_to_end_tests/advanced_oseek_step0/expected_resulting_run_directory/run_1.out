@@ -38,7 +38,8 @@
  limb darkening parameters assumed - not fit
  Enter RA & DEC precessed to time of maximum magnification
  format: hh mm ss.s  deg mm ss.ss
- enter 1 for integration grid, 0 to skip; and name of optional MCMC output file
+ enter 1 for integration grid, 0 to skip;
+  and name of optional MCMC output file
  run_.par                                                                       
    not found
  parMB20208                                                                     
