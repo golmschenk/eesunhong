@@ -2261,6 +2261,7 @@ c==============================================================================
        parameter(nbgridmax=6000000)
        double precision sxg(-ngr:ngr,0:nphimax),syg(-ngr:ngr,0:nphimax)
        integer jds_btrack(100),idmn_btrack(100),idmx_btrack(100)
+       common/locate_src/newcall
 
 c      check for a "backtrack" image
 c      -----------------------------
@@ -2563,10 +2564,11 @@ c        -----------------
        function starbndr(br,cosbphi,sinbphi,ssx,ssy,Ustar2,sep,eps1)
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        common/fudge_coords/ Ein_R,xcc
+       common/locate_src/newcall
 
        bx=br*cosbphi + xcc
        by=br*sinbphi
-       call sourceloc(n,sep,eps1,bx,by,sx,sy)
+       call sourceloc(newcall,sep,eps1,bx,by,sx,sy)
        starbndr=(ssx-sx)**2+(ssy-sy)**2-Ustar2
 
        return
@@ -2575,10 +2577,11 @@ c        -----------------
        function starbndphi(bphi,br,brdum,ssx,ssy,Ustar2,sep,eps1)
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        common/fudge_coords/ Ein_R,xcc
+       common/locate_src/newcall
 
        bx=br*cos(bphi) + xcc
        by=br*sin(bphi)
-       call sourceloc(n,sep,eps1,bx,by,sx,sy)
+       call sourceloc(newcall,sep,eps1,bx,by,sx,sy)
        starbndphi=(ssx-sx)**2+(ssy-sy)**2-Ustar2
 
        return
