@@ -39,7 +39,7 @@ def verify_run_files_match(run_path, expected_run_path):
                 '''
                 if '\n' in expected_item:
                     line_number += 1
-                    continue
+                continue
             try:
                 expected_number = float(expected_item)
                 actual_number = float(actual_item)
