@@ -40,12 +40,14 @@ c------------------------------------------------------------------------------
      &         jclrinc(0:mxclr)
        integer idcaustic(12)
        integer :: seed_put, seed_get
+       integer iimage(5)
        double complex zalph,zgamm,box,z(5)
        double precision Date(maxdata),rMag(maxdata),rErr(maxdata),
      &                    bMag(maxdata),bErr(maxdata),
      &                    rFlux(maxdata),rFerr(maxdata),
      &                    bFlux(maxdata),bFerr(maxdata)
        double precision sxg(ngmax),syg(ngmax)
+       double precision ampim(5)
        character*1 c(0:9)
        character*19 char_mcmc(nmcmc)
        character*120 line,outline
