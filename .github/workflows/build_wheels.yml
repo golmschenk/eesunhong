@@ -7,6 +7,7 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-20.04, windows-2019, macos-11]
 
@@ -15,6 +16,10 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.13.0
+        env:
+          CIBW_BEFORE_ALL_LINUX: apt install gfortran
+          CIBW_BEFORE_ALL_MACOS: brew install gcc
+          CIBW_BEFORE_ALL_WINDOWS: choco install mingw
 
       - uses: actions/upload-artifact@v3
         with:
