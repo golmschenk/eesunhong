@@ -1,3 +1,7 @@
+[project]
+name = "eesunhong"
+version = "0.1.0"
+
 [tool.poetry]
 name = "eesunhong"
 version = "0.1.0"
@@ -8,20 +12,20 @@ packages = [
     {include = "tests"}
 ]
 
+[build-system]
+requires = ["scikit-build-core", "fypp"]
+build-backend = "scikit_build_core.build"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pytest = "^7.2.1"
 pytest-pycharm = "^0.7.0"
 numpy = "^1.24.2"
 pytest-cmake = "^0.2.1"
+fypp = "^3.1"
 
 
 [tool.pytest.ini_options]
 markers = [
     "slow: Marks tests as slow."
 ]
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

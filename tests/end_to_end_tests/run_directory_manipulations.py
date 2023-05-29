@@ -84,10 +84,13 @@ def run_trial_from_run_directory_template(current_file_path):
 
 
 def run_trial(current_file_path, run_directory, expected_directory):
-    executable_path = Path(current_file_path).parent.parent.parent.parent.joinpath('build/minuit_all_rvg4Ctpar.xO')
+    if shutil.which('eesunhong_run') is not None:
+        executable = 'eesunhong_run'
+    else:
+        executable = Path(current_file_path).parent.parent.parent.parent.joinpath('build/bin/eesunhong_run')
     verify_directories_file_list_does_not_match(run_directory, expected_directory)
     with (run_directory.joinpath('run_1.in').open() as input_file,
           run_directory.joinpath('run_1.out').open('w') as output_file):
-        subprocess.run([executable_path], cwd=run_directory, stdin=input_file,
+        subprocess.run([executable], cwd=run_directory, stdin=input_file,
                        stdout=output_file)
     verify_directories_match(run_directory, expected_directory)

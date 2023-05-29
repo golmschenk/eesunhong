@@ -32,6 +32,17 @@ files = [
 ]
 
 [[package]]
+name = "fypp"
+version = "3.1"
+description = "Python powered Fortran preprocessor"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "fypp-3.1.tar.gz", hash = "sha256:b777ae70081c7c82edcf52eefc01a3e8a566b4e82ccd33ca3b2f06faf1d07d36"},
+]
+
+[[package]]
 name = "iniconfig"
 version = "2.0.0"
 description = "brain-dead simple config-ini parsing"
@@ -163,4 +174,4 @@ pytest = ">=2.3"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a47820427fbf1719793dcee90b3a6519e4df3b8fb2e1e0a1c45dec38a0267c72"
+content-hash = "ce4d8f153905e12753f43d47dcd912d9df1326ccbf36995c5f59ce5be1007f1b"
