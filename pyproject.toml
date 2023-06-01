@@ -17,6 +17,9 @@ packages = [
 requires = ["scikit-build-core", "fypp"]
 build-backend = "scikit_build_core.build"
 
+[tool.cibuildwheel]
+skip = "pp* cp36-*"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pytest = "^7.2.1"
