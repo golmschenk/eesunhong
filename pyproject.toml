@@ -20,6 +20,9 @@ build-backend = "scikit_build_core.build"
 [tool.cibuildwheel]
 skip = "pp* cp36-*"
 
+#[tool.cibuildwheel.windows]
+#environment = {CMAKE_ARGS='-G \\"Visual Studio 17 2022\\"'}
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pytest = "^7.2.1"

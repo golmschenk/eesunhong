@@ -7,7 +7,7 @@ jobs:
     name: Build wheels on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
@@ -20,10 +20,25 @@ jobs:
           compiler: gcc
           version: 11
 
+      # Configure compilers for Windows. Does nothing on Linux/Mac.
+      # - name: Enable Developer Command Prompt
+      #   uses: ilammy/msvc-dev-cmd@v1
+
+#      - if: runner.os == 'Windows'
+#        uses: msys2/setup-msys2@v2
+#        with:
+#          msystem: MINGW64
+#          path-type: inherit
+#          install: >-
+#            mingw-w64-x86_64-gcc-fortran
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.13.0
         env:
-          FC: ${{ steps.setup-fortran.outputs.fc }}
+          CIBW_BEFORE_WINDOWS: call "C:\Program Files (x86)\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          CIBW_ENVIRONMENT_WINDOWS: CC=gcc CXX=g++ FC=gfortran
+#        env:
+#          CIBW_ENVIRONMENT_WINDOWS: CMAKE_ARGS=-G'"Visual Studio 17 2022"'
 
       - uses: actions/upload-artifact@v3
         with:
