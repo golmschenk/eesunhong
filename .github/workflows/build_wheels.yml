@@ -20,24 +20,8 @@ jobs:
           compiler: gcc
           version: 11
 
-      - name: manylinux_fortran_environment_extra_setup
-        run: export FC="$(which "$FC")"
-        if: startsWith(matrix.os, 'ubuntu')
-
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.13.0
-        env:
-          CIBW_BUILD_VERBOSITY: 3
-          CIBW_BEFORE_ALL_LINUX: yum install -y devtoolset-11
-          CIBW_ENVIRONMENT_LINUX: FC="/opt/rh/devtoolset-11/root/usr/bin/gfortran"
-          CIBW_ENVIRONMENT_WINDOWS: FC="C:\ProgramData\Chocolatey\bin\gfortran"
-
-#      - name: Setup upterm session
-#        if: always()
-#        uses: lhotari/action-upterm@v1
-#        with:
-#          ## limits ssh access and adds the ssh public key for the user which triggered the workflow
-#          limit-access-to-actor: true
 
       - uses: actions/upload-artifact@v3
         with:
