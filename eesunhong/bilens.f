@@ -1,3 +1,29 @@
+      module eesunhong_bilens
+          use stdlib_kinds, only : dp, int32
+          use polyroots_cmplx_roots_gen, only: cmplx_roots_gen_laguerre
+          implicit none
+
+          integer(int32), parameter :: allowed_image_number = 5
+          double precision amp(allowed_image_number)
+          double complex zz(allowed_image_number)
+          double complex z(allowed_image_number)
+          double complex cff(allowed_image_number + 1)
+          double complex aa,bb,cc,alph,beta,gamm
+          double complex zk,ztos,czkaa,czkbb,cjac
+          double complex zta,zta1,zta2,zta0,cx1,cx2
+          double complex zb,zb0,zb1,zb2,ctemp,ctempb,czero
+          double complex aa2, bb2, cc2, aapcc, aaaa, bbbb, cccc
+          double complex aaaapbb2
+          double complex aabb2, aaccpbb, aamcc, bbcc, cff2term
+          real(dp) :: xx0, xx1, xx2
+          real(dp) :: eps1, eps2
+          real(dp) :: sep, tol
+          integer(int32) :: nimage0
+          integer iimage(allowed_image_number)
+          logical polish
+          save
+
+      contains
 c==============================================================================
 
        subroutine bilens(eps1_in,sep_in)
@@ -7,20 +33,9 @@ c
 c   Authors: David P. Bennett and Sun Hong Rhie
 c
        use polyroots_cmplx_roots_gen, only: cmplx_roots_gen_laguerre
-       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-
-       double precision amp(5)
-       double complex zz(5),z(5),cff(6),aa,bb,cc,alph,beta,gamm
-       double complex zk,ztos,czkaa,czkbb,cjac
-       double complex zta,zta1,zta2,zta0,cx1,cx2
-       double complex zb,zb0,zb1,zb2,ctemp,ctempb,czero
-       double complex aa2, bb2, cc2, aapcc, aaaa, bbbb, cccc, aaaapbb2
-       double complex aabb2, aaccpbb, aamcc, bbcc, cff2term 
-       common/lenscoords/xx1,xx2
-       integer iimage(5)
-       logical polish
-
-       save
+          implicit none
+          real(dp), intent(in) :: eps1_in
+          real(dp), intent(in) :: sep_in
 
 c  yes, polish the roots
 c  ---------------------
@@ -57,10 +72,28 @@ c      xx0 = "anti" CM
        nimage0=3
 
        return
+       end subroutine bilens
 
 c    entry bilens_im calculates the amplification of each image
 c    ----------------------------------------------------------
-       entry bilens_im(sx,sy,nimage,iimage,zz,amp)
+      subroutine bilens_im(sx,sy,nimage,iimage_in,zz_in,amp_in)
+          use stdlib_kinds, only : dp, int32
+          implicit none
+          real(dp), intent(in) :: sx
+          real(dp), intent(inout) :: sy
+          integer(int32), intent(inout) :: nimage
+          integer(int32), intent(inout) ::
+     &        iimage_in(allowed_image_number)
+          complex(dp), intent(inout) :: zz_in(allowed_image_number)
+          real(dp), intent(inout) :: amp_in(allowed_image_number)
+
+          integer(int32) :: k, m
+          real(dp) :: fjac, ttol, zerr
+
+          iimage = iimage_in
+          zz = zz_in
+          amp = amp_in
+
 
 c     special case (avoid singular solution)
 c     --------------------------------------
@@ -167,6 +200,11 @@ ccc     &                ' images; trying again w/ tol =',ttol
          endif
        endif
        nimage0=nimage
+       iimage_in = iimage
+       zz_in = zz
+       amp_in = amp
 
        return
-       end
+       end subroutine bilens_im
+
+      end module eesunhong_bilens

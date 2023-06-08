@@ -8,12 +8,17 @@ c
 c  Hexadecapole calculation for binary lenses - no caustic crossing checks
 c  Routines in this file written by David Bennett.
 c
+       use stdlib_kinds, only : dp, int32
+       use eesunhong_bilens, only: bilens, bilens_im
+       use eesunhong_real_complex_conversion,
+     &     only: from_2d_real_to_complex, from_complex_to_2d_real
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
        double precision amp(5),ampq(5)
        double precision amppt(5,12),amptot(12)
        double precision sxpt(12),sypt(12)
        double precision z(2,5),zh(2,5,12)
+       complex(dp) :: zh_complex(5,12)
        double precision zchk(2,5),ampchk(5)
        integer iim(11),nim(12)
        integer inew(5)
@@ -83,8 +88,10 @@ c      calculate the source positions
        nmx = 12
 
        do j = 1,nmx
-         call bilens_im(sxpt(j),sypt(j),nim(j),iim,zh(1,1,j),
-     &                    amppt(1,j))
+         call from_2d_real_to_complex(zh(:, :, j), zh_complex(:, j))
+         call bilens_im(sxpt(j),sypt(j),nim(j),iim,
+     &                  zh_complex(:,j),amppt(1,j))
+         call from_complex_to_2d_real(zh_complex(:, j), zh(:, :, j))
          amptot(j) = 0.d0
          do im = 1,nim(j)
            amptot(j) = amptot(j) + amppt(im,j)
