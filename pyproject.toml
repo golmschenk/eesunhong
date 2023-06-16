@@ -10,7 +10,7 @@ description = ""
 authors = ["Greg Olmschenk <greg@olmschenk.com>"]
 readme = "readme.md"
 packages = [
-    {include = "tests"}
+    { include = "tests" }
 ]
 
 [build-system]
@@ -19,9 +19,18 @@ build-backend = "scikit_build_core.build"
 
 [tool.cibuildwheel]
 skip = "pp* cp36-*"
+build-verbosity = "3"
+
+#[tool.cibuildwheel.linux]
+#before-all = "yum install -y devtoolset-11"
 
 #[tool.cibuildwheel.windows]
-#environment = {CMAKE_ARGS='-G \\"Visual Studio 17 2022\\"'}
+#before-build = """
+#    set \"PATH=C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\bin;%PATH%\"
+#    echo %PATH%
+#    set \"CMAKE_GENERATOR=MinGW Makefiles\"
+#    echo %CMAKE_GENERATOR%
+#    """
 
 [tool.poetry.dependencies]
 python = "^3.11"
