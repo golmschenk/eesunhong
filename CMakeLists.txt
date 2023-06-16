@@ -1,4 +1,12 @@
 cmake_minimum_required(VERSION 3.17)
+
+IF (WIN32)
+    message("Adding windows paths...")
+    LIST(APPEND CMAKE_PROGRAM_PATH "c:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin")
+    message("CMAKE_GENERATOR:" $ENV{CMAKE_GENERATOR})
+#    set(CMAKE_Fortran_COMPILER "c:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin/gfortran.exe")
+ENDIF()
+
 project(eesunhong LANGUAGES Fortran)
 
 set(CMAKE_LANG_DISABLE C)
@@ -32,7 +40,7 @@ target_link_libraries(eesunhong_fortran_library PUBLIC fortran_stdlib)
 add_library(eesunhong_complete_static STATIC $<TARGET_OBJECTS:eesunhong_recipes_replacements> $<TARGET_OBJECTS:polyroots> $<TARGET_OBJECTS:roots>)
 
 add_executable(eesunhong_run eesunhong/main.f third_party/minuit/minuit_94a_dblb.f eesunhong/fcnrvg4_Ctpar.f eesunhong/bilens.f eesunhong/critical.f
-        eesunhong/microcurve_rvg4Ctpar.f eesunhong/hexadec_only.f eesunhong/geo_par.f)
+        eesunhong/microcurve_rvg4Ctpar.f eesunhong/hexadec_only.f eesunhong/geo_par.f eesunhong/eesunhong_real_complex_conversion.f90)
 target_link_libraries(eesunhong_run PUBLIC eesunhong_complete_static fortran_stdlib)
 
 if(SKBUILD)

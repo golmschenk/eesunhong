@@ -10,9 +10,11 @@ c
 c   Author: David P. Bennett
 c
 c------------------------------------------------------------------------------
+       use stdlib_random, only: random_seed
+       use stdlib_kinds, only : dp, int32
        use eesunhong_recipes_replacements,
      &     only : sort_light_curve_data_by_time
-       use stdlib_random, only: random_seed
+       use eesunhong_bilens, only: bilens, bilens_im
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
        parameter (mmax=30,maxdata=50000,ngmax=12000000)
@@ -40,14 +42,14 @@ c------------------------------------------------------------------------------
      &         jclrinc(0:mxclr)
        integer idcaustic(12)
        integer :: seed_put, seed_get
-       integer iimage(5)
+       integer(int32) :: iimage(5)
        double complex zalph,zgamm,box,z(5)
        double precision Date(maxdata),rMag(maxdata),rErr(maxdata),
      &                    bMag(maxdata),bErr(maxdata),
      &                    rFlux(maxdata),rFerr(maxdata),
      &                    bFlux(maxdata),bFerr(maxdata)
        double precision sxg(ngmax),syg(ngmax)
-       double precision ampim(5)
+       real(dp) :: ampim(5)
        character*1 c(0:9)
        character*19 char_mcmc(nmcmc)
        character*120 line,outline

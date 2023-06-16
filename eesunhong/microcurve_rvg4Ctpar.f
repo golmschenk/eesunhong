@@ -51,6 +51,10 @@ c                 call sourceloc(newcall,sep,eps1,bx,by,sxe,sye)
 c                 call sourceloc(newcall,sep,eps1,bx,by,sxe,sye)
 c       call sourceloc(n,sep,eps1,bx,by,sx,sy)
 c------------------------------------------------------------------------------
+          use stdlib_kinds, only : dp, int32
+          use eesunhong_bilens, only: bilens, bilens_im
+          use eesunhong_real_complex_conversion,
+     &     only: from_2d_real_to_complex, from_complex_to_2d_real
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 ccc       parameter(ncpts=16000,ndark=20000,nllmax=200,ngxmx=800,ngymx=200)
 ccc       parameter(ncpts=16000,ndark=20000,nllmax=200)
@@ -74,6 +78,7 @@ ccc       double precision bgridmax(2),bgridmin(2),dd(0:3)
      &                  fampn(-nbgridmax:nbgridmax)
        double precision a(30)
        double precision z(2,10),ampim(10),zr(10),zphi(10)
+       complex(dp) :: z_in(10)
        integer icrhead(nllmax,nllmax),nxtcr(ncpts)
        integer icahead(ncaxgrid,ncaygrid),nxtca(ncpts)
        double precision ca_zr(ncpts),ca_zphi(ncpts)
@@ -281,7 +286,9 @@ c      ------------------------------------------
        if(a(9).le.0.) then
 c        find pt. source image locations and amplifications
 c        --------------------------------------------------
-         call bilens_im(sx,sy,nimage,iimage,z,ampim)
+         call from_2d_real_to_complex(z, z_in)
+         call bilens_im(sx,sy,nimage,iimage,z_in,ampim)
+         call from_complex_to_2d_real(z_in, z)
 
 c        loop over images
 c        ----------------
@@ -559,7 +566,9 @@ c       ------------------------------
 c        find pt. source image locations and amplifications
 c        --------------------------------------------------
 ccc         write(6,*) 'calling bilens_im for dsx dsy=',dsx,dsy
-         call bilens_im(dsx,dsy,nimage,iimage,z,ampim)
+         call from_2d_real_to_complex(z, z_in)
+         call bilens_im(dsx,dsy,nimage,iimage,z_in,ampim)
+         call from_complex_to_2d_real(z_in, z)
 c        loop over images
 c        ----------------
          ptamp=0.
