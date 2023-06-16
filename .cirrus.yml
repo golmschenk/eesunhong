@@ -6,24 +6,6 @@ build_and_store_wheels: &BUILD_AND_STORE_WHEELS
   wheels_artifacts:
     path: "wheelhouse/*"
 
-windows_x86_task:
-  name: Build Windows x86 wheels.
-  windows_container:
-    image: cirrusci/windowsservercore:visualstudio2022
-    cpu: 4
-    memory: 4G
-  env:
-    CMAKE_GENERATOR: MinGW Makefiles
-    PIP_NO_CLEAN: "1"
-
-  install_pre_requirements_script:
-    - choco install -y --no-progress python3 --version 3.10.6
-    - choco install -y mingw
-    - ls c:/ProgramData/chocolatey/lib/mingw/tools/install/mingw64/bin
-    - refreshenv
-    - echo PATH=%PATH% >> "%CIRRUS_ENV%"
-  <<: *BUILD_AND_STORE_WHEELS
-
 macos_arm64_task:
   name: Build macOS arm64 wheels.
   macos_instance:

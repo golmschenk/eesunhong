@@ -84,13 +84,15 @@ def run_trial_from_run_directory_template(current_file_path):
 
 
 def run_trial(current_file_path, run_directory, expected_directory):
-    if shutil.which('eesunhong_run') is not None:
-        executable = 'eesunhong_run'
+    executable_name = 'eesunhong_main'
+    if shutil.which(executable_name) is not None:
+        executable = executable_name
     else:
-        executable = Path(current_file_path).parent.parent.parent.parent.joinpath('build/bin/eesunhong_run')
+        executable = Path(current_file_path).parent.parent.parent.parent.joinpath(f'build/{executable_name}')
     verify_directories_file_list_does_not_match(run_directory, expected_directory)
-    with (run_directory.joinpath('run_1.in').open() as input_file,
-          run_directory.joinpath('run_1.out').open('w') as output_file):
+    run_in_path = run_directory.joinpath('run_1.in')
+    run_out_path = run_directory.joinpath('run_1.out')
+    with run_in_path.open() as input_file, run_out_path.open('w') as output_file:
         subprocess.run([executable], cwd=run_directory, stdin=input_file,
                        stdout=output_file)
     verify_directories_match(run_directory, expected_directory)

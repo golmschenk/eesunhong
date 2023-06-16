@@ -20,19 +20,6 @@ jobs:
           compiler: gcc
           version: 11
 
-      # Configure compilers for Windows. Does nothing on Linux/Mac.
-      # - name: Enable Developer Command Prompt
-      #   uses: ilammy/msvc-dev-cmd@v1
-
-#      - if: runner.os == 'Windows'
-#        run: echo "CMAKE_GENERATOR=MinGW Makefiles" >> "$GITHUB_ENV"
-#        uses: msys2/setup-msys2@v2
-#        with:
-#          msystem: MINGW64
-#          path-type: inherit
-#          install: >-
-#            mingw-w64-x86_64-gcc-fortran
-
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
         uses: pypa/cibuildwheel@v2.13.0
@@ -42,17 +29,6 @@ jobs:
         uses: pypa/cibuildwheel@v2.13.0
         env:
           CMAKE_GENERATOR: MinGW Makefiles
-          PIP_NO_CLEAN: "no"
-#          CIBW_BUILD_FRONTEND: "build"
-
-#          CIBW_BEFORE_BUILD_WINDOWS: |
-#            set PATH=C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;\%PATH\%
-#            echo \%PATH\%
-#            set CMAKE_GENERATOR=MinGW Makefiles
-#            echo \%CMAKE_GENERATOR\%
-#          CIBW_ENVIRONMENT_WINDOWS: CC=gcc CXX=g++ FC=gfortran
-#        env:
-#          CIBW_ENVIRONMENT_WINDOWS: CMAKE_ARGS=-G'"Visual Studio 17 2022"'
 
       - uses: actions/upload-artifact@v3
         with:

@@ -2,13 +2,6 @@
 name = "eesunhong"
 version = "0.1.0"
 requires-python = ">=3.7"
-
-[tool.poetry]
-name = "eesunhong"
-version = "0.1.0"
-description = ""
-authors = ["Greg Olmschenk <greg@olmschenk.com>"]
-readme = "readme.md"
 packages = [
     { include = "tests" }
 ]
@@ -18,28 +11,13 @@ requires = ["scikit-build-core", "fypp"]
 build-backend = "scikit_build_core.build"
 
 [tool.cibuildwheel]
-skip = "pp* cp36-*"
+skip = "pp* cp36-* cp37-* cp38-*"
 build-verbosity = "3"
+test-requires = ["pytest==7.2.1", "numpy"]
+test-command = "rm -rf {project}/eesunhong; pytest {package}/tests -m \"not slow\""
 
-#[tool.cibuildwheel.linux]
-#before-all = "yum install -y devtoolset-11"
-
-#[tool.cibuildwheel.windows]
-#before-build = """
-#    set \"PATH=C:\\ProgramData\\chocolatey\\lib\\mingw\\tools\\install\\mingw64\\bin;%PATH%\"
-#    echo %PATH%
-#    set \"CMAKE_GENERATOR=MinGW Makefiles\"
-#    echo %CMAKE_GENERATOR%
-#    """
-
-[tool.poetry.dependencies]
-python = "^3.11"
-pytest = "^7.2.1"
-pytest-pycharm = "^0.7.0"
-numpy = "^1.24.2"
-pytest-cmake = "^0.2.1"
-fypp = "^3.1"
-
+[tool.cibuildwheel.windows]
+archs = ["auto64"]
 
 [tool.pytest.ini_options]
 markers = [
