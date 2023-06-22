@@ -6,6 +6,8 @@ import platform
 
 module_parent_directory = Path(__file__).parent.parent
 library_directory = module_parent_directory
+if library_directory.name == 'src' and library_directory.joinpath('../build').exists():
+    library_directory = library_directory.joinpath('../build')
 
 platform_system_name = platform.system()
 if platform_system_name == 'Darwin':
