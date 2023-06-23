@@ -3,6 +3,9 @@ name = "eesunhong"
 version = "0.1.0"
 requires-python = ">=3.7"
 
+[project.scripts]
+eesunhong_main2 = "eesunhong.main:main"
+
 [build-system]
 requires = ["scikit-build-core", "fypp"]
 build-backend = "scikit_build_core.build"
