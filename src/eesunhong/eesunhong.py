@@ -15,6 +15,8 @@ if platform_system_name == 'Darwin':
 elif platform_system_name == 'Linux':
     library_path = library_directory.joinpath('libeesunhong_fortran_library.so')
 elif platform_system_name == 'Windows':
+    os.add_dll_directory(f'{library_directory}')
+    os.add_dll_directory(f'{library_directory}.lib')
     library_path = library_directory.joinpath('eesunhong_fortran_library.dll')
     if not library_path.exists():
         library_path = library_directory.joinpath('libeesunhong_fortran_library.dll')

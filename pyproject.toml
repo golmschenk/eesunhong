@@ -19,6 +19,8 @@ test-command = "pytest {package}/tests -m \"not slow\""
 
 [tool.cibuildwheel.windows]
 archs = ["auto64"]
+before-build = "pip install delvewheel"
+repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"
 
 [tool.scikit-build]
 build-dir = "build"
