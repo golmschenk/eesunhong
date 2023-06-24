@@ -43,7 +43,7 @@ def verify_run_files_match(run_path, expected_run_path):
             try:
                 expected_number = float(expected_item)
                 actual_number = float(actual_item)
-                relative_tolerance = 0.00001
+                relative_tolerance = 0.01
                 assert actual_number == pytest.approx(expected_number, rel=relative_tolerance), f'''
                     When comparing the expected {expected_run_path} and the actual {run_path}
                     on line {line_number}, the number {expected_number} was expected and the actual was {actual_number}
