@@ -50,10 +50,7 @@ jobs:
   upload_all:
     needs: [ build_wheels, make_sdist ]
     runs-on: ubuntu-latest
-    on:
-      push:
-        tags:
-          - '^[0-9]+\.[0-9]+\.[0-9]+$'
+    if: contains(github.ref, '^refs/tags/[0-9]+\.[0-9]+\.[0-9]+$')
     steps:
       - uses: actions/download-artifact@v3
         with:
