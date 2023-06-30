@@ -1,0 +1,35 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: awvwgk/setup-fortran@main
+        id: setup-fortran
+        with:
+          compiler: gcc
+          version: 11
+
+      - name: Build wheels (Not Windows)
+        if: runner.os != 'Windows'
+        uses: pypa/cibuildwheel@v2.13.0
+
+      - name: Build wheels (Windows)
+        if: runner.os == 'Windows'
+        uses: pypa/cibuildwheel@v2.13.0
+        env:
+          CMAKE_GENERATOR: MinGW Makefiles
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./wheelhouse/*.whl

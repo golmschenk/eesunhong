@@ -7696,6 +7696,7 @@ C
       if(WORD7(4).gt.0) max_save = WORD7(4)
       if(WORD7(5).gt.0) then
         in_save = WORD7(5)
+        close(10)
         open(unit=12,file=mcmc_file,status='old')
         do i = 1,in_save
           read(12,*) chi2par,(par_ext(j), j = 1,NU)
@@ -7711,6 +7712,7 @@ C
         call paropt(NPAR,max_save,nsaved,xsave,eval,evec)
         nsaved0 = nsaved
         close(12)
+        open(unit=10,file=mcmc_file,position='append')
       else
         in_save = 0
       endif
