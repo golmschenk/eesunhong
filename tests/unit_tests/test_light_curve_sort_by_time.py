@@ -1,7 +1,7 @@
 from ctypes import POINTER, c_float, c_int
 
 import numpy as np
-from eesunhong import sort_light_curve_data_by_time
+from eesunhong.eesunhong import sort_light_curve_data_by_time
 
 
 def test_light_curve_sort_by_time():
