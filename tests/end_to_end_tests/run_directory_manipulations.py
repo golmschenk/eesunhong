@@ -64,35 +64,36 @@ def verify_directories_file_list_does_not_match(run_directory, expected_resultin
     assert set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list])
 
 
-def run_trial_with_output_file_cleaning(current_file_path):
+def run_trial_with_output_file_cleaning(current_file_path, executable_path: Path | None = None):
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     clean_up_run(run_directory)
-    run_trial(current_file_path, run_directory, expected_directory)
+    run_trial(run_directory, expected_directory, executable_path=executable_path)
     clean_up_run(run_directory)
 
 
-def run_trial_from_run_directory_template(current_file_path):
+def run_trial_from_run_directory_template(current_file_path, executable_path: Path | None = None):
     template_run_directory = Path(current_file_path).parent.joinpath('template_run_directory')
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     if run_directory.exists():
         shutil.rmtree(run_directory)
     shutil.copytree(template_run_directory, run_directory)
-    run_trial(current_file_path, run_directory, expected_directory)
+    run_trial(run_directory, expected_directory, executable_path=executable_path)
     shutil.rmtree(run_directory)
 
 
-def run_trial(current_file_path, run_directory, expected_directory):
-    executable_name = 'eesunhong_main'
-    if shutil.which(executable_name) is not None:
-        executable = executable_name
-    else:
-        executable = Path(current_file_path).parent.parent.parent.parent.joinpath(f'build/{executable_name}')
+def run_trial(run_directory, expected_directory, executable_path: Path | None = None):
+    if executable_path is None:
+        executable_name = 'eesunhong_main'
+        if shutil.which(executable_name) is not None:
+            executable_path = executable_name
+        else:
+            executable_path = Path(__file__).parent.parent.parent.joinpath(f'build/{executable_name}')
     verify_directories_file_list_does_not_match(run_directory, expected_directory)
     run_in_path = run_directory.joinpath('run_1.in')
     run_out_path = run_directory.joinpath('run_1.out')
     with run_in_path.open() as input_file, run_out_path.open('w') as output_file:
-        subprocess.run([executable], cwd=run_directory, stdin=input_file,
+        subprocess.run([executable_path], cwd=run_directory, stdin=input_file,
                        stdout=output_file)
     verify_directories_match(run_directory, expected_directory)
