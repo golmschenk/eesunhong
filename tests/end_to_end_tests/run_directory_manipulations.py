@@ -67,7 +67,7 @@ def verify_directories_file_list_does_not_match(run_directory, expected_resultin
     assert set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list])
 
 
-def run_trial_with_output_file_cleaning(current_file_path, executable_path: Path | None = None):
+def run_trial_with_output_file_cleaning(current_file_path, executable_path: Optional[Path] = None):
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     clean_up_run(run_directory)
@@ -75,7 +75,7 @@ def run_trial_with_output_file_cleaning(current_file_path, executable_path: Path
     clean_up_run(run_directory)
 
 
-def run_trial_from_run_directory_template(current_file_path, executable_path: Path | None = None):
+def run_trial_from_run_directory_template(current_file_path, executable_path: Optional[Path] = None):
     template_run_directory = Path(current_file_path).parent.joinpath('template_run_directory')
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
