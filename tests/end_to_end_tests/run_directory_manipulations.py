@@ -1,7 +1,10 @@
+
+
 import re
 import shutil
 import subprocess
 from pathlib import Path
+from typing import Optional
 
 import pytest
 
@@ -83,7 +86,7 @@ def run_trial_from_run_directory_template(current_file_path, executable_path: Pa
     shutil.rmtree(run_directory)
 
 
-def run_trial(run_directory, expected_directory, executable_path: Path | None = None):
+def run_trial(run_directory, expected_directory, executable_path: Optional[Path] = None):
     if executable_path is None:
         executable_name = 'eesunhong_main'
         if shutil.which(executable_name) is not None:
