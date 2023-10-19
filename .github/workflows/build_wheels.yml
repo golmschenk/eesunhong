@@ -21,10 +21,9 @@ jobs:
           version: 11
 
       - name: ssh_session
-        uses: lhotari/action-upterm@v1
+        uses: mxschmitt/action-tmate@v3
         with:
           limit-access-to-actor: true
-          limit-access-to-users: golmschenk
 
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
