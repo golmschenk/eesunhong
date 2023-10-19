@@ -22,11 +22,11 @@ jobs:
 
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
-        uses: pypa/cibuildwheel@v2.13.0
+        uses: pypa/cibuildwheel@v2.16.2
 
       - name: Build wheels (Windows)
         if: runner.os == 'Windows'
-        uses: pypa/cibuildwheel@v2.13.0
+        uses: pypa/cibuildwheel@v2.16.2
         env:
           CMAKE_GENERATOR: MinGW Makefiles
 
