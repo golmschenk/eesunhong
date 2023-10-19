@@ -13,7 +13,7 @@ build-backend = "scikit_build_core.build"
 [tool.cibuildwheel]
 skip = "pp* cp36-* cp37-*"
 build-verbosity = "3"
-test-requires = ["pytest==7.2.1", "numpy"]
+test-requires = ["pytest==7.2.1", "numpy==1.24.4"]
 test-command = "pytest {package}/tests -m \"not slow\""
 
 [tool.cibuildwheel.windows]
