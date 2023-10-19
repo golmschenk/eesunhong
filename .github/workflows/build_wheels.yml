@@ -18,7 +18,7 @@ jobs:
         id: setup-fortran
         with:
           compiler: gcc
-          version: 11
+          version: 13
 
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
