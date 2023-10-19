@@ -7,7 +7,7 @@ requires-python = ">=3.8"
 eesunhong_main = "eesunhong.main:main"
 
 [build-system]
-requires = ["scikit-build-core==0.4.7", "fypp==3.1", "cmake==3.26.4"]
+requires = ["scikit-build-core==0.4.7", "fypp==3.1"]
 build-backend = "scikit_build_core.build"
 
 [tool.cibuildwheel]
