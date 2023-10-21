@@ -9,7 +9,7 @@ include(FetchContent)
 FetchContent_Declare(
         fortran_stdlib
         GIT_REPOSITORY https://github.com/fortran-lang/stdlib.git
-        GIT_TAG fb4ca801f0c8e0ed09f9d137c620676fa348ebdd  # v0.2.1
+        GIT_TAG df1e2f0ed0cbe2fbd9c1f20dcb5bd1a4bba95bb2  # v3.0.0
 )
 FetchContent_MakeAvailable(fortran_stdlib)
 set(BUILD_TESTING ON)
