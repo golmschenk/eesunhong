@@ -19,10 +19,14 @@ add_library(roots OBJECT third_party/roots-fortran/root_module.F90)
 add_library(eesunhong_recipes_replacements OBJECT src/eesunhong_recipes_replacements.f90)
 target_link_libraries(eesunhong_recipes_replacements PUBLIC fortran_stdlib)
 
+add_custom_target(dummy_to_force_build_order)
+add_dependencies(dummy_to_force_build_order eesunhong_recipes_replacements)
+
 add_library(eesunhong_fortran_library SHARED $<TARGET_OBJECTS:eesunhong_recipes_replacements> $<TARGET_OBJECTS:roots>)
 target_link_libraries(eesunhong_fortran_library PUBLIC fortran_stdlib)
 
 add_library(eesunhong_complete_static STATIC $<TARGET_OBJECTS:eesunhong_recipes_replacements> $<TARGET_OBJECTS:polyroots> $<TARGET_OBJECTS:roots>)
+add_dependencies(eesunhong_complete_static dummy_to_force_build_order)
 target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
