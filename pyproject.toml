@@ -16,9 +16,6 @@ build-verbosity = "3"
 test-requires = ["pytest==7.2.1", "numpy==1.24.4"]
 test-command = "pytest {package}/tests -m \"not slow\""
 
-[tool.cibuildwheel.macos]
-before-all = "brew install pipx"
-
 [tool.cibuildwheel.windows]
 archs = ["auto64"]
 before-build = "pip install delvewheel"
