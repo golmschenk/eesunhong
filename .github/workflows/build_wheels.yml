@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest, macos-latest-xlarge]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -19,10 +19,6 @@ jobs:
         with:
           compiler: gcc
           version: 11
-
-      - name: install_pipx_on_macos
-        if: runner.os == 'macOS'
-        run: brew install pipx
 
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
