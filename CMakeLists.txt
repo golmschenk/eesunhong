@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 
-project(src/eesunhong LANGUAGES Fortran)
+project(eesunhong LANGUAGES Fortran)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
