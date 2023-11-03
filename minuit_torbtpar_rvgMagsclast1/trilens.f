@@ -824,10 +824,10 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 c      quad precision version
 c      ----------------------
 
-       cc1q = qcmplx(xx1,0.d0)
-       cc2q = qcmplx(xx2,yy2)
-       cc3q = qcmplx(xx3,yy3)
-       cc4q = qcmplx(xx4,0.d0)
+       cc1q = cmplx(xx1,0.d0, kind=16)
+       cc2q = cmplx(xx2,yy2, kind=16)
+       cc3q = cmplx(xx3,yy3, kind=16)
+       cc4q = cmplx(xx4,0.d0, kind=16)
       
        aaq = -(cc1q+cc2q+cc3q) 
        bbq = cc1q*cc2q + cc1q*cc3q + cc2q*cc3q 
@@ -937,10 +937,10 @@ cccccccccccccccccccccccccccccccccccccccccccc
      &        + eps3*ww1bar*ww2bar
 
 c      quad precision version
-       wwq  = qcmplx(sx,sy)
-       ww1q = qcmplx(sx-xx1,sy)
-       ww2q = qcmplx(sx-xx2,sy-yy2)
-       ww3q = qcmplx(sx-xx3,sy-yy3)
+       wwq  = cmplx(sx,sy, kind=16)
+       ww1q = cmplx(sx-xx1,sy, kind=16)
+       ww2q = cmplx(sx-xx2,sy-yy2, kind=16)
+       ww3q = cmplx(sx-xx3,sy-yy3, kind=16)
 
        wwbarq = conjg(wwq)
        ww1barq = conjg(ww1q)
@@ -1298,10 +1298,10 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 c      quad precision version
 c      ----------------------
 
-       cc1q = qcmplx(xx1,0.d0)
-       cc2q = qcmplx(xx2,yy2)
-       cc3q = qcmplx(xx3,yy3)
-       cc4q = qcmplx(xx4,0.d0)
+       cc1q = cmplx(xx1,0.d0, kind=16)
+       cc2q = cmplx(xx2,yy2, kind=16)
+       cc3q = cmplx(xx3,yy3, kind=16)
+       cc4q = cmplx(xx4,0.d0, kind=16)
       
        aaq = -(cc1q+cc2q+cc3q) 
        bbq = cc1q*cc2q + cc1q*cc3q + cc2q*cc3q 
@@ -1558,10 +1558,10 @@ ccc     &                ' images; trying again w/ tol =',ttol
 c          ccccccccccc  COEFFICIENTS ccccccccccccccccc
 
 c          quad precision version
-           wwq  = qcmplx(sx,sy)
-           ww1q = qcmplx(sx-xx1,sy)
-           ww2q = qcmplx(sx-xx2,sy-yy2)
-           ww3q = qcmplx(sx-xx3,sy-yy3)
+           wwq  = cmplx(sx,sy, kind=16)
+           ww1q = cmplx(sx-xx1,sy, kind=16)
+           ww2q = cmplx(sx-xx2,sy-yy2, kind=16)
+           ww3q = cmplx(sx-xx3,sy-yy3, kind=16)
 
            wwbarq = conjg(wwq)
            ww1barq = conjg(ww1q)
@@ -1754,7 +1754,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
        if(eps4.le.0.q0) return
        
 
-       czer0 = qcmplx(0.q0,0.q0)
+       czer0 = cmplx(0.q0,0.q0, kind=16)
        eps1 = 1.q0-eps4
        xx1 = -eps4*sep
        xx4 =  eps1*sep
@@ -1763,17 +1763,17 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
        xx3 = xx4 - eps2/eps4*sep2* cos(ang) 
        yy3 = - eps2/eps4*sep2* sin(ang)
 
-       cc1 = qcmplx(xx1,0.q0)
-       cc2 = qcmplx(xx2,yy2)
-       cc3 = qcmplx(xx3,yy3)
-       cc4 = qcmplx(xx4,0.q0)
+       cc1 = cmplx(xx1,0.q0, kind=16)
+       cc2 = cmplx(xx2,yy2, kind=16)
+       cc3 = cmplx(xx3,yy3, kind=16)
+       cc4 = cmplx(xx4,0.q0, kind=16)
       
        aa = -(cc1+cc2+cc3) 
        bb = cc1*cc2 + cc1*cc3 + cc2*cc3 
        cc = -cc1*cc2*cc3
        dd = eps1*cc2*cc3 + eps2*cc1*cc3 + eps3*cc1*cc2
 
-cc       q1 = qcmplx(1.q0,0.q0)
+cc       q1 = cmplx(1.q0,0.q0, kind=16)
 cc       aaaa = aa*aa
 cc       aaaaaa = aaaa*aa
 cc       aa3 = 3.q0*aa
@@ -1804,7 +1804,7 @@ cc       hh32 = aa3*cccc + bbbb3*cc
 cc       hh31 = bb3*cccc
 cc       hh30 = cccc*cc
 
-       hh39 = qcmplx(1.q0,0.q0)
+       hh39 = cmplx(1.q0,0.q0, kind=16)
        hh38 = 3.q0*aa
        hh37 = 3.q0*bb + 3.q0*aa*aa 
        hh36 = 3.q0*cc + 6.q0*aa*bb + aa*aa*aa
@@ -1827,7 +1827,7 @@ cc       hh22 = 2.q0*aaccdd + dd*bbbb + 2.q0*aabbcc + cccc
 cc       hh21 = 2.q0*bbcc*dd + aa*cccc
 cc       hh20 = cccc*dd
 
-       hh28 = qcmplx(1.q0,0.q0)
+       hh28 = cmplx(1.q0,0.q0, kind=16)
        hh27 = 3.q0*aa
        hh26 = dd + 2.q0*bb + 3.q0*aa*aa
        hh25 = 2.q0*aa*dd + 4.q0*aa*bb + aa*aa*aa + 2.q0*cc
@@ -1849,7 +1849,7 @@ cc       hh12 = aa*dddd + 2.q0*aabbdd + 2.q0*ccdd + cc*aaaa
 cc       hh11 = bb*dddd + 2.q0*aaccdd
 cc       hh10 = cc*dddd
 
-       hh17 = qcmplx(1.q0,0.q0)
+       hh17 = cmplx(1.q0,0.q0, kind=16)
        hh16 = 3.q0*aa
        hh15 = 2.q0*dd + 3.q0*aa*aa + bb
        hh14 = 4.q0*aa*dd + aa*aa*aa + 2.q0*aa*bb + cc
@@ -1867,7 +1867,7 @@ cc       hh02 = 3.q0*dddd + aaaa3*dd
 cc       hh01 = aa3*dddd
 cc       hh00 = dddd*dd
 
-       hh06 = qcmplx(1.q0,0.q0)
+       hh06 = cmplx(1.q0,0.q0, kind=16)
        hh05 = 3.q0*aa
        hh04 = 3.q0*dd + 3.q0*aa*aa
        hh03 = 6.q0*aa*dd + aa*aa*aa
@@ -1922,10 +1922,10 @@ cccccccccc  MORE LINES from here ccccccccccc
 cccccccccccc  COEFFICIENTS ccccccccccccccccc
 cccccccccccccccccccccccccccccccccccccccccccc
 
-       ww  = qcmplx(sx,sy)
-       ww1 = qcmplx(sx-xx1,sy)
-       ww2 = qcmplx(sx-xx2,sy-yy2)
-       ww3 = qcmplx(sx-xx3,sy-yy3)
+       ww  = cmplx(sx,sy, kind=16)
+       ww1 = cmplx(sx-xx1,sy, kind=16)
+       ww2 = cmplx(sx-xx2,sy-yy2, kind=16)
+       ww3 = cmplx(sx-xx3,sy-yy3, kind=16)
  
        wwbar = conjg(ww)
        ww1bar = conjg(ww1)
@@ -2061,25 +2061,25 @@ ccc          ccptemp= czkcpcc1 * czkcpcc2 * czkcpcc3
 ccc          cqtemp= czkqcc1 * czkqcc2 * czkqcc3
 ccc          cctemp= czkccc1 * czkccc2 * czkccc3
           if(ctemp.eq.czer0) then
-            ztos = zk - qcmplx(1.q30,0.q0)
+            ztos = zk - cmplx(1.q30,0.q0, kind=16)
           else
             ztos = zk - eps1/czkcc1 - eps2/czkcc2 
      &                - eps3/czkcc3
           endif
 ccc          if(ccptemp.eq.czer0) then
-ccc            zcptos = zkcp - qcmplx(1.q30,0.q0)
+ccc            zcptos = zkcp - cmplx(1.q30,0.q0, kind=16)
 ccc          else
 ccc            zcptos = zkcp - eps1/czkcpcc1 - eps2/czkcpcc2 
 ccc     &                - eps3/czkcpcc3
 ccc          endif
 ccc          if(cqtemp.eq.czer0) then
-ccc            zqtos = zkq - qcmplx(1.q30,0.q0)
+ccc            zqtos = zkq - cmplx(1.q30,0.q0, kind=16)
 ccc          else
 ccc            zqtos = zkq - eps1/czkqcc1 - eps2/czkqcc2 
 ccc     &                - eps3/czkqcc3
 ccc          endif
 ccc          if(cctemp.eq.czer0) then
-ccc            zctos = zkc - qcmplx(1.q30,0.q0)
+ccc            zctos = zkc - cmplx(1.q30,0.q0, kind=16)
 ccc          else
 ccc            zctos = zkc - eps1/czkccc1 - eps2/czkccc2 
 ccc     &                - eps3/czkccc3
@@ -2087,10 +2087,10 @@ ccc          endif
 cc           ww=complx(sx,sy) is the input source position
 c         check if that (ww - ztos) = 0
 ccc          zerr = abs(imag(ww-ztos)) + abs(real(ww-ztos))     
-          zerr = abs(imag(ww-ztos)) + abs(qreal(ww-ztos))     
-ccc          zcperr = abs(imag(ww-zcptos)) + abs(qreal(ww-zcptos))     
-ccc          zqerr = abs(imag(ww-zqtos)) + abs(qreal(ww-zqtos))     
-ccc          zcerr = abs(imag(ww-zctos)) + abs(qreal(ww-zctos))     
+          zerr = abs(imag(ww-ztos)) + abs(real(ww-ztos, kind=16))
+ccc          zcperr = abs(imag(ww-zcptos)) + abs(real(ww-zcptos, kind=16))
+ccc          zqerr = abs(imag(ww-zqtos)) + abs(real(ww-zqtos, kind=16))
+ccc          zcerr = abs(imag(ww-zctos)) + abs(real(ww-zctos, kind=16))
 c         possibly calculate the amplitude
 c         --------------------------------
           if(zerr.le.ttol.and.zerr.gt.ttol_last) then
@@ -2102,12 +2102,12 @@ c                    + eps3/(czkcc3*czkcc3)
              ctemp1=(czkcc1*czkcc1)
              ctemp2=(czkcc2*czkcc2)
              ctemp3=(czkcc3*czkcc3)
-             if(ctemp1.eq.czer0) ctemp1= qcmplx(1.q-30,0.q0)
-             if(ctemp2.eq.czer0) ctemp2= qcmplx(1.q-30,0.q0)
-             if(ctemp3.eq.czer0) ctemp3= qcmplx(1.q-30,0.q0)
+             if(ctemp1.eq.czer0) ctemp1= cmplx(1.q-30,0.q0, kind=16)
+             if(ctemp2.eq.czer0) ctemp2= cmplx(1.q-30,0.q0, kind=16)
+             if(ctemp3.eq.czer0) ctemp3= cmplx(1.q-30,0.q0, kind=16)
              cjac = eps1/ctemp1+eps2/ctemp2+eps3/ctemp3
 ccc             fjac = 1.q0 - ((real(cjac))**2 + (imag(cjac))**2)
-             fjac = 1.q0 - ((qreal(cjac))**2 + (qimag(cjac))**2)
+             fjac = 1.q0 - ((real(cjac, kind=16))**2 + (aimag(cjac))**2)
              nimage=nimage+1
              iimage(nimage)=k
              amp(nimage) = abs(1.d0/(fjac*1.d0+1.d-20))
