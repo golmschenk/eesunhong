@@ -2304,7 +2304,7 @@ C  recognized MINUIT commands:
       DATA CNAME(26) / 'JUMp      ' /
       DATA CNAME(27) / 'OSEek     ' /
       DATA CNAME(28) / 'DSEek     ' /
-      DATA CNAME(29) / '          ' /
+      DATA CNAME(29) / 'MSEek     ' /
       DATA CNAME(30) / '          ' /
       DATA CNAME(31) / '          ' /
       DATA CNAME(32) / '          ' /
@@ -2394,7 +2394,7 @@ C                normal case: recognized MINUIT command . . . . . . .
 C              1    2    3    4    5    6    7    8    9   10
       GO TO ( 400, 200, 300, 400, 500, 700, 700, 800, 900,1000,
      1       1100,1200,1300,1400,1500,1600,1700,1800,1900,1900,
-     2       1900,2200,2300,2400,1900,2600,2700,2800,3300,3300,
+     2       1900,2200,2300,2400,1900,2600,2700,2800,2900,3300,
      3       3300,3300,3300,3400,3500,3600,3700,3800,3900,4000) , I
 C                                        . . . . . . . . . . seek
   200 CALL MNSEEK(FCN,FUTIL)
@@ -2653,8 +2653,11 @@ C                                      . . . . . . . . . . jump
 C                                        . . . . . . . . . . OPTseek
  2700 CALL MNoptSEEK(FCN,FUTIL)
       GO TO 5000
-C                                        . . . . . . . . . . OPTseek
+C                                        . . . . . . . . . . dOPTseek
  2800 CALL MNdoptSEEK(FCN,FUTIL)
+      GO TO 5000
+C                                        . . . . . . . . . . MIXseek
+ 2900 CALL MNmixSEEK(FCN,FUTIL)
       GO TO 5000
 C                                      . . . . . . . . . . blank line
  3300 CONTINUE
@@ -4388,6 +4391,80 @@ C
          U(I) = ALIM(I) + 0.5*(SIN(PINT(J)) +1.0) * (BLIM(I)-ALIM(I))
       ENDIF
   100 CONTINUE
+      RETURN
+      END
+CDECK  ID>, MNmixINEX.
+      SUBROUTINE MNmixINEX(PINT,imix,ISEED)
+C ************ DOUBLE PRECISION VERSION *************
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+CC        Transforms from internal coordinates (PINT) to external
+CC        parameters (U).   The minimizing routines which work in
+CC        internal coordinates call this routine before calling FCN.
+      PARAMETER (MNE=100 , MNI=50)
+      PARAMETER (MNIHL=MNI*(MNI+1)/2)
+      CHARACTER*10 CPNAM
+      COMMON
+     1/MN7NAM/ CPNAM(MNE)
+     2/MN7EXT/ U(MNE)     ,ALIM(MNE)  ,BLIM(MNE)
+     3/MN7ERR/ ERP(MNI)   ,ERN(MNI)   ,WERR(MNI)  ,GLOBCC(MNI)
+     4/MN7INX/ NVARL(MNE) ,NIOFEX(MNE),NEXOFI(MNI)
+     5/MN7INT/ X(MNI)     ,XT(MNI)    ,DIRIN(MNI)
+     6/MN7FX2/ XS(MNI)    ,XTS(MNI)   ,DIRINS(MNI)
+     7/MN7DER/ GRD(MNI)   ,G2(MNI)    ,GSTEP(MNI) ,GIN(MNE) ,DGRD(MNI)
+     8/MN7FX3/ GRDS(MNI)  ,G2S(MNI)   ,GSTEPS(MNI)
+     9/MN7FX1/ IPFIX(MNI) ,NPFIX
+     A/MN7VAR/ VHMAT(MNIHL)
+     B/MN7VAT/ VTHMAT(MNIHL)
+     C/MN7SIM/ P(MNI,MNI+1),PSTAR(MNI),PSTST(MNI) ,PBAR(MNI),PRHO(MNI)
+C
+      PARAMETER (MAXDBG=10, MAXSTK=10, MAXCWD=20, MAXP=30, MAXCPT=5001)
+      PARAMETER (ZERO=0.0,  ONE=1.0,   HALF=0.5)
+      COMMON
+     D/MN7NPR/ MAXINT ,NPAR   ,MAXEXT ,NU
+     E/MN7IOU/ ISYSRD ,ISYSWR ,ISYSSA ,NPAGWD ,NPAGLN ,NEWPAG
+     E/MN7IO2/ ISTKRD(MAXSTK) ,NSTKRD ,ISTKWR(MAXSTK) ,NSTKWR
+     F/MN7TIT/ CFROM  ,CSTATU ,CTITL  ,CWORD  ,CUNDEF ,CVRSN ,COVMES
+     G/MN7FLG/ ISW(7) ,IDBG(0:MAXDBG) ,NBLOCK ,ICOMND
+     H/MN7MIN/ AMIN   ,UP     ,EDM    ,FVAL3  ,EPSI   ,APSI  ,DCOVAR
+     I/MN7CNV/ NFCN   ,NFCNMX ,NFCNLC ,NFCNFR ,ITAUR,ISTRAT,NWRMES(2)
+     J/MN7ARG/ WORD7(MAXP)
+     K/MN7LOG/ LWARN  ,LREPOR ,LIMSET ,LNOLIM ,LNEWMN ,LPHEAD
+     L/MN7CNS/ EPSMAC ,EPSMA2 ,VLIMLO ,VLIMHI ,UNDEFI ,BIGEDM,UPDFLT
+     M/MN7RPT/ XPT(MAXCPT)    ,YPT(MAXCPT)
+     N/MN7CPT/ CHPT(MAXCPT)
+     o/MN7XCR/ XMIDCR ,YMIDCR ,XDIRCR ,YDIRCR ,KE1CR  ,KE2CR
+       parameter (mmax=30,max_mix=20)
+       common/mixmcmc/amix(mmax,max_mix),wtmix(max_mix),nmix
+      CHARACTER CTITL*50, CWORD*(MAXCWD), CUNDEF*10, CFROM*8,
+     +          CVRSN*6,  COVMES(0:3)*22, CSTATU*10, CHPT*1
+      LOGICAL   LWARN, LREPOR, LIMSET, LNOLIM, LNEWMN, LPHEAD
+      DIMENSION PINT(*)
+
+      wt = 0.d0
+      CALL MNRN15(rnum,ISEED)
+      do im = 1,nmix
+        wt = wt + wtmix(im)
+        if(wt.ge.rnum) go to 10
+      enddo
+      im = nmix
+ 10   continue
+      imix = im
+      DO 100 J= 1, NPAR
+      I = NEXOFI(J)
+      pingj=PINT(J)
+      amixIimix = amix(I,imix)
+      IF (NVARL(I) .EQ. 1) THEN
+         U(I) = PINT(J) + amix(I,imix)
+      ELSE
+         U(I) = ALIM(I) + 0.5*(SIN(PINT(J)) +1.0) * (BLIM(I)-ALIM(I))
+     &                  + amix(I,imix)
+      ENDIF
+  100 CONTINUE
+
+c     update minima number
+c     -------------------
+      U(NU) = imix
+
       RETURN
       END
 CDECK  ID>, MNINIT.
@@ -8116,6 +8193,236 @@ C                               end search loop
       DO 700 IB= 1, NPAR
   700 X(IB) = XBEST(IB)
       CALL MNINEX(X)
+      IF (ISW(5) .GE. 1)  CALL MNPRIN(2,AMIN)
+      IF (ISW(5) .EQ. 0)  CALL MNPRIN(0,AMIN)
+      RETURN
+      END
+
+CDECK  ID>, MNmixSEEK.
+c==============================================================================
+      SUBROUTINE MNmixSEEK(FCN,FUTIL)
+C ************ DOUBLE PRECISION VERSION *************
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+CC   Performs a rough (but global) minimization by monte carlo search.
+CC        Each time a new minimum is found, the search area is shifted
+CC        to be centered at the best value.  Random points are chosen
+CC        uniformly over a hypercube determined by current step sizes.
+CC   The Metropolis algorithm accepts a worse point with probability
+CC      exp(-d/UP), where d is the degradation.  Improved points
+CC      are of course always accepted.  Actual steps are random
+CC      multiples of the nominal steps (DIRIN).
+CC
+      PARAMETER (MNE=100 , MNI=50, max_saved = 300000)
+      PARAMETER (MNIHL=MNI*(MNI+1)/2)
+      CHARACTER*10 CPNAM
+      character*80 mcmc_file
+      character*19 char_mcmc(64)
+       common/mcmc_output/nchar_mcmc,char_mcmc
+       common/seek_opt/ xsave(MNI,max_saved),nsave
+       common/seek_opt2/mcmc_file
+       parameter (mmax=30,max_mix=20)
+       common/mixmcmc/amix(mmax,max_mix),wtmix(max_mix),nmix
+      COMMON
+     1/MN7NAM/ CPNAM(MNE)
+     2/MN7EXT/ U(MNE)     ,ALIM(MNE)  ,BLIM(MNE)
+     3/MN7ERR/ ERP(MNI)   ,ERN(MNI)   ,WERR(MNI)  ,GLOBCC(MNI)
+     4/MN7INX/ NVARL(MNE) ,NIOFEX(MNE),NEXOFI(MNI)
+     5/MN7INT/ X(MNI)     ,XT(MNI)    ,DIRIN(MNI)
+     6/MN7FX2/ XS(MNI)    ,XTS(MNI)   ,DIRINS(MNI)
+     7/MN7DER/ GRD(MNI)   ,G2(MNI)    ,GSTEP(MNI) ,GIN(MNE) ,DGRD(MNI)
+     8/MN7FX3/ GRDS(MNI)  ,G2S(MNI)   ,GSTEPS(MNI)
+     9/MN7FX1/ IPFIX(MNI) ,NPFIX
+     A/MN7VAR/ VHMAT(MNIHL)
+     B/MN7VAT/ VTHMAT(MNIHL)
+     C/MN7SIM/ P(MNI,MNI+1),PSTAR(MNI),PSTST(MNI) ,PBAR(MNI),PRHO(MNI)
+C
+      PARAMETER (MAXDBG=10, MAXSTK=10, MAXCWD=20, MAXP=30, MAXCPT=5001)
+      PARAMETER (ZERO=0.0,  ONE=1.0,   HALF=0.5)
+      COMMON
+     D/MN7NPR/ MAXINT ,NPAR   ,MAXEXT ,NU
+     E/MN7IOU/ ISYSRD ,ISYSWR ,ISYSSA ,NPAGWD ,NPAGLN ,NEWPAG
+     E/MN7IO2/ ISTKRD(MAXSTK) ,NSTKRD ,ISTKWR(MAXSTK) ,NSTKWR
+     F/MN7TIT/ CFROM  ,CSTATU ,CTITL  ,CWORD  ,CUNDEF ,CVRSN ,COVMES
+     G/MN7FLG/ ISW(7) ,IDBG(0:MAXDBG) ,NBLOCK ,ICOMND
+     H/MN7MIN/ AMIN   ,UP     ,EDM    ,FVAL3  ,EPSI   ,APSI  ,DCOVAR
+     I/MN7CNV/ NFCN   ,NFCNMX ,NFCNLC ,NFCNFR ,ITAUR,ISTRAT,NWRMES(2)
+     J/MN7ARG/ WORD7(MAXP)
+     K/MN7LOG/ LWARN  ,LREPOR ,LIMSET ,LNOLIM ,LNEWMN ,LPHEAD
+     L/MN7CNS/ EPSMAC ,EPSMA2 ,VLIMLO ,VLIMHI ,UNDEFI ,BIGEDM,UPDFLT
+     M/MN7RPT/ XPT(MAXCPT)    ,YPT(MAXCPT)
+     N/MN7CPT/ CHPT(MAXCPT)
+     o/MN7XCR/ XMIDCR ,YMIDCR ,XDIRCR ,YDIRCR ,KE1CR  ,KE2CR
+      CHARACTER CTITL*50, CWORD*(MAXCWD), CUNDEF*10, CFROM*8,
+     +          CVRSN*6,  COVMES(0:3)*22, CSTATU*10, CHPT*1
+      LOGICAL   LWARN, LREPOR, LIMSET, LNOLIM, LNEWMN, LPHEAD
+      EXTERNAL FCN,FUTIL
+      PARAMETER (TWOPI=2.0d0*3.14159265358979d0)
+      DIMENSION  XBEST(MNI), XMID(MNI)
+      dimension xy(MNI)
+      dimension eval(MNI),evec(MNI,MNI)
+      dimension par_ext(MNI)
+      DATA ISEED/123456/
+      data max_save/ 1000 /
+      data nsave/ 0 /
+      save
+
+      nopt = 50
+      max_save = 1000
+      nsave = 0
+
+c     Abort if some parameters have limits
+c     ------------------------------------
+      do ichk = 1,NU
+        IF (NVARL(ichk) .GT. 1) then
+          write(6,*) 'parameter #',ichk,' has limits'
+          STOP 'Mixed MCMC does not allow limits'
+        endif
+      enddo
+
+      MXFAIL = WORD7(1)
+      IF (MXFAIL .LE. 0)  MXFAIL=100+20*NPAR
+      MXSTEP = 10*MXFAIL
+      covfac = 1.d0
+      covfac = WORD7(3)
+      if(covfac.le.0.001d0) covfac = 1.0d0
+      IF (AMIN .EQ. UNDEFI)  CALL MNAMIN(FCN,FUTIL)
+      ALPHA = WORD7(2)
+      IF (ALPHA .LE. ZERO)  ALPHA=3.
+      if(WORD7(4).gt.0) max_save = WORD7(4)
+      if(WORD7(5).gt.0) then
+        in_save = WORD7(5)
+        open(unit=12,file=mcmc_file,status='old')
+        do i = 1,in_save
+          read(12,*) chi2par,(par_ext(j), j = 1,NU)
+c         the last paramter is the
+          imix = nint(par_ext(NU))
+          isave = mod(i,max_save)
+          if(isave.eq.0) isave = max_save
+          do j = 1,NU
+            iint = NIOFEX(j)
+            if(iint.gt.0) xsave(iint,isave) = par_ext(j) - amix(j,imix)
+            xsav = xsave(iint,isave)
+            parext = par_ext(j)
+          enddo
+        enddo
+        nsave = min(in_save,max_save)
+        nsaved = nsave
+        call paropt(NPAR,max_save,nsaved,xsave,eval,evec)
+        nsaved0 = nsaved
+        close(12)
+      else
+        in_save = 0
+      endif
+      IF (ISW(5) .GE. 1)  WRITE (ISYSWR, 3) MXFAIL,MXSTEP,ALPHA
+    3 FORMAT (' MNSEEK: MONTE CARLO MINIMIZATION USING METROPOLIS',
+     + ' ALGORITHM'/' TO STOP AFTER',I6,' SUCCESSIVE FAILURES, OR',
+     + I7,' STEPS'/' MAXIMUM STEP SIZE IS',F9.3,' ERROR BARS.')
+      CSTATU= 'INITIAL  '
+      IF (ISW(5) .GE. 2)  CALL MNPRIN(2,AMIN)
+      CSTATU = 'UNCHANGED '
+      IFAIL = 0
+      RNUM = ZERO
+      RNUM1 = ZERO
+      RNUM2 = ZERO
+      NPARX = NPAR
+      FLAST = AMIN
+C              set up step sizes, starting values
+      imix = nint(U(NU))
+ccc      DO 10 IPAR =  1, NPAR
+      DO 10 j = 1,NU
+        ipar = NIOFEX(j)
+        if(ipar.gt.0) then
+          IEXT = NEXOFI(IPAR)
+          DIRIN(IPAR) = 2.0*ALPHA*WERR(IPAR)
+          IF (NVARL(IEXT) .GT. 1)  THEN
+C              parameter with limits
+            CALL MNDXDI(X(IPAR),IPAR,DXDI)
+            IF (DXDI .EQ. ZERO)  DXDI=1.
+            DIRIN(IPAR) = 2.0*ALPHA*WERR(IPAR)/DXDI
+            IF (ABS(DIRIN(IPAR)).GT.TWOPI)  DIRIN(IPAR)=TWOPI
+          ENDIF
+          x_m_amix = X(IPAR) - amix(j,imix)
+          XMID(IPAR) = x_m_amix
+          XBEST(IPAR) = x_m_amix
+        endif
+   10 continue
+C                              search loop
+      nsaved = nsave
+      DO 500 ISTEP= 1, MXSTEP
+      IF (IFAIL .GE. MXFAIL)  GO TO 600
+        if(nsaved.lt.nopt) then
+          DO 100 IPAR= 1, NPAR
+          CALL MNRN15(RNUM1,ISEED)
+          CALL MNRN15(RNUM2,ISEED)
+  100     X(IPAR) = XMID(IPAR) + 0.5*(RNUM1+RNUM2-1.)*DIRIN(IPAR)
+        else
+          call new_pars(NPAR,MNI,nsaved0,covfac,ISEED,X,XMID,xy,
+     &                  eval,evec)
+        endif
+      CALL MNmixINEX(X,imix,ISEED)
+      CALL FCN(NPARX,GIN,FTRY,U,4,FUTIL)
+      NFCN = NFCN + 1
+      jmix = nint(U(NU))
+      IF (FTRY .LT. FLAST)  THEN
+         IF (FTRY .LT. AMIN)  THEN
+            CSTATU = 'IMPROVEMNT'
+            AMIN = FTRY
+            DO 200 IB= 1, NPAR
+  200       XBEST(IB) = X(IB)
+            IFAIL = 0
+            IF (ISW(5) .GE. 2) CALL MNPRIN(2,AMIN)
+            ENDIF
+         write(6,*) 'accepted due to chi2 improvement for imix =',jmix
+         if(nchar_mcmc.gt.0) then
+           write(10,999) (char_mcmc(imc), imc=1,nchar_mcmc)
+           call flush(10)
+         endif
+         GO TO 300
+      ELSE
+         IFAIL = IFAIL + 1
+C                   Metropolis algorithm
+ccc         BAR = (AMIN-FTRY)/UP
+         BAR = (FLAST-FTRY)/UP
+         CALL MNRN15(RNUM,ISEED)
+         IF (BAR .LT. LOG(RNUM)) then
+           write(6,*) 'rejected for imix =',jmix
+           GO TO 500
+         endif
+      ENDIF
+      write(6,*) 'accepted by random chance for imix =',jmix
+      if(nchar_mcmc.gt.0) then
+        write(10,999) (char_mcmc(imc), imc=1,nchar_mcmc)
+        call flush(10)
+      endif
+ 999  format(64a19)
+C                    Accept new point, move there
+  300 CONTINUE
+      DO 350 J= 1, NPAR
+        XMID(J) = X(J)
+  350 CONTINUE
+      FLAST = FTRY
+      if(nsave.lt.max_save) then
+        nsave = nsave + 1
+        nsaved = nsave
+        isave = nsave
+        imix = nint(U(NU))
+        DO 355 J= 1, NPAR
+          xsave(J,isave) = X(J) - amix(J,imix)
+  355   CONTINUE
+c       possibly reoptimise the "jump" function
+        if(nopt*(nsave/nopt).eq.nsave) then
+          call paropt(NPAR,max_save,nsaved,xsave,eval,evec)
+          nsaved0 = nsaved
+        endif
+      endif
+  500 CONTINUE
+C                               end search loop
+  600 CONTINUE
+      IF (ISW(5) .GT. 1) WRITE (ISYSWR,601) IFAIL
+  601 FORMAT(' MNSEEK:',I5,' SUCCESSIVE UNSUCCESSFUL TRIALS.')
+      DO 700 IB= 1, NPAR
+  700 X(IB) = XBEST(IB)
+      CALL MNmixINEX(X)
       IF (ISW(5) .GE. 1)  CALL MNPRIN(2,AMIN)
       IF (ISW(5) .EQ. 0)  CALL MNPRIN(0,AMIN)
       RETURN
