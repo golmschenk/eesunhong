@@ -1,6 +1,5 @@
  ***************************************************************************
- MNINIT UNABLE TO DETERMINE ARITHMETIC PRECISION. WILL ASSUME:  0.40E-06
-  MINUIT RELEASE 94.09  INITIALIZED.   DIMENSIONS 100/ 50  EPSMAC=  0.80E-06
+  MINUIT RELEASE 94.09  INITIALIZED.   DIMENSIONS 100/ 50  EPSMAC=  0.22E-15
  ***************************************************************************
                           MINUIT DATA BLOCK NO.   1
  ***************************************************************************
