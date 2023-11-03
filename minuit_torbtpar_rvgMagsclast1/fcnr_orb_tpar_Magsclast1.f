@@ -136,7 +136,8 @@ c ---
            limb_tab = 1
          endif
          write(6,*)
-     &    'Enter RA & DEC precessed to time of maximum magnification',
+     &    'Enter RA & DEC precessed to time of maximum magnification'
+         write(6,*)
      &    'format: hh mm ss.s  deg mm ss.ss'
          read(5,*) rah,ram,ras,decd,decm,decs
          alpha = (rah +  ram/60. + ras/3600.)*15
@@ -459,7 +460,8 @@ c        ------------------------------
  200       continue
  201       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
  210     continue
 
@@ -505,7 +507,8 @@ c        ------------------------------
  220       continue
  221       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
 
          do 240 jclr=9,14
@@ -539,7 +542,8 @@ c        ------------------------------
  230       continue
  231       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
  240     continue
 
@@ -565,7 +569,8 @@ c        ------------------------------
  250       continue
  251       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
  255     continue
 
@@ -596,7 +601,8 @@ c        ------------------------------
  260       continue
  261       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
            write(6,*) 'datamin =',datamin,'  datamax =',datamax
            if(datamin.lt.0.) then
@@ -630,7 +636,8 @@ c        ------------------------------
  270       continue
  271       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
  275     continue
 
@@ -662,7 +669,8 @@ c        ------------------------------
  280       continue
  281       continue
            close(1)
-           write(6,*) 'read in GMAN data from ctinfile:',ctinfile(1:50)
+           write(6,*) 'read in GMAN data from ctinfile:'
+           write(6,*) ctinfile(1:50)
            write(6,*) 'read in ',ndata,' total measurements'
            write(6,*) 'datamin =',datamin,'  datamax =',datamax
            if(datamin.lt.0.) then
