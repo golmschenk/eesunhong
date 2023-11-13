@@ -4,7 +4,7 @@ import re
 import shutil
 import subprocess
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List
 
 import pytest
 
@@ -15,16 +15,31 @@ def clean_up_run(run_directory):
     run_directory.joinpath('run_1.dat').unlink(missing_ok=True)
     run_directory.joinpath('run_1.out').unlink(missing_ok=True)
     run_directory.joinpath('run_2.in').unlink(missing_ok=True)
+    path_list = run_directory.glob('*')
+    for path in path_list:
+        if re.match(r'fort\.\d+', path.name):
+            path.unlink()
 
 
 def verify_directories_match(run_directory, expected_resulting_run_directory):
     expected_path_list = list(expected_resulting_run_directory.glob('*'))
     run_path_list = list(run_directory.glob('*'))
+    expected_path_list = exclude_implicit_fort_files(expected_path_list)
+    run_path_list = exclude_implicit_fort_files(run_path_list)
     assert set([path.name for path in run_path_list]) == set([path.name for path in expected_path_list])
     for expected_path in expected_path_list:
         run_path = run_directory.joinpath(expected_path.name)
         assert run_path.exists()
         verify_run_files_match(run_path, expected_path)
+
+
+def exclude_implicit_fort_files(path_list: List[Path]):
+    updated_path_list: List[Path]= []
+    for path in path_list:
+        if re.match(r'fort\.\d+', path.name):
+            continue
+        updated_path_list.append(path)
+    return updated_path_list
 
 
 def verify_run_files_match(run_path, expected_run_path):
@@ -64,6 +79,8 @@ def verify_run_files_match(run_path, expected_run_path):
 def verify_directories_file_list_does_not_match(run_directory, expected_resulting_run_directory):
     expected_path_list = list(expected_resulting_run_directory.glob('*'))
     run_path_list = list(run_directory.glob('*'))
+    expected_path_list = exclude_implicit_fort_files(expected_path_list)
+    run_path_list = exclude_implicit_fort_files(run_path_list)
     assert set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list])
 
 
