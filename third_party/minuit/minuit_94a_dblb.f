@@ -8422,7 +8422,7 @@ C                               end search loop
   601 FORMAT(' MNSEEK:',I5,' SUCCESSIVE UNSUCCESSFUL TRIALS.')
       DO 700 IB= 1, NPAR
   700 X(IB) = XBEST(IB)
-      CALL MNmixINEX(X)
+      CALL MNmixINEX(X,imix,ISEED)
       IF (ISW(5) .GE. 1)  CALL MNPRIN(2,AMIN)
       IF (ISW(5) .EQ. 0)  CALL MNPRIN(0,AMIN)
       RETURN
