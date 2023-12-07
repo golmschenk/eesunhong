@@ -1,0 +1,1536 @@
+ ***************************************************************************
+  MINUIT RELEASE 94.09  INITIALIZED.   DIMENSIONS 100/ 50  EPSMAC=  0.89E-15
+ ***************************************************************************
+                          MINUIT DATA BLOCK NO.   1
+ ***************************************************************************
+ ENTER MINUIT TITLE, or "SET INPUT n" : 
+ Fit to binary microlens for star MB09319ao fit ser
+ ******************************************************************************
+ ENTER MINUIT PARAMETER DEFINITION:     
+     1 '1/t_E     '   0.59474E-01  0.30000E-06     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     2 't0        '    5007.0      0.20000E-04     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     3 'umin      '   0.60885E-02  0.30000E-07     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     4 'sep1cm    '   0.97559      0.20000E-05     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     5 'sep23     '   0.15101E-01  0.10000E-06     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     6 'theta1cm  '   -2.0000      0.20000E-05     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     7 'eps1      '   0.38248E-03  0.30000E-08     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     8 'eps2      '   0.49914      0.50000E-05     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+     9 'ang23     '   0.31571E-01  0.50000E-05     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    10 'ds23xdt   '   0.99997E-02  0.50000E-06     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    11 'ds23ydt   '   0.39090E-01  0.50000E-06     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    12 'Tstar     '   0.31571E-01  0.50000E-06     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    13 't_fix     '    5007.0      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    14 '1/T_bin   '   0.36893      0.10000E-05     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    15 'dt_orb    '    0.0000      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    16 'tcch1_min '    5005.5      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    17 'tcch1_max '    5008.4      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    18 'tcch2_min '    0.0000      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    19 'tcch2_max '    0.0000      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    20 'tcch3_min '    0.0000      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    21 'tcch3_max '    0.0000      constant
+ ENTER MINUIT PARAMETER DEFINITION:     
+    22 'pier      '   0.59524E-01  0.10000E-03     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+    23 'pietheta  '   -3.2213      0.10000E-03     no limits
+ ENTER MINUIT PARAMETER DEFINITION:     
+
+ MINUIT: FIRST CALL TO USER FUNCTION, WITH IFLAG=1
+ enter star name
+ enter fit name
+ limb darkening parameters assumed - not fit
+ Enter RA & DEC precessed to time of maximum magnification
+ format: hh mm ss.s  deg mm ss.ss
+ enter theta_suasC, Flux0, iflux0
+ enter Dsource, Ds_sig, ncband:
+ enter Band, Band #, Mag_off Lens-Mag, Sigma, A_lens, Iup values:
+ enter 0, b_gal, h_dust for exponential dust or
+ enter 1 and 21 extinction values for VVV 3-d model
+ enter 1 for integration grid, 0 to skip; and name of optional MCMC output file
+ Source reference size & Distance =  0.57603000000000004        7.7409999999999997     
+ K-band Mag =   19.997000000000000       +-   5.8999999999999997E-002
+ K-band extinction A_lens =  0.13400000000000001     
+ Full Magnitude constraint
+ run_.par                                                                         not found
+ parMB09319ao                                                                     opened
+ hcut =  0.14999999999999999       grid_rat =   8.0000000000000000       icc =           2
+ kum    long., lat. =   174.52470000000000       -36.806399999999996     
+ moam   long., lat. =   170.46500000000000       -43.986699999999999     
+ spitz  long., lat. =   0.0000000000000000        0.0000000000000000     
+ lscB   long., lat. =  -70.804800000000000       -30.167400000000001     
+ lscC   long., lat. =  -70.804800000000000       -30.167400000000001     
+ mfunV  long., lat. =  -70.804699999999997       -30.168299999999999     
+ ogleV  long., lat. =  -70.701999999999998       -29.008099999999999     
+ oglem  long., lat. =  -70.701999999999998       -29.008099999999999     
+ danz   long., lat. =  -70.735500000000002       -29.254000000000001     
+ cojX   long., lat. =   149.43799999999999       -31.273299999999999     
+ cptX   long., lat. =   20.810700000000001       -32.379399999999997     
+ cptY   long., lat. =   20.810700000000001       -32.379399999999997     
+ cptZ   long., lat. =   20.810700000000001       -32.379399999999997     
+ mfun   long., lat. =  -70.804699999999997       -30.168299999999999     
+ lscX   long., lat. =  -70.804800000000000       -30.167400000000001     
+ dani   long., lat. =  -70.735500000000002       -29.254000000000001     
+ moa2V  long., lat. =   170.46500000000000       -43.986699999999999     
+ moa2r  long., lat. =   170.46500000000000       -43.986699999999999     
+ moa61I long., lat. =   170.46500000000000       -43.986699999999999     
+ moa61V long., lat. =   170.46500000000000       -43.986699999999999     
+ mfuni  long., lat. =  -70.804699999999997       -30.168299999999999     
+ mfunVi long., lat. =  -70.804699999999997       -30.168299999999999     
+ ftni   long., lat. =  -156.25579999999999        20.707500000000000     
+ ftsi   long., lat. =   149.43799999999999       -31.273299999999999     
+ livi   long., lat. =  -17.879200000000001        28.762400000000000     
+ spitzL long., lat. =   0.0000000000000000        0.0000000000000000     
+ xa     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xb     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xc     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xd     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xe     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xf     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xg     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xh     long., lat. =  -70.814599999999999       -30.165400000000002     
+ xi     long., lat. =  -70.814599999999999       -30.165400000000002     
+ mfunH0 long., lat. =  -70.804699999999997       -30.168299999999999     
+ mfunH1 long., lat. =  -70.804699999999997       -30.168299999999999     
+ mfunH2 long., lat. =  -70.804699999999997       -30.168299999999999     
+ mfunH3 long., lat. =  -70.804699999999997       -30.168299999999999     
+ mfunH4 long., lat. =  -70.804699999999997       -30.168299999999999     
+ broni  long., lat. =   28.445599999999999       -25.913300000000000     
+ pali   long., lat. =   116.86380000000000        33.355800000000002     
+ wisei  long., lat. =   34.763300000000001        30.595800000000001     
+ ye     long., lat. =  -70.814599999999999       -30.165400000000002     
+ yf     long., lat. =  -70.814599999999999       -30.165400000000002     
+ Mag constraints:
+ using Iclr =          51 mfunH1
+jclr  fudge  errmin     fmin     fmax      ald      bld        dayoff       sfx
+  0   1.000  0.0140 0.1000E-01  1.100      0.6310  0.0000         0.0000 op    
+  1   1.000  0.0140 0.1000E-01  1.100      0.7730  0.0000         0.0000 op    
+  2   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 ctio_r
+  3   1.500  0.0100 0.1000E-01  1.100      0.8200  0.0000         0.0000 ctio_b
+  4   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 nz    
+  5   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 utso  
+  6   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 utso_v
+  7   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 wised 
+  8   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 mso74n
+  9   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 mso74 
+ 10   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 wises 
+ 11   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 lco1  
+ 12   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 lco3  
+ 13   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 xd    
+ 14   1.500  0.0100 0.1000E-01  1.100      0.6905  0.0000         0.0000 xe    
+ 15   1.000  0.0030-0.1000E+10 0.1000E+10  0.6049  0.0000         0.0000 kum   
+ 16   1.010  0.0030-0.1000E+10 0.1000E+10  0.5570  0.0000         0.0000 moam  
+ 17   1.495  0.0030-0.1000E+10 0.1000E+10  0.2200  0.0000         0.0000 spitz 
+ 18   2.185  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 lscB  
+ 19   2.282  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 lscC  
+ 20   1.500  0.0030-0.1000E+10 0.1000E+10  0.6854  0.0000         0.0000 mfunV 
+ 21   1.310  0.0030-0.1000E+10 0.1000E+10  0.6854  0.0000         0.0000 ogleV 
+ 22   1.659  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 oglem 
+ 23   0.894  0.0030-0.1000E+10 0.1000E+10  0.5800  0.0000         0.0000 danz  
+ 24   1.500  0.0030-0.1000E+10 0.1000E+10  0.6043  0.0000         0.0000 cojX  
+ 25   1.500  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 cptX  
+ 26   1.500  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 cptY  
+ 27   1.247  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 cptZ  
+ 28   1.204  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 mfun  
+ 29   1.287  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 lscX  
+ 30   0.962  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 dani  
+ 31   1.200  0.0030-0.1000E+10 0.1000E+10  0.6854  0.0000         0.0000 moa2V 
+ 32   1.434  0.0030-0.1000E+10 0.1000E+10  0.5620  0.0000         0.0000 moa2r 
+ 33   0.998  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 moa61I
+ 34   1.001  0.0030-0.1000E+10 0.1000E+10  0.6854  0.0000         0.0000 moa61V
+ 35   1.351  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 mfuni 
+ 36   1.200  0.0030-0.1000E+10 0.1000E+10  0.6854  0.0000         0.0000 mfunVi
+ 37   0.647  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 ftni  
+ 38   0.746  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 ftsi  
+ 39   0.964  0.0030-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 livi  
+ 40   1.000  0.0030-0.1000E+10 0.1000E+10  0.2150  0.0000         0.0000 spitzL
+ 41   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xa    
+ 42   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xb    
+ 43   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xc    
+ 44   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xd    
+ 45   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xe    
+ 46   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xf    
+ 47   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xg    
+ 48   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xh    
+ 49   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 xi    
+ 50   2.097  0.0030-0.1000E+10 0.1000E+10  0.3203  0.0000         0.0000 mfunH0
+ 51   1.052  0.0030-0.1000E+10 0.1000E+10  0.3203  0.0000         0.0000 mfunH1
+ 52   1.093  0.0030-0.1000E+10 0.1000E+10  0.3203  0.0000         0.0000 mfunH2
+ 53   1.276  0.0030-0.1000E+10 0.1000E+10  0.3203  0.0000         0.0000 mfunH3
+ 54   1.587  0.0030-0.1000E+10 0.1000E+10  0.3203  0.0000         0.0000 mfunH4
+ 55   1.200  0.0030-0.1000E+10 0.1000E+10  0.6049  0.0000         0.0000 broni 
+ 56   1.000  0.0030-0.1000E+10 0.1000E+10  0.6049  0.0000         0.0000 pali  
+ 57   1.200  0.0030-0.1000E+10 0.1000E+10  0.6049  0.0000         0.0000 wisei 
+ 58   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 ye    
+ 59   1.000  0.0000-0.1000E+10 0.1000E+10  0.5191  0.0000         0.0000 yf    
+ read in            0  measurements from lcMB09319ao.op      
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ctio_r                                
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ctio_b                                
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.nz                                    
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.utso                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.utso_v                                
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.wised                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mso74n                                
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mso74                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.wises                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.lco1                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.lco3                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xd                                    
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xe                                    
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.kum                                   
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.moam                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.spitz                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.lscB                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.lscC                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunV                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ogleV                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.oglem                                 
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.danz                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.cojX                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.cptX                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.cptY                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.cptZ                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfun                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.lscX                                  
+ read in            0  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.dani                                  
+ read in           10  total measurements
+ datamin =   25216.906250000000        datamax =   229211.90625000000     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.moa2V                                 
+ read in           20  total measurements
+ datamin =   1793.9050000000000        datamax =   2586.2986000000001     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.moa2r                                 
+ read in          110  total measurements
+ datamin =   3921.5475000000001        datamax =   159812.06340000001     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.moa61I                                
+ read in          119  total measurements
+ datamin =  -70756.251999999993        datamax =  -6393.8692400000000     
+ adding   70756.251999999993       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.moa61V                                
+ read in          129  total measurements
+ datamin =  -25628.902119999999        datamax =  -10122.895940000000     
+ adding   25628.902119999999       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfuni                                 
+ read in          139  total measurements
+ datamin =   4339.1478999999999        datamax =   98536.591799999995     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunVi                                
+ read in          143  total measurements
+ datamin =   3576.4609000000000        datamax =   23909.532500000001     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ftni                                  
+ read in          153  total measurements
+ datamin =  -666.64266999999995        datamax =   63800.290999999997     
+ adding   666.64266999999995       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ftsi                                  
+ read in          163  total measurements
+ datamin =  -65405.933330000000        datamax =   51224.828999999998     
+ adding   65405.933330000000       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.livi                                  
+ read in          173  total measurements
+ datamin =  -110019.83800000000        datamax =   4687.2299999999996     
+ adding   110019.83800000000       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.spitzL                                
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xa                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xb                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xc                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xd                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xe                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xf                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xg                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xh                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.xi                                    
+ read in          173  total measurements
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunH0                                
+ read in          182  total measurements
+ datamin =  -2914.7900000000000        datamax =   28028.099999999999     
+ adding   2914.7900000000000       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunH1                                
+ read in          191  total measurements
+ datamin =   5268.6999999999998        datamax =   23143.700000000001     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunH2                                
+ read in          201  total measurements
+ datamin =  -6408.8800000000001        datamax =   13097.900000000000     
+ adding   6408.8800000000001       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunH3                                
+ read in          211  total measurements
+ datamin =   4262.3400000000001        datamax =   14310.000000000000     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.mfunH4                                
+ read in          221  total measurements
+ datamin =  -3518.1999999999998        datamax =   17487.500000000000     
+ adding   3518.1999999999998       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.broni                                 
+ read in          231  total measurements
+ datamin =   49.246499999999997        datamax =   103.08610000000000     
+ read in GMAN data from ctinfile:
+ lcMB09319ao.pali                                  
+ read in          240  total measurements
+ datamin =  -3332.6849999999999        datamax =   3598.5540000000001     
+ adding   3332.6849999999999       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.wisei                                 
+ read in          250  total measurements
+ datamin =  -37917.894000000000        datamax =   30050.023000000001     
+ adding   37917.894000000000       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.ye                                    
+ read in          250  total measurements
+ datamin =  -37917.894000000000        datamax =   30050.023000000001     
+ adding   37917.894000000000       to each flux value
+ read in GMAN data from ctinfile:
+ lcMB09319ao.yf                                    
+ read in          250  total measurements
+ datamin =  -37917.894000000000        datamax =   30050.023000000001     
+ adding   37917.894000000000       to each flux value
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97558718724000004        1.5100789317999999E-002  -2.0000000000000000        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11626615106387203     
+Solution assuming theta_src =  0.2810 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.832067   6.44103   0.10548    99.26  0.96391  0.01797  0.94038
+ 0.467088   3.61573   0.01866    55.72  0.54110  0.01009  0.52789
+Parallax Solution: theta_src =  0.2810 uas D_s = 10.0373 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.917927   9.21350   0.30872   141.99  1.37881  0.02571  1.34515
+ thetaE =  0.14965149352273902       mas
+ Mass_par =  0.30871579344420924       M_solar
+K-band lens Mag = 22.465225
+ chi2_K =   272.47691434052933     
+  chi2mag =   272.47691434052933        chi2_Ds =   10.761092408432708     
+  chi2 =   177402.56159710968        chi2lc =   177119.32359036070     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97558718724000004        1.5100789317999999E-002  -2.0000000000000000        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11626615106387203     
+Solution assuming theta_src =  0.2810 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.832067   6.44103   0.10548    99.26  0.96391  0.01797  0.94038
+ 0.467088   3.61573   0.01866    55.72  0.54110  0.01009  0.52789
+Parallax Solution: theta_src =  0.2810 uas D_s = 10.0373 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.917927   9.21350   0.30872   141.99  1.37881  0.02571  1.34515
+ thetaE =  0.14965149352273902       mas
+ Mass_par =  0.30871579344420924       M_solar
+K-band lens Mag = 22.465225
+ chi2_K =   272.47691434052933     
+  chi2mag =   272.47691434052933        chi2_Ds =   10.761092408432708     
+  chi2 =   177402.56159710968        chi2lc =   177119.32359036070     
+
+ FCN=   177402.6     FROM PARAMETR  STATUS=RESET          2 CALLS        2 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1  1/t_E        0.59474E-01   0.30000E-06
+   2  t0            5007.0       0.20000E-04
+   3  umin         0.60885E-02   0.30000E-07
+   4  sep1cm       0.97559       0.20000E-05
+   5  sep23        0.15101E-01   0.10000E-06
+   6  theta1cm     -2.0000       0.20000E-05
+   7  eps1         0.38248E-03   0.30000E-08
+   8  eps2         0.49914       0.50000E-05
+   9  ang23        0.31571E-01   0.50000E-05
+  10  ds23xdt      0.99997E-02   0.50000E-06
+  11  ds23ydt      0.39090E-01   0.50000E-06
+  12  Tstar        0.31571E-01   0.50000E-06
+  13  t_fix         5007.0       constant   
+  14  1/T_bin      0.36893       0.10000E-05
+  15  dt_orb        0.0000       constant   
+  16  tcch1_min     5005.5       constant   
+  17  tcch1_max     5008.4       constant   
+  18  tcch2_min     0.0000       constant   
+  19  tcch2_max     0.0000       constant   
+  20  tcch3_min     0.0000       constant   
+  21  tcch3_max     0.0000       constant   
+  22  pier         0.59524E-01   0.10000E-03
+  23  pietheta     -3.2213       0.10000E-03
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    1 **SET EPS   0.1000E-04
+ **********
+ FLOATING-POINT NUMBERS ASSUMED ACCURATE TO   0.100E-04
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    2 **SET PAR    4.000      0.9000    
+ **********
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    3 **SCAN    6.000       20.00      -3.000      -2.000    
+ **********
+
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.0000000000000000        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10272436797058231     
+Solution assuming theta_src =  0.3180 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.861635   6.66991   0.16982   116.34  1.12975  0.02107  1.01677
+ 0.421328   3.26150   0.01986    56.89  0.55243  0.01030  0.49719
+Parallax Solution: theta_src =  0.3180 uas D_s =  9.2769 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.914469   8.48343   0.34941   147.97  1.43692  0.02679  1.29323
+ thetaE =  0.16937951039846361       mas
+ Mass_par =  0.34941268352866844       M_solar
+K-band lens Mag = 22.026921
+ chi2_K =   242.25360477348380     
+  chi2mag =   242.25360477348380        chi2_Ds =   4.8142266532761422     
+  chi2 =   136548.20255916272        chi2lc =   136301.13472773595     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -3.0000000000000000        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10600204484662713     
+Solution assuming theta_src =  0.3082 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.854993   6.61850   0.15100   111.87  1.08637  0.02026  0.97774
+ 0.431999   3.34410   0.01948    56.53  0.54891  0.01024  0.49402
+Parallax Solution: theta_src =  0.3082 uas D_s =  9.4640 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915360   8.66294   0.33861   146.43  1.42195  0.02651  1.27976
+ thetaE =  0.16414214629560961       mas
+ Mass_par =  0.33860853465912766       M_solar
+K-band lens Mag = 22.137521
+ chi2_K =   250.88278902893961     
+  chi2mag =   250.88278902893961        chi2_Ds =   6.0584563178485586     
+  chi2 =   51054.079959104674        chi2lc =   50797.138713757886     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.9473684210526314        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10383003873600549     
+Solution assuming theta_src =  0.3147 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.859426   6.65281   0.16319   114.80  1.11485  0.02079  1.00337
+ 0.424905   3.28919   0.01972    56.76  0.55119  0.01028  0.49607
+Parallax Solution: theta_src =  0.3147 uas D_s =  9.3402 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.914773   8.54420   0.34569   147.44  1.43180  0.02670  1.28862
+ thetaE =  0.16757581297920870       mas
+ Mass_par =  0.34569183940736375       M_solar
+K-band lens Mag = 22.064583
+ chi2_K =   245.27407426964760     
+  chi2mag =   245.27407426964760        chi2_Ds =   5.2194694235054060     
+  chi2 =   52127.371460882969        chi2lc =   51876.877917189813     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.8947368421052628        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10125835764644718     
+Solution assuming theta_src =  0.3226 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.864517   6.69223   0.17909   118.42  1.14994  0.02144  1.03494
+ 0.416619   3.22505   0.02004    57.07  0.55417  0.01033  0.49875
+Parallax Solution: theta_src =  0.3226 uas D_s =  9.1926 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.914058   8.40252   0.35447   148.68  1.44382  0.02692  1.29944
+ thetaE =  0.17183177327051316       mas
+ Mass_par =  0.35447145214138209       M_solar
+K-band lens Mag = 21.976409
+ chi2_K =   238.06589340379517     
+  chi2mag =   238.06589340379517        chi2_Ds =   4.2999956763804468     
+  chi2 =   55843.343414263451        chi2lc =   55600.977525183276     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.8421052631578942        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   9.7696160481516275E-002
+Solution assuming theta_src =  0.3344 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.871315   6.74485   0.20414   123.70  1.20124  0.02240  1.08111
+ 0.405319   3.13757   0.02055    57.54  0.55879  0.01042  0.50291
+Parallax Solution: theta_src =  0.3344 uas D_s =  8.9858 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.913026   8.20429   0.36740   150.47  1.46116  0.02725  1.31504
+ thetaE =  0.17809710296793849       mas
+ Mass_par =  0.36739618936384311       M_solar
+K-band lens Mag = 21.850802
+ chi2_K =   226.94950910030087     
+  chi2mag =   226.94950910030087        chi2_Ds =   3.1624044211853071     
+  chi2 =   58952.848154728563        chi2lc =   58722.736241207080     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.7894736842105257        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   9.1768565068939989E-002
+Solution assuming theta_src =  0.3560 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.882046   6.82792   0.25552   133.31  1.29458  0.02414  1.16512
+ 0.386877   2.99482   0.02156    58.47  0.56782  0.01059  0.51104
+Parallax Solution: theta_src =  0.3560 uas D_s =  8.6359 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.911192   7.86898   0.39113   153.64  1.49197  0.02782  1.34277
+ thetaE =  0.18960090680046879       mas
+ Mass_par =  0.39112736533935388       M_solar
+K-band lens Mag = 21.631934
+ chi2_K =   205.05068233744467     
+  chi2mag =   205.05068233744467        chi2_Ds =   1.6344429138887933     
+  chi2 =   56606.088382743226        chi2lc =   56399.403257491889     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.7368421052631571        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   8.3258783460158095E-002
+Solution assuming theta_src =  0.3924 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.896379   6.93887   0.35910   149.33  1.45008  0.02704  1.30508
+ 0.360951   2.79412   0.02345    60.13  0.58391  0.01089  0.52552
+Parallax Solution: theta_src =  0.3924 uas D_s =  8.1195 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.908264   7.37467   0.43110   158.70  1.54116  0.02874  1.38704
+ thetaE =  0.20897979083702320       mas
+ Mass_par =  0.43110402992572622       M_solar
+K-band lens Mag = 21.292620
+ chi2_K =   164.40394435735817     
+  chi2mag =   164.40394435735817        chi2_Ds =  0.29240340190095510     
+  chi2 =   48154.461117230603        chi2lc =   47989.764769471345     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.6842105263157885        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   7.4711711268134307E-002
+Solution assuming theta_src =  0.4373 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.909725   7.04218   0.51952   168.89  1.64003  0.03058  1.47603
+ 0.335246   2.59514   0.02600    62.24  0.60438  0.01127  0.54394
+Parallax Solution: theta_src =  0.4373 uas D_s =  7.5820 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.904891   6.86091   0.48042   164.54  1.59782  0.02979  1.43804
+ thetaE =  0.23288722554358032       mas
+ Mass_par =  0.48042263344189462       M_solar
+K-band lens Mag = 20.915083
+ chi2_K =   110.28655470461244     
+  chi2mag =   110.28655470461244        chi2_Ds =   5.1578424514513513E-002
+  chi2 =   35675.479955371913        chi2lc =   35565.141822242789     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.6315789473684199        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   6.8875845916262363E-002
+Solution assuming theta_src =  0.4743 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.918328   7.10878   0.68207   184.93  1.79582  0.03349  1.61624
+ 0.317727   2.45953   0.02825    63.98  0.62133  0.01159  0.55919
+Parallax Solution: theta_src =  0.4743 uas D_s =  7.2027 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.902278   6.49881   0.52113   169.06  1.64173  0.03061  1.47756
+ thetaE =  0.25261981063728250       mas
+ Mass_par =  0.52112894729490022       M_solar
+K-band lens Mag = 20.630818
+ chi2_K =   66.216631252563403     
+  chi2mag =   66.216631252563403        chi2_Ds =  0.59142546928792039     
+  chi2 =   25927.876640330611        chi2lc =   25861.068583608761     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.5789473684210513        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   7.1464617211937809E-002
+Solution assuming theta_src =  0.4572 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.914559   7.07960   0.60311   177.50  1.72366  0.03214  1.55130
+ 0.325504   2.51972   0.02719    63.17  0.61347  0.01144  0.55213
+Parallax Solution: theta_src =  0.4572 uas D_s =  7.3723 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.903472   6.66065   0.50225   166.99  1.62166  0.03024  1.45949
+ thetaE =  0.24346877981937004       mas
+ Mass_par =  0.50225130248639716       M_solar
+K-band lens Mag = 20.759910
+ chi2_K =   86.267211131378303     
+  chi2mag =   86.267211131378303        chi2_Ds =  0.27746044655160446     
+  chi2 =   24645.652091372325        chi2lc =   24559.107419794396     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.5263157894736827        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   9.0082565698445430E-002
+Solution assuming theta_src =  0.3627 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.884980   6.85063   0.27284   136.26  1.32320  0.02467  1.19088
+ 0.381698   2.95473   0.02189    58.77  0.57070  0.01064  0.51363
+Parallax Solution: theta_src =  0.3627 uas D_s =  8.5350 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.910642   7.77230   0.39845   154.59  1.50122  0.02799  1.35109
+ thetaE =  0.19314950698777791       mas
+ Mass_par =  0.39844776620307759       M_solar
+K-band lens Mag = 21.567214
+ chi2_K =   197.93284950192407     
+  chi2mag =   197.93284950192407        chi2_Ds =   1.2865196805434942     
+  chi2 =   29530.870641178866        chi2lc =   29331.651271996398     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.4736842105263142        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.12196849884812611     
+Solution assuming theta_src =  0.2679 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.817493   6.32821   0.08665    92.96  0.90275  0.01683  0.81248
+ 0.488148   3.77876   0.01845    55.51  0.53906  0.01005  0.48515
+Parallax Solution: theta_src =  0.2679 uas D_s = 10.3482 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.919227   9.51235   0.29428   139.74  1.35698  0.02530  1.22128
+ thetaE =  0.14265489300244977       mas
+ Mass_par =  0.29428251897304558       M_solar
+K-band lens Mag = 22.636689
+ chi2_K =   281.69197149790301     
+  chi2mag =   281.69197149790301        chi2_Ds =   13.872450074030803     
+  chi2 =   36285.035126275361        chi2lc =   35989.470704703432     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.4210526315789456        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.14741188079821937     
+Solution assuming theta_src =  0.2216 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.693445   5.36796   0.02996    65.25  0.63359  0.01181  0.57023
+ 0.639151   4.94767   0.02346    60.14  0.58399  0.01089  0.52559
+Parallax Solution: theta_src =  0.2216 uas D_s = 11.6786 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.924170  10.79305   0.24349   131.19  1.27393  0.02375  1.14654
+ thetaE =  0.11803257009294613       mas
+ Mass_par =  0.24348917388496630       M_solar
+K-band lens Mag = 23.332770
+ chi2_K =   307.98419173072710     
+  chi2mag =   307.98419173072710        chi2_Ds =   31.642788506440532     
+  chi2 =   45252.172567315356        chi2lc =   44912.545587078188     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.3684210526315770        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.13749107838834496     
+Solution assuming theta_src =  0.2376 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.765163   5.92313   0.04960    77.19  0.74957  0.01398  0.67461
+ 0.557277   4.31388   0.01916    56.22  0.54592  0.01018  0.49133
+Parallax Solution: theta_src =  0.2376 uas D_s = 11.1701 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.922389  10.30320   0.26106   134.27  1.30386  0.02431  1.17348
+ thetaE =  0.12654932492204368       mas
+ Mass_par =  0.26105837191128034       M_solar
+K-band lens Mag = 23.072819
+ chi2_K =   299.94568418734917     
+  chi2mag =   299.94568418734917        chi2_Ds =   23.997795176111389     
+  chi2 =   54124.985700783756        chi2lc =   53801.042221420299     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.3157894736842084        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11951388625766989     
+Solution assuming theta_src =  0.2734 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.823964   6.37830   0.09430    95.62  0.92858  0.01731  0.83573
+ 0.478908   3.70723   0.01852    55.58  0.53972  0.01006  0.48574
+Parallax Solution: theta_src =  0.2734 uas D_s = 10.2150 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.918678   9.38429   0.30033   140.69  1.36621  0.02548  1.22959
+ thetaE =  0.14558478263635433       mas
+ Mass_par =  0.30032658296294074       M_solar
+K-band lens Mag = 22.563720
+ chi2_K =   277.92898531783334     
+  chi2mag =   277.92898531783334        chi2_Ds =   12.491145655437922     
+  chi2 =   62952.676220197238        chi2lc =   62662.256089223963     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.2631578947368398        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10836538232692823     
+Solution assuming theta_src =  0.3015 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.850021   6.58001   0.13888   108.80  1.05650  0.01970  0.95085
+ 0.439831   3.40473   0.01924    56.29  0.54667  0.01019  0.49200
+Parallax Solution: theta_src =  0.3015 uas D_s =  9.5976 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915979   8.79123   0.33122   145.36  1.41154  0.02632  1.27039
+ thetaE =  0.16056237498758111       mas
+ Mass_par =  0.33122383094724045       M_solar
+K-band lens Mag = 22.215374
+ chi2_K =   256.53099079804929     
+  chi2mag =   256.53099079804929        chi2_Ds =   7.0348174984866905     
+  chi2 =   76672.683881929639        chi2lc =   76409.118073633101     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.2105263157894712        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10603679313382104     
+Solution assuming theta_src =  0.3081 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.854921   6.61794   0.15081   111.83  1.08593  0.02025  0.97733
+ 0.432113   3.34499   0.01947    56.52  0.54887  0.01023  0.49399
+Parallax Solution: theta_src =  0.3081 uas D_s =  9.4659 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915369   8.66483   0.33850   146.41  1.42180  0.02651  1.27962
+ thetaE =  0.16408835686769943       mas
+ Mass_par =  0.33849757254625251       M_solar
+K-band lens Mag = 22.138677
+ chi2_K =   250.96916819924678     
+  chi2mag =   250.96916819924678        chi2_Ds =   6.0723360283044370     
+  chi2 =   92861.153440914699        chi2lc =   92604.111936687157     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.1578947368421026        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10726315980708853     
+Solution assuming theta_src =  0.3046 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.852360   6.59812   0.14440   110.22  1.07030  0.01996  0.96327
+ 0.436162   3.37633   0.01935    56.40  0.54768  0.01021  0.49291
+Parallax Solution: theta_src =  0.3046 uas D_s =  9.5354 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915693   8.73151   0.33463   145.85  1.41636  0.02641  1.27472
+ thetaE =  0.16221229342992932       mas
+ Mass_par =  0.33462744469714512       M_solar
+K-band lens Mag = 22.179255
+ chi2_K =   253.95311643660477     
+  chi2mag =   253.95311643660477        chi2_Ds =   6.5713162058773058     
+  chi2 =   110166.14890444592        chi2lc =   109905.62447180343     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.1052631578947341        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10617759543756443     
+Solution assuming theta_src =  0.3077 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.854629   6.61568   0.15006   111.64  1.08412  0.02021  0.97571
+ 0.432576   3.34857   0.01946    56.51  0.54873  0.01023  0.49386
+Parallax Solution: theta_src =  0.3077 uas D_s =  9.4739 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915406   8.67250   0.33805   146.35  1.42117  0.02650  1.27905
+ thetaE =  0.16387075899717671       mas
+ Mass_par =  0.33804869029543833       M_solar
+K-band lens Mag = 22.143357
+ chi2_K =   251.31813480685489     
+  chi2mag =   251.31813480685489        chi2_Ds =   6.1287238540606230     
+  chi2 =   122733.41146112775        chi2lc =   122475.96460246683     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -2.0526315789473655        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10467648135320137     
+Solution assuming theta_src =  0.3121 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.857713   6.63956   0.15831   113.65  1.10363  0.02058  0.99327
+ 0.427658   3.31050   0.01962    56.67  0.55027  0.01026  0.49525
+Parallax Solution: theta_src =  0.3121 uas D_s =  9.3886 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915004   8.59057   0.34290   147.04  1.42793  0.02663  1.28514
+ thetaE =  0.16622074918757970       mas
+ Mass_par =  0.34289648077944135       M_solar
+K-band lens Mag = 22.093170
+ chi2_K =   247.50971608398095     
+  chi2mag =   247.50971608398095        chi2_Ds =   5.5397054549654490     
+  chi2 =   131101.39871590296        chi2lc =   130848.34929436400     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.90000000000000002        1.5100789317999999E-002  -1.9999999999999971        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10272436797113051     
+Solution assuming theta_src =  0.3180 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.861635   6.66991   0.16982   116.34  1.12975  0.02107  1.01677
+ 0.421328   3.26150   0.01986    56.89  0.55243  0.01030  0.49719
+Parallax Solution: theta_src =  0.3180 uas D_s =  9.2769 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.914469   8.48343   0.34941   147.97  1.43692  0.02679  1.29323
+ thetaE =  0.16937951039755966       mas
+ Mass_par =  0.34941268352680371       M_solar
+K-band lens Mag = 22.026921
+ chi2_K =   242.25360477500990     
+  chi2mag =   242.25360477500990        chi2_Ds =   4.8142266534733684     
+  chi2 =   136548.20255931726        chi2lc =   136301.13472788877     
+0SCAN OF PARAMETER NO.  6,  theta1cm  
+   140000.0     ........................................................
+                  ...................................................&..
+   130000.0     ...                                                * . .
+                  .                                                  . .
+   120000.0     ...                                             *    . .
+                  .                                                  . .
+   110000.0     ...                                           *      . .
+                  .                                                  . .
+   100000.0     ...                                                  . .
+                  .                                                  . .
+   90000.00     ...                                        *         . .
+                  .                                                  . .
+   80000.00     ...                                                  . .
+                  .                                     *            . .
+   70000.00     ...                                                  . .
+                  .                                                  . .
+   60000.00     ...                                   *              . .
+                  .      * *  *                                      . .
+   50000.00     ...*  *                            *                 . .
+                  .              *              *                    . .
+   40000.00     ...                                                  . .
+                  .                *          *                      . .
+   30000.00     ...                                                  . .
+                  .                   *    *                         . .
+   20000.00     ...                      *                           . .
+   15000.00     ........................................................
+                  /         /         /         /         /         /   
+            -3.020    -2.820    -2.620    -2.420    -2.220    -2.020    
+                         ONE COLUMN=0.2000000E-01   Overprint character is &   
+
+ FCN=   24645.65     FROM SCAn      STATUS=IMPROVED      21 CALLS       23 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1  1/t_E        0.59474E-01   0.30000E-06
+   2  t0            5007.0       0.20000E-04
+   3  umin         0.60885E-02   0.30000E-07
+   4  sep1cm       0.90000       0.20000E-05
+   5  sep23        0.15101E-01   0.10000E-06
+   6  theta1cm     -2.5789       0.20000E-05
+   7  eps1         0.38248E-03   0.30000E-08
+   8  eps2         0.49914       0.50000E-05
+   9  ang23        0.31571E-01   0.50000E-05
+  10  ds23xdt      0.99997E-02   0.50000E-06
+  11  ds23ydt      0.39090E-01   0.50000E-06
+  12  Tstar        0.31571E-01   0.50000E-06
+  13  t_fix         5007.0       constant   
+  14  1/T_bin      0.36893       0.10000E-05
+  15  dt_orb        0.0000       constant   
+  16  tcch1_min     5005.5       constant   
+  17  tcch1_max     5008.4       constant   
+  18  tcch2_min     0.0000       constant   
+  19  tcch2_max     0.0000       constant   
+  20  tcch3_min     0.0000       constant   
+  21  tcch3_max     0.0000       constant   
+  22  pier         0.59524E-01   0.10000E-03
+  23  pietheta     -3.2213       0.10000E-03
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    4 **SET PAR    4.000      0.9755    
+ **********
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    5 **SCAN    6.000       20.00      -3.000      -2.000    
+ **********
+
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.5789473684210513        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   5.3139270435899340E-002
+Solution assuming theta_src =  0.6148 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.939840   7.27530   1.59203   245.31  2.38215  0.04442  2.32379
+ 0.269758   2.08820   0.03765    70.41  0.68374  0.01275  0.66699
+Parallax Solution: theta_src =  0.6148 uas D_s =  6.1187 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.893452   5.46680   0.67546   184.33  1.78999  0.03338  1.74614
+ thetaE =  0.32743022269824612       mas
+ Mass_par =  0.67545521009146492       M_solar
+K-band lens Mag = 19.711904
+ chi2_K =   30.533825695589087     
+  chi2mag =   30.533825695589087        chi2_Ds =   5.3709182629599272     
+  chi2 =   13619.880568499166        chi2lc =   13583.975824540617     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -3.0000000000000000        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11518451789199702     
+Solution assuming theta_src =  0.2836 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.834662   6.46112   0.10949   100.51  0.97600  0.01820  0.95208
+ 0.463242   3.58595   0.01872    55.78  0.54168  0.01010  0.52841
+Parallax Solution: theta_src =  0.2836 uas D_s =  9.9777 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.917671   9.15627   0.31161   142.43  1.38312  0.02579  1.34923
+ thetaE =  0.15105678672166192       mas
+ Mass_par =  0.31161477022496098       M_solar
+K-band lens Mag = 22.431904
+ chi2_K =   270.53085839181148     
+  chi2mag =   270.53085839181148        chi2_Ds =   10.210054668996980     
+  chi2 =   57744.045349033418        chi2lc =   57463.304435972612     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.9473684210526314        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11063677905795820     
+Solution assuming theta_src =  0.2953 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.845082   6.54178   0.12824   105.94  1.02880  0.01918  1.00359
+ 0.447484   3.46397   0.01904    56.10  0.54476  0.01016  0.53142
+Parallax Solution: theta_src =  0.2953 uas D_s =  9.7251 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.916558   8.91365   0.32442   144.36  1.40181  0.02614  1.36747
+ thetaE =  0.15726599509674802       mas
+ Mass_par =  0.32442373487377596       M_solar
+K-band lens Mag = 22.288789
+ chi2_K =   261.55071526434637     
+  chi2mag =   261.55071526434637        chi2_Ds =   8.0342217082266654     
+  chi2 =   65770.056354321016        chi2lc =   65500.471417348446     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.8947368421052628        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10677330591350814     
+Solution assuming theta_src =  0.3060 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.853388   6.60608   0.14692   110.86  1.07650  0.02007  1.05013
+ 0.434541   3.36378   0.01940    56.45  0.54815  0.01022  0.53472
+Parallax Solution: theta_src =  0.3060 uas D_s =  9.5077 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.915564   8.70491   0.33616   146.08  1.41852  0.02645  1.38377
+ thetaE =  0.16295648995773587       mas
+ Mass_par =  0.33616264635903376       M_solar
+K-band lens Mag = 22.163097
+ chi2_K =   252.77614676243167     
+  chi2mag =   252.77614676243167        chi2_Ds =   6.3698824161873651     
+  chi2 =   69912.332633294893        chi2lc =   69653.186604116272     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.8421052631578942        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10086846859980531     
+Solution assuming theta_src =  0.3239 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.865275   6.69810   0.18165   118.98  1.15539  0.02154  1.12709
+ 0.415373   3.21540   0.02009    57.12  0.55464  0.01034  0.54106
+Parallax Solution: theta_src =  0.3239 uas D_s =  9.1700 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.913947   8.38094   0.35584   148.87  1.44568  0.02696  1.41026
+ thetaE =  0.17249595829476516       mas
+ Mass_par =  0.35584159821830424       M_solar
+K-band lens Mag = 21.962862
+ chi2_K =   236.91569754359830     
+  chi2mag =   236.91569754359830        chi2_Ds =   4.1677079690404062     
+  chi2 =   66480.165413691735        chi2lc =   66239.082008179088     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.7894736842105257        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   9.3245883209697719E-002
+Solution assuming theta_src =  0.3504 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.879435   6.80770   0.24141   130.81  1.27030  0.02369  1.23917
+ 0.391437   3.03012   0.02129    58.22  0.56541  0.01054  0.55156
+Parallax Solution: theta_src =  0.3504 uas D_s =  8.7238 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.911664   7.95321   0.38493   152.82  1.48404  0.02767  1.44769
+ thetaE =  0.18659701162055467       mas
+ Mass_par =  0.38493063544337380       M_solar
+K-band lens Mag = 21.687712
+ chi2_K =   210.94672439659129     
+  chi2mag =   210.94672439659129        chi2_Ds =   1.9713710060958600     
+  chi2 =   55418.772964239397        chi2lc =   55205.854868836708     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.7368421052631571        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   8.3681735810484256E-002
+Solution assuming theta_src =  0.3904 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.895693   6.93356   0.35288   148.46  1.44165  0.02688  1.40633
+ 0.362229   2.80401   0.02334    60.04  0.58302  0.01087  0.56874
+Parallax Solution: theta_src =  0.3904 uas D_s =  8.1456 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.908419   7.39962   0.42893   158.44  1.53856  0.02869  1.50086
+ thetaE =  0.20792354489698484       mas
+ Mass_par =  0.42892510209964596       M_solar
+K-band lens Mag = 21.310274
+ chi2_K =   166.71979453448913     
+  chi2mag =   166.71979453448913        chi2_Ds =  0.33409501639873473     
+  chi2 =   38961.467021346296        chi2lc =   38794.413131795409     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.6842105263157885        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   6.4639474193362301E-002
+Solution assuming theta_src =  0.5054 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.924347   7.15537   0.84149   198.34  1.92605  0.03591  1.87887
+ 0.304961   2.36070   0.03022    65.44  0.63544  0.01185  0.61988
+Parallax Solution: theta_src =  0.5054 uas D_s =  6.9202 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.900188   6.22952   0.55528   172.68  1.67684  0.03127  1.63575
+ thetaE =  0.26917612449631517       mas
+ Mass_par =  0.55528293700250042       M_solar
+K-band lens Mag = 20.408025
+ chi2_K =   33.633632597232314     
+  chi2mag =   33.633632597232314        chi2_Ds =   1.3747868487799773     
+  chi2 =   15034.770318418017        chi2lc =   14999.761898972005     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.6315789473684199        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   5.7506821777892285E-002
+Solution assuming theta_src =  0.5681 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.934092   7.23080   1.23324   225.29  2.18777  0.04079  2.13417
+ 0.283255   2.19268   0.03439    68.32  0.66342  0.01237  0.64717
+Parallax Solution: theta_src =  0.5681 uas D_s =  6.4296 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.896221   5.76238   0.62416   179.54  1.74348  0.03251  1.70077
+ thetaE =  0.30256241981256232       mas
+ Mass_par =  0.62415546480758932       M_solar
+K-band lens Mag = 19.994471
+ chi2_K =   1.8411041026081350E-003
+  chi2mag =   1.8411041026081350E-003   chi2_Ds =   3.5094972673112457     
+  chi2 =   246.27612144586539        chi2lc =   242.76478307445154     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.5789473684210513        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =   5.3139270435899340E-002
+Solution assuming theta_src =  0.6148 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.939840   7.27530   1.59203   245.31  2.38215  0.04442  2.32379
+ 0.269758   2.08820   0.03765    70.41  0.68374  0.01275  0.66699
+Parallax Solution: theta_src =  0.6148 uas D_s =  6.1187 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.893452   5.46680   0.67546   184.33  1.78999  0.03338  1.74614
+ thetaE =  0.32743022269824612       mas
+ Mass_par =  0.67545521009146492       M_solar
+K-band lens Mag = 19.711904
+ chi2_K =   30.533825695589087     
+  chi2mag =   30.533825695589087        chi2_Ds =   5.3709182629599272     
+  chi2 =   13619.880568499166        chi2lc =   13583.975824540617     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.5263157894736827        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.10042509540137808     
+Solution assuming theta_src =  0.3253 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.866133   6.70474   0.18461   119.62  1.16165  0.02166  1.13319
+ 0.413959   3.20445   0.02015    57.17  0.55520  0.01035  0.54159
+Parallax Solution: theta_src =  0.3253 uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.913821   8.35636   0.35741   149.09  1.44780  0.02700  1.41233
+ thetaE =  0.17325752177089879       mas
+ Mass_par =  0.35741262612626828       M_solar
+K-band lens Mag = 21.947398
+ chi2_K =   235.58854471670108     
+  chi2mag =   235.58854471670108        chi2_Ds =   4.0195747430921136     
+  chi2 =   47665.296779664095        chi2lc =   47425.688660204301     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.4736842105263142        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   62369.735749464824     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.4210526315789456        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   73986.953160003963     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.3684210526315770        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   90510.869924655170     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.3157894736842084        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   118360.46361001141     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.2631578947368398        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   143648.83258829065     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.2105263157894712        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =                       NaN
+Solution assuming theta_src =     NaN uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+Parallax Solution: theta_src =     NaN uas D_s =  9.1444 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+      NaN       NaN       NaN      NaN      NaN      NaN      NaN
+ thetaE =                       NaN  mas
+ Mass_par =                       NaN  M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   4.0195747430921136     
+  chi2 =                       NaN   chi2lc =   166553.55916528736     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.1578947368421026        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.14842640478228816     
+ c > 4/27 : no solutions!
+ thetaE =  0.11722579401131686       mas
+ Mass_par =  0.24182487697546606       M_solar
+K-band lens Mag =       NaN
+ chi2_K =                       NaN
+  chi2mag =                       NaN   chi2_Ds =   122.29200204081634     
+  chi2 =                       NaN   chi2lc =   181525.36188332614     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.1052631578947341        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.12633214826490674     
+Solution assuming theta_src =  0.2586 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.805098   6.23226   0.07448    88.39  0.85835  0.01601  0.83732
+ 0.505387   3.91220   0.01842    55.49  0.53882  0.01005  0.52562
+Parallax Solution: theta_src =  0.2586 uas D_s = 10.5827 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.920168   9.73790   0.28412   138.11  1.34118  0.02501  1.30832
+ thetaE =  0.13772743827932005       mas
+ Mass_par =  0.28411768159853407       M_solar
+K-band lens Mag = 22.763496
+ chi2_K =   287.71067274952719     
+  chi2mag =   287.71067274952719        chi2_Ds =   16.480559343359729     
+  chi2 =   186894.90335219036        chi2lc =   186590.71212009748     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.0526315789473655        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.12011339984083276     
+Solution assuming theta_src =  0.2720 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.822413   6.36630   0.09237    94.97  0.92221  0.01720  0.89962
+ 0.481138   3.72449   0.01850    55.56  0.53952  0.01006  0.52630
+Parallax Solution: theta_src =  0.2720 uas D_s = 10.2476 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.918813   9.41565   0.29883   140.45  1.36393  0.02543  1.33052
+ thetaE =  0.14485813552780555       mas
+ Mass_par =  0.29882758396607811       M_solar
+K-band lens Mag = 22.581656
+ chi2_K =   278.87511319624076     
+  chi2mag =   278.87511319624076        chi2_Ds =   12.822717612514818     
+  chi2 =   185903.44219422634        chi2lc =   185611.74436341759     
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -1.9999999999999971        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ sep23_mx =   1.8646505589693906E-002    c =  0.11627297331402967     
+Solution assuming theta_src =  0.2810 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.832050   6.44090   0.10545    99.25  0.96383  0.01797  0.94022
+ 0.467113   3.61592   0.01866    55.72  0.54110  0.01009  0.52784
+Parallax Solution: theta_src =  0.2810 uas D_s = 10.0377 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.917929   9.21386   0.30870   141.98  1.37879  0.02571  1.34501
+ thetaE =  0.14964271280701313       mas
+ Mass_par =  0.30869767972172968       M_solar
+K-band lens Mag = 22.465434
+ chi2_K =   272.48897367426815     
+  chi2mag =   272.48897367426815        chi2_Ds =   10.764608239270938     
+  chi2 =   177406.87867902138        chi2lc =   177123.62509710784     
+0SCAN OF PARAMETER NO.  6,  theta1cm  
+   190000.0     ........................................................
+                  .                      .                      *  *   .
+   170000.0     ...                      .    * *  *  * *  *  *      * .
+                  .                      .                             .
+   150000.0     ...                      .                             .
+                  .                      .                             .
+   130000.0     ...                      .                             .
+                  .                      .                             .
+   110000.0     ...                      .                             .
+                  .                      .                             .
+   90000.00     ...                      .                             .
+                  .                      .                             .
+   70000.00     ...                      .                             .
+                  .   *  * *             .                             .
+   50000.00     ...*          *          .                             .
+                  .                      . *                           .
+   30000.00     ...              *       .                             .
+                  .                      .                             .
+   10000.00     ...................*.....&..............................
+                  .                   *  .                             .
+  -10000.00     ........................................................
+                  /         /         /         /         /         /   
+            -3.020    -2.820    -2.620    -2.420    -2.220    -2.020    
+                         ONE COLUMN=0.2000000E-01   Overprint character is &   
+
+ FCN=   246.2761     FROM SCAn      STATUS=IMPROVED      21 CALLS       44 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1  1/t_E        0.59474E-01   0.30000E-06
+   2  t0            5007.0       0.20000E-04
+   3  umin         0.60885E-02   0.30000E-07
+   4  sep1cm       0.97550       0.20000E-05
+   5  sep23        0.15101E-01   0.10000E-06
+   6  theta1cm     -2.6316       0.20000E-05
+   7  eps1         0.38248E-03   0.30000E-08
+   8  eps2         0.49914       0.50000E-05
+   9  ang23        0.31571E-01   0.50000E-05
+  10  ds23xdt      0.99997E-02   0.50000E-06
+  11  ds23ydt      0.39090E-01   0.50000E-06
+  12  Tstar        0.31571E-01   0.50000E-06
+  13  t_fix         5007.0       constant   
+  14  1/T_bin      0.36893       0.10000E-05
+  15  dt_orb        0.0000       constant   
+  16  tcch1_min     5005.5       constant   
+  17  tcch1_max     5008.4       constant   
+  18  tcch2_min     0.0000       constant   
+  19  tcch2_max     0.0000       constant   
+  20  tcch3_min     0.0000       constant   
+  21  tcch3_max     0.0000       constant   
+  22  pier         0.59524E-01   0.10000E-03
+  23  pietheta     -3.2213       0.10000E-03
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    6 **EXIT 
+ **********
+
+ CALL TO USER FUNCTION WITH IFLAG = 3
+
+ FCN call with a =   5.9474434189000003E-002   5006.9950595999999        6.0884742124000003E-003  0.97550000000000003        1.5100789317999999E-002  -2.6315789473684199        3.8248407550999999E-004  0.49913916375799999        3.1571212052600002E-002   9.9997065909499996E-003   3.9089772983000003E-002   3.1571212053000001E-002   5007.0000000000000       0.36892975382999998        0.0000000000000000        5005.5000000000000        5008.3999999999996        0.0000000000000000        0.0000000000000000        0.0000000000000000        0.0000000000000000        5.9524021609799999E-002  -3.2213077373000001     
+ date        chi2      amp        error    color
+ 5006.6227    0.080 221001.609   3049.686  30
+ 5006.6544    0.329 178267.812   3282.585  30
+ 5006.6913    5.824 127575.383   2982.774  30
+ 5006.8659    2.529 229211.906   3326.590  30
+ 5007.5155    0.349 131418.000   3837.175  30
+ 5008.6781    0.383  40948.305   2093.361  30
+ 5008.7490    0.003  40401.609   2715.645  30
+ 5008.7802    0.106  40734.609   2759.518  30
+ 5008.8695    0.063  37089.008   3432.657  30
+ 5009.6888    0.213  25216.906   2640.134  30
+ date        chi2      amp        error    color
+ 6032.0172    1.929   2537.009    196.424  31
+ 6043.0388    0.017   2238.401    176.450  31
+ 6069.0936    0.416   2201.791    208.595  31
+ 6076.0857    1.781   2586.299    230.793  31
+ 6095.0306    3.638   1934.626    179.904  31
+ 6162.9586    0.012   2161.026    196.189  31
+ 6189.9017    1.366   2437.279    199.915  31
+ 6346.1983    0.985   2350.447    247.844  31
+ 6348.1822    0.388   1943.034    274.292  31
+ 6361.1104    1.672   1793.905    237.448  31
+ date        chi2      amp        error    color
+ 4144.1804    0.006   6957.299    411.407  32
+ 4199.1780    0.076   7117.577    462.063  32
+ 4220.0368    0.153   6537.780   1155.456  32
+ 4244.9491    1.294   6302.540    604.753  32
+ 4259.9619    1.011   6506.527    481.313  32
+ 4260.2902    0.420   6694.749    456.049  32
+ 4332.8552    0.110   6894.636    289.510  32
+ 4357.8414    0.739   8835.308   2146.746  32
+ 4551.1901    0.128   7127.045    382.059  32
+ 4576.1118    0.404   6766.477    352.500  32
+ 4581.1368    0.878   7981.448   1057.741  32
+ 4596.2896    0.920   6198.403    825.810  32
+ 4604.0709    0.439   6657.094    502.993  32
+ 4604.1462    2.165   8170.768    802.149  32
+ 4627.2218    0.390   7254.473    422.720  32
+ 4638.0629    1.090   8258.402   1214.408  32
+ 4733.8841    0.001   6967.741    692.154  32
+ 4925.1789    0.126   6840.822    433.715  32
+ 4933.2234    0.216   7149.922    329.609  32
+ 4945.2145    0.149   6882.254    311.378  32
+ 4952.2687    1.683   5665.450   1035.347  32
+ 4971.0888    0.641   6455.144    756.303  32
+ 4982.0673    0.008   7099.123    972.375  32
+ 4986.8855    0.165   7524.153    512.420  32
+ 4988.1212    0.037   7463.625    506.795  32
+ 5004.8161    0.081  16519.764    356.304  32
+ 5006.9016    0.009 159812.063   1220.803  32
+ 5007.2667    0.003  85277.800    687.412  32
+ 5009.8535    1.169  14244.450    300.967  32
+ 5023.1721    0.275   7877.406    696.275  32
+ 5025.0993    0.044   7554.474    724.613  32
+ 5037.1499    0.578   7364.466    338.546  32
+ 5038.0808    0.223   6960.812    290.016  32
+ 5050.9488    0.193   6808.810    498.702  32
+ 5077.9805    0.298   7249.234    460.599  32
+ 5107.9729    1.203   6268.784    659.717  32
+ 5109.9729    1.249   6415.589    516.068  32
+ 5257.2077    0.260   7672.730   1337.476  32
+ 5296.2453    0.113   7108.164    350.763  32
+ 5300.1827    0.243   6797.662    391.378  32
+ 5304.1439    0.279   6814.904    332.595  32
+ 5316.9386    1.557   5548.409   1155.644  32
+ 5324.9943    0.252   7212.361    442.234  32
+ 5325.9738    1.365   7312.156    275.362  32
+ 5338.1121    0.280   7170.484    340.060  32
+ 5352.0749    0.333   7266.491    478.154  32
+ 5358.2150    2.116   7967.816    671.852  32
+ 5374.9791    3.454   3921.548   1651.222  32
+ 5384.9569    0.559   7251.136    348.554  32
+ 5386.8936    0.064   7059.404    272.955  32
+ 5387.9600    0.326   7294.099    531.371  32
+ 5391.1360    0.745   6752.927    275.205  32
+ 5395.9353    2.356   7488.110    324.182  32
+ 5407.9779    4.196   6156.126    407.324  32
+ 5408.0213    0.456   6469.859    770.650  32
+ 5413.1049    0.162   6840.246    373.071  32
+ 5413.1644    3.007   5562.591    823.490  32
+ 5413.8723    0.609   7245.635    327.004  32
+ 5413.9464    0.455   6778.863    313.836  32
+ 5451.0121    3.248   9190.745   1220.779  32
+ 5475.9033    0.557   7351.496    483.578  32
+ 5480.9448    2.742   7771.506    471.708  32
+ 5495.8653    0.537   7257.277    364.171  32
+ 5633.1364    0.468   7180.572    277.831  32
+ 5649.2191    0.430   6778.993    322.440  32
+ 5651.0814    0.382   7395.897    656.214  32
+ 5660.1368    2.098   7405.864    286.783  32
+ 5663.0908    0.002   7005.120    317.851  32
+ 5680.0145    0.021   7036.738    315.984  32
+ 5681.0400    2.113   7396.758    279.488  32
+ 5705.1336    7.738   5504.320    534.238  32
+ 5710.0215    0.225   6825.690    347.733  32
+ 5711.2277    4.711   5634.905    624.524  32
+ 5711.9391    0.854   6625.728    394.603  32
+ 5714.1537    3.003   6395.882    343.106  32
+ 5719.0679    1.693   5885.149    849.425  32
+ 5726.1812    0.875   6249.764    792.003  32
+ 5742.8896    0.118   7088.267    284.818  32
+ 5746.0480    0.096   6900.401    290.781  32
+ 5767.0503    0.112   7180.551    567.666  32
+ 5774.8003    0.032   6915.404    421.789  32
+ 5774.9545    0.213   6859.005    284.842  32
+ 5775.9778    0.935   7338.720    360.087  32
+ 5778.0080    1.436   8992.394   1670.702  32
+ 5786.8038    4.983   5683.998    585.264  32
+ 5794.0231    1.674   7421.737    333.313  32
+ 5798.0795    2.324   5948.014    683.777  32
+ 5801.0192    0.065   7091.944    396.744  32
+ 5805.9205    2.382   5753.511    801.446  32
+ 5809.0745    1.268   7450.867    408.843  32
+ date        chi2      amp        error    color
+ 5004.8658    0.000 -70756.252    671.076  33
+ 5005.9964    0.830 -66658.560    623.402  33
+ 5006.1252    0.362 -66469.109   1229.595  33
+ 5006.8975    0.470 -35255.428    727.620  33
+ 5006.9056    0.497 -28622.575    541.618  33
+ 5007.0178    0.004  -6393.869    439.316  33
+ 5007.1200    0.862 -35612.442    482.360  33
+ 5007.2711    0.403 -53485.289   1205.557  33
+ 5007.9109    0.272 -67410.147    832.837  33
+ date        chi2      amp        error    color
+ 5003.0914    0.097 -25429.389    260.738  34
+ 5003.8678    1.157 -25628.902    255.490  34
+ 5006.1312    0.224 -22849.783    317.681  34
+ 5006.9021    0.287 -10122.896    286.803  34
+ 5007.1947    2.258 -15089.513    215.560  34
+ 5007.2756    1.658 -18444.470    280.791  34
+ 5007.2771    0.235 -18264.666    299.514  34
+ 5009.0148    0.631 -24752.850    233.873  34
+ 5009.1771    0.596 -25238.411    273.025  34
+ 5009.1786    0.347 -24859.899    286.040  34
+ date        chi2      amp        error    color
+ 5006.5582    0.232  49381.722    297.611  35
+ 5006.5831    6.854  49738.684    299.673  35
+ 5006.6939    0.000  24921.154    205.997  35
+ 5006.7225    0.236  26839.167    208.310  35
+ 5006.7307    0.027  27557.803    206.596  35
+ 5006.8660    0.411  45601.068    369.035  35
+ 5006.8783   13.037  51085.322    349.747  35
+ 5006.9069    0.235  98536.592    539.339  35
+ 5007.5065    1.822  28362.597    345.485  35
+ 5019.6703    0.000   4339.148    756.659  35
+ date        chi2      amp        error    color
+ 5006.5624    0.749  23909.533    121.407  36
+ 5006.6036    0.839  22814.405    120.336  36
+ 5008.5683    0.061   6020.431   2676.852  36
+ 5009.8280    0.004   3576.461    115.603  36
+ date        chi2      amp        error    color
+ 5006.8970    0.386  34187.285    150.187  37
+ 5006.9051   10.574  28830.115    101.906  37
+ 5006.9117    3.071  24038.754    105.618  37
+ 5006.9565    0.438   -414.004    255.806  37
+ 5006.9631    3.163   -666.643    183.431  37
+ 5007.0001    2.668   6437.526    153.613  37
+ 5007.0162    1.117   8887.989    302.817  37
+ 5007.0398    2.606  14234.296    208.039  37
+ 5007.0481    0.076  16797.385    264.983  37
+ 5012.8645    6.141  63800.291    126.976  37
+ date        chi2      amp        error    color
+ 5006.9317    1.541 -46234.998    292.083  38
+ 5006.9422    0.780 -57601.329    324.227  38
+ 5006.9511    2.385 -65405.933    388.313  38
+ 5007.0080    1.774 -52336.163    562.273  38
+ 5007.1745    0.107  11689.649    308.003  38
+ 5007.2553    0.295  23990.760    336.680  38
+ 5007.9097    0.373  48025.770   1169.762  38
+ 5007.9543    0.138  49184.628    136.420  38
+ 5007.9946    0.000  49645.362    136.504  38
+ 5008.1775    0.192  51224.829    136.840  38
+ date        chi2      amp        error    color
+ 5006.6249    1.447-110019.838   2576.198  39
+ 5007.5690    0.295 -54123.878   1314.500  39
+ 5007.5873    0.010 -52613.051   2493.815  39
+ 5007.6198    0.528 -48926.733    993.002  39
+ 5008.4818    0.067 -14197.490   2012.737  39
+ 5009.5793    0.959  -4391.885    672.400  39
+ 5009.6191    0.283  -3947.921    827.945  39
+ 5012.5755    0.751   3813.538    468.169  39
+ 5012.6065    0.236   4482.217    464.186  39
+ 5012.6152    0.864   4687.230    452.100  39
+ date        chi2      amp        error    color
+ 5006.5954    0.004  13590.500   2128.642  50
+ 5006.6367    0.975  12943.400   2028.591  50
+ 5006.7021    3.132   8870.810   1983.870  50
+ 5006.7512    1.438   9716.370   2394.317  50
+ 5006.8906    0.407  20841.400   3211.968  50
+ 5006.8988    0.000  28028.100   3867.534  50
+ 5007.5622    1.664   4365.540    797.907  50
+ 5019.6370    0.050  -2513.210    916.806  50
+ 5019.7032    0.054  -2914.790    837.648  50
+ date        chi2      amp        error    color
+ 5006.5799    0.377  12826.100    685.339  51
+ 5006.6130    0.139  11485.200    737.730  51
+ 5006.6212    0.000  11188.000    547.509  51
+ 5006.6498    0.377   8926.170    450.680  51
+ 5006.6784    0.565   5268.700    349.294  51
+ 5006.7519    0.379   6066.640    483.585  51
+ 5006.8092    0.039   8489.070    934.186  51
+ 5006.8337    0.382  10450.200   1116.091  51
+ 5006.8913    0.098  23143.700   2061.300  51
+ date        chi2      amp        error    color
+ 5006.5337    5.345   8915.410   1106.972  52
+ 5006.5501    0.723  13097.900    800.035  52
+ 5006.6383    1.416   9337.640    546.268  52
+ 5006.7200    0.339   2853.560    533.912  52
+ 5006.7895    0.307   5523.780    864.759  52
+ 5006.8222    0.003   7841.260   1120.544  52
+ 5006.8345    0.010   8623.150   1196.644  52
+ 5007.5365    1.156   2037.650    981.728  52
+ 5007.6294   11.672   7886.820   1815.963  52
+ 5019.6695    0.002  -6408.880    553.666  52
+ date        chi2      amp        error    color
+ 5006.5468    0.490  14310.000    756.066  53
+ 5006.6515    0.136   9776.180    457.573  53
+ 5006.6720    0.478   7371.850    428.425  53
+ 5006.6965    0.004   4629.680    503.318  53
+ 5006.7128    0.011   5157.590    578.269  53
+ 5006.7455    0.048   6375.680    519.352  53
+ 5006.7864    0.053   7947.790    780.022  53
+ 5006.8069    0.080   8983.580   1050.248  53
+ 5006.8441    0.387  12745.300   1369.226  53
+ 5007.5645    1.066   4262.340    488.139  53
+ date        chi2      amp        error    color
+ 5006.6278    0.085  11765.800    696.338  54
+ 5006.6401    0.555  10344.500    647.694  54
+ 5006.7014    0.180   4792.440    743.438  54
+ 5006.7422    0.012   6473.000    648.454  54
+ 5006.7545    0.022   6763.590    654.884  54
+ 5006.7913    0.149   8913.680   1093.993  54
+ 5006.8158    3.390  13035.900   1731.530  54
+ 5006.8489    0.131  12778.400   1807.792  54
+ 5006.8776    0.522  17487.500   2009.645  54
+ 5019.7429    0.016  -3518.200    561.983  54
+ date        chi2      amp        error    color
+ 5007.2521    1.933     93.792      7.498  55
+ 5007.2643    0.091    102.882      9.708  55
+ 5007.2730    0.328    103.086     10.437  55
+ 5007.3089    1.576     98.628      9.427  55
+ 5007.3673    1.242     83.330      8.594  55
+ 5007.4455    0.882     56.052      5.384  55
+ 5007.4644    0.002     58.215      9.069  55
+ 5007.5352    0.086     49.246      5.364  55
+ 5007.5377    0.003     51.050      8.977  55
+ 5007.5515    0.349     54.673      9.122  55
+ date        chi2      amp        error    color
+ 5006.7238    0.409    -70.970    103.368  56
+ 5006.7920    0.171  -1162.637    107.669  56
+ 5006.7936    0.508  -1075.312    104.758  56
+ 5006.8617    0.005  -2996.431    115.328  56
+ 5006.8640    0.098  -3030.303    111.529  56
+ 5006.8652    0.429  -3032.324    115.314  56
+ 5006.8667    0.031  -3140.957    108.922  56
+ 5006.8682    0.949  -3332.685    119.887  56
+ 5012.7721    0.010   3598.554     54.103  56
+ date        chi2      amp        error    color
+ 5006.3993    0.003 -15056.870   1741.954  57
+ 5006.4018    0.000 -15437.389   1776.411  57
+ 5006.4208    0.117 -17415.335   1682.302  57
+ 5006.4657    2.465 -22727.463   1838.258  57
+ 5007.3399    0.051 -37694.412   2651.159  57
+ 5007.3423    0.264 -37917.894   2597.251  57
+ 5007.3472    0.067 -36267.198   2661.450  57
+ 5007.3667    0.034 -32247.519   2435.378  57
+ 5007.3740    1.578 -33724.832   2592.049  57
+ 5009.3689    0.068  30050.023   1644.340  57
+ sep23_mx =   1.8646505589693906E-002    c =   5.7506821777892285E-002
+Solution assuming theta_src =  0.5681 uas D_s =  7.7410 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.934092   7.23080   1.23324   225.29  2.18777  0.04079  2.13417
+ 0.283255   2.19268   0.03439    68.32  0.66342  0.01237  0.64717
+Parallax Solution: theta_src =  0.5681 uas D_s =  6.4296 kpc
+     x       D_l      M_tot    v_per    R_e(AU)   s_orb  s_plan
+ 0.896221   5.76238   0.62416   179.54  1.74348  0.03251  1.70077
+ thetaE =  0.30256241981256232       mas
+ Mass_par =  0.62415546480758932       M_solar
+K-band lens Mag = 19.994471
+ chi2_K =   1.8411041026081350E-003
+  chi2mag =   1.8411041026081350E-003   chi2_Ds =   3.5094972673112457     
+  chi2 =   246.27612144586539        chi2lc =   242.76478307445154     
+color # 30 dani    chi2 = 9.87835     for    10 points
+color # 31 moa2V   chi2 = 12.2032     for    10 points
+color # 32 moa2r   chi2 = 89.0990     for    90 points
+color # 33 moa61I  chi2 = 3.70119     for     9 points
+color # 34 moa61V  chi2 = 7.49003     for    10 points
+color # 35 mfuni   chi2 = 22.8544     for    10 points
+color # 36 mfunVi  chi2 = 1.65396     for     4 points
+color # 37 ftni    chi2 = 30.2405     for    10 points
+color # 38 ftsi    chi2 = 7.58459     for    10 points
+color # 39 livi    chi2 = 5.44117     for    10 points
+color # 50 mfunH0  chi2 = 7.72559     for     9 points
+color # 51 mfunH1  chi2 = 2.35546     for     9 points
+color # 52 mfunH2  chi2 = 20.9739     for    10 points
+color # 53 mfunH3  chi2 = 2.75284     for    10 points
+color # 54 mfunH4  chi2 = 5.06099     for    10 points
+color # 55 broni   chi2 = 6.49266     for    10 points
+color # 56 pali    chi2 = 2.61034     for     9 points
+color # 57 wisei   chi2 = 4.64665     for    10 points
+
+Normalization parameters with pseudo-errors follow:
+A0dani   =   4316.5515 +/-    53.0755  A2dani   =   -605.5172 +/-  1471.4436
+A0moa2V  =************ +/-***********  A2moa2V  =************ +/-***********
+A0moa2r  =   1410.3871 +/-     8.2008  A2moa2r  =   5580.0770 +/-    46.3190
+A0moa61I =    377.8944 +/-     3.4565  A2moa61I = -73788.7076 +/-   387.2509
+A0moa61V =    146.9466 +/-     2.4223  A2moa61V = -26158.5606 +/-   119.2137
+A0mfuni  =    784.7213 +/-     4.6264  A2mfuni  =   3073.1870 +/-   210.9179
+A0mfunVi =    382.0179 +/-     2.7725  A2mfunVi =   1305.6366 +/-   129.0604
+A0ftni   =   -311.1761 +/-     0.8083  A2ftni   =  65044.5634 +/-   111.3141
+A0ftsi   =   -604.6968 +/-     1.1211  A2ftsi   =  59655.1692 +/-    86.0224
+A0livi   =  -2342.8445 +/-    28.9169  A2livi   =  11549.3533 +/-   288.7330
+A0mfunH0 =    299.7329 +/-    20.2735  A2mfunH0 =  -3196.0167 +/-   587.5370
+A0mfunH1 =    304.2152 +/-    19.5603  A2mfunH1 =  -4449.2848 +/-   840.3781
+A0mfunH2 =    334.1268 +/-    13.4399  A2mfunH2 =  -6918.3076 +/-   514.6964
+A0mfunH3 =    348.1194 +/-    23.7396  A2mfunH3 =  -5172.9087 +/-   863.0008
+A0mfunH4 =    323.4054 +/-    14.9205  A2mfunH4 =  -4101.8352 +/-   535.9089
+A0broni  =      1.8244 +/-     0.2226  A2broni  =     -3.9681 +/-     9.2182
+A0pali   =   -130.7783 +/-     1.4334  A2pali   =   3989.4021 +/-    55.5036
+A0wisei  =  -1750.7732 +/-    53.2377  A2wisei  =  42888.5868 +/-  1897.4250
+  chisq   ds23xdt   ds23ydt    t_E       t0     umin     sep1cm  sep23 theta1cm
+  246.28  0.01000  0.03909   16.814 5006.9951  0.006088  0.9755  0.0151 -2.6316
+    eps1       eps2       eps3    ang23    Tstar    dt_orb   1/T_bin   T_bin
+ 3.8248E-04 4.9914E-01 5.0048E-01  0.03157 0.031571  0.0000  0.368930     2.71
+tcch1_min tcch1_max tcch2_min tcch2_max tcch3_min tcch3_max  t_fix
+  5005.500  5008.400     0.000     0.000     0.000     0.000  5007.000
+    pi_E  theta_piE  alpha    delta  theta_suas  Dso     Ds_sig  Ds_calc
+  0.059524 -3.22131  271.890  -26.818  0.56812   7.7410   0.7000   6.4296
+ ..........MINUIT TERMINATED BY MINUIT COMMAND: EXIT                 

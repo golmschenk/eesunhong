@@ -1,5 +1,4 @@
-
-
+import math
 import re
 import shutil
 import subprocess
@@ -61,6 +60,8 @@ def verify_run_files_match(run_path, expected_run_path):
             try:
                 expected_number = float(expected_item)
                 actual_number = float(actual_item)
+                if math.isnan(expected_number) and math.isnan(actual_number):
+                    continue
                 relative_tolerance = 0.01
                 assert actual_number == pytest.approx(expected_number, rel=relative_tolerance), f'''
                     When comparing the expected {expected_run_path} and the actual {run_path}
