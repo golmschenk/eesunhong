@@ -5,7 +5,6 @@ import pytest
 from tests.end_to_end_tests.run_directory_manipulations import run_trial_with_output_file_cleaning
 
 
-@pytest.mark.slow
 def test_basic_dseek():
     executable_path_from_root = Path('minuit_torbtpar_rvgMagsclast1/minuit_torbtpar_rvgMagsclast1.xO')
     executable_path = Path(__file__).parent.parent.parent.parent.parent.joinpath(executable_path_from_root)
