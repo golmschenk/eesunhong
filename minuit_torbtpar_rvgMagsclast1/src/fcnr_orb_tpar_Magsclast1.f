@@ -1283,7 +1283,7 @@ c          move the masses only at dt_orb intervals
            write(2,556) t,yfits(ilc),(yyfits(jclrinc(j)),j=1,nclrinc)
  460     continue
  461     continue
- 556     format(f9.4,f11.4,39f14.4)
+ 556     format(f9.4,f11.4,f14.4,f18.4,37f14.4)
          close(2)
 
          open(unit=11,file=oldinffile,status='old')
