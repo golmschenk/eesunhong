@@ -1,0 +1,11 @@
+[package]
+name = "eesunhong_rust_library"
+version = "0.1.0"
+authors = ["Greg Olmschenk <greg@olmschenk.com>"]
+edition = "2021"
+
+[dependencies]
+pyo3 = { version = "0.20.0", features = ["auto-initialize"] }
+
+[lib]
+crate-type = ["cdylib"]

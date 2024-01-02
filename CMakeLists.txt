@@ -1,11 +1,29 @@
 cmake_minimum_required(VERSION 3.17)
 
-project(src/eesunhong LANGUAGES Fortran)
+project(eesunhong LANGUAGES Fortran)
+
+# Skip the build if the user is manually building.
+if("$ENV{MANUAL_CMAKE_BUILD}" STREQUAL "1")
+    message(STATUS "Manual build set, skipping build.")
+    return()
+endif()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
 set(BUILD_TESTING OFF)
 include(FetchContent)
+
+# Enable Python.
+find_package(Python REQUIRED Interpreter Development)
+
+# Enable Rust.
+FetchContent_Declare(
+        Corrosion
+        GIT_REPOSITORY https://github.com/corrosion-rs/corrosion.git
+        GIT_TAG v0.4
+)
+FetchContent_MakeAvailable(Corrosion)
+
+# Build Fortran stdlib.
 FetchContent_Declare(
         fortran_stdlib
         GIT_REPOSITORY https://github.com/fortran-lang/stdlib.git
@@ -14,6 +32,14 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(fortran_stdlib)
 set(BUILD_TESTING ON)
 
+# Build eesunhong.
+
+## Rust build.
+corrosion_import_crate(MANIFEST_PATH Cargo.toml)
+# Required to make sure Rust uses the correct path to libpython at runtime.
+corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
+
+## Main Fortran build.
 add_library(polyroots OBJECT third_party/polyroots-fortran/polyroots_cmplx_roots_gen.f90)
 add_library(roots OBJECT third_party/roots-fortran/root_module.F90)
 add_library(eesunhong_recipes_replacements OBJECT src/eesunhong_recipes_replacements.f90)
@@ -30,9 +56,10 @@ add_dependencies(eesunhong_complete_static dummy_to_force_build_order)
 target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
-        src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/geo_par.f src/eesunhong_real_complex_conversion.f90)
-target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static)
+        src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/geo_par.f src/eesunhong_real_complex_conversion.f90 src/eesunhong_astropy_interface.f90)
+target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library)
 
+# Install eesunhong.
 if(SKBUILD)
     set(library_directory "${SKBUILD_PLATLIB_DIR}")
     set(binary_directory "${SKBUILD_PLATLIB_DIR}")

@@ -1,7 +1,9 @@
+import math
 import re
 import shutil
 import subprocess
 from pathlib import Path
+from typing import Optional, List
 
 import pytest
 
@@ -12,16 +14,31 @@ def clean_up_run(run_directory):
     run_directory.joinpath('run_1.dat').unlink(missing_ok=True)
     run_directory.joinpath('run_1.out').unlink(missing_ok=True)
     run_directory.joinpath('run_2.in').unlink(missing_ok=True)
+    path_list = run_directory.glob('*')
+    for path in path_list:
+        if re.match(r'fort\.\d+', path.name):
+            path.unlink()
 
 
 def verify_directories_match(run_directory, expected_resulting_run_directory):
     expected_path_list = list(expected_resulting_run_directory.glob('*'))
     run_path_list = list(run_directory.glob('*'))
+    expected_path_list = exclude_implicit_fort_files(expected_path_list)
+    run_path_list = exclude_implicit_fort_files(run_path_list)
     assert set([path.name for path in run_path_list]) == set([path.name for path in expected_path_list])
     for expected_path in expected_path_list:
         run_path = run_directory.joinpath(expected_path.name)
         assert run_path.exists()
         verify_run_files_match(run_path, expected_path)
+
+
+def exclude_implicit_fort_files(path_list: List[Path]):
+    updated_path_list: List[Path]= []
+    for path in path_list:
+        if re.match(r'fort\.\d+', path.name):
+            continue
+        updated_path_list.append(path)
+    return updated_path_list
 
 
 def verify_run_files_match(run_path, expected_run_path):
@@ -43,6 +60,8 @@ def verify_run_files_match(run_path, expected_run_path):
             try:
                 expected_number = float(expected_item)
                 actual_number = float(actual_item)
+                if math.isnan(expected_number) and math.isnan(actual_number):
+                    continue
                 relative_tolerance = 0.01
                 assert actual_number == pytest.approx(expected_number, rel=relative_tolerance), f'''
                     When comparing the expected {expected_run_path} and the actual {run_path}
@@ -61,38 +80,41 @@ def verify_run_files_match(run_path, expected_run_path):
 def verify_directories_file_list_does_not_match(run_directory, expected_resulting_run_directory):
     expected_path_list = list(expected_resulting_run_directory.glob('*'))
     run_path_list = list(run_directory.glob('*'))
+    expected_path_list = exclude_implicit_fort_files(expected_path_list)
+    run_path_list = exclude_implicit_fort_files(run_path_list)
     assert set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list])
 
 
-def run_trial_with_output_file_cleaning(current_file_path):
+def run_trial_with_output_file_cleaning(current_file_path, executable_path: Optional[Path] = None):
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     clean_up_run(run_directory)
-    run_trial(current_file_path, run_directory, expected_directory)
-    clean_up_run(run_directory)
+    run_trial(run_directory, expected_directory, executable_path=executable_path)
+    # clean_up_run(run_directory)
 
 
-def run_trial_from_run_directory_template(current_file_path):
+def run_trial_from_run_directory_template(current_file_path, executable_path: Optional[Path] = None):
     template_run_directory = Path(current_file_path).parent.joinpath('template_run_directory')
     run_directory = Path(current_file_path).parent.joinpath('run_directory')
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     if run_directory.exists():
         shutil.rmtree(run_directory)
     shutil.copytree(template_run_directory, run_directory)
-    run_trial(current_file_path, run_directory, expected_directory)
-    shutil.rmtree(run_directory)
+    run_trial(run_directory, expected_directory, executable_path=executable_path)
+    # shutil.rmtree(run_directory)
 
 
-def run_trial(current_file_path, run_directory, expected_directory):
-    executable_name = 'eesunhong_main'
-    if shutil.which(executable_name) is not None:
-        executable = executable_name
-    else:
-        executable = Path(current_file_path).parent.parent.parent.parent.joinpath(f'build/{executable_name}')
+def run_trial(run_directory, expected_directory, executable_path: Optional[Path] = None):
+    if executable_path is None:
+        executable_name = 'eesunhong_main'
+        if shutil.which(executable_name) is not None:
+            executable_path = executable_name
+        else:
+            executable_path = Path(__file__).parent.parent.parent.joinpath(f'build/{executable_name}')
     verify_directories_file_list_does_not_match(run_directory, expected_directory)
     run_in_path = run_directory.joinpath('run_1.in')
     run_out_path = run_directory.joinpath('run_1.out')
     with run_in_path.open() as input_file, run_out_path.open('w') as output_file:
-        subprocess.run([executable], cwd=run_directory, stdin=input_file,
+        subprocess.run([executable_path], cwd=run_directory, stdin=input_file,
                        stdout=output_file)
     verify_directories_match(run_directory, expected_directory)
