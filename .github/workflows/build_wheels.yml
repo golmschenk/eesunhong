@@ -20,6 +20,8 @@ jobs:
           compiler: gcc
           version: 11
 
+      - uses: dtolnay/rust-toolchain@stable
+
       - name: Build wheels (Not Windows)
         if: runner.os != 'Windows'
         uses: pypa/cibuildwheel@v2.16.2
