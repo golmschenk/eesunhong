@@ -22,9 +22,6 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: build_wheels_mac_os
         if: runner.os == 'macOS'
         uses: pypa/cibuildwheel@v2.16.2
