@@ -25,9 +25,15 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
-      - name: Build wheels (Not Windows)
-        if: runner.os != 'Windows'
+      - name: build_wheels_mac_os
+        if: runner.os == 'macOS'
         uses: pypa/cibuildwheel@v2.16.2
+
+      - name: build_wheels_linux
+        if: runner.os == 'Linux'
+        uses: pypa/cibuildwheel@v2.16.2
+        env:
+          CIBW_BEFORE_ALL_LINUX: 'PATH=/home/runner/.cargo/bin/rustc:$PATH'
 
       - name: Build wheels (Windows)
         if: runner.os == 'Windows'
