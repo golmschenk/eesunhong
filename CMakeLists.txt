@@ -13,7 +13,7 @@ set(BUILD_TESTING OFF)
 include(FetchContent)
 
 # Enable Python.
-find_package(Python REQUIRED Interpreter Development)
+find_package(Python REQUIRED Interpreter Development.Module)
 
 # Enable Rust.
 FetchContent_Declare(
