@@ -36,8 +36,10 @@ set(BUILD_TESTING ON)
 
 ## Rust build.
 corrosion_import_crate(MANIFEST_PATH Cargo.toml)
-# Required to make sure Rust uses the correct path to libpython at runtime.
-corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
+if("$ENV{NO_RPATH_CHANGE}" STREQUAL "1")
+    # Required to make sure Rust uses the correct path to libpython at runtime.
+    corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
+endif()
 
 ## Main Fortran build.
 add_library(polyroots OBJECT third_party/polyroots-fortran/polyroots_cmplx_roots_gen.f90)

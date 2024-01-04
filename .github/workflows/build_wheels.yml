@@ -33,7 +33,8 @@ jobs:
           CIBW_BEFORE_ALL_LINUX: >
             curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y &&
             source "$HOME/.cargo/env" &&
-            rustup default stable
+            rustup default stable &&
+            export NO_RPATH_CHANGE=1
 
       - name: Build wheels (Windows)
         if: runner.os == 'Windows'
