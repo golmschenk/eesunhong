@@ -2,6 +2,7 @@ use pyo3::prelude::{Python, PyModule, PyErr};
 
 #[no_mangle]
 pub extern "C" fn multiply(factor0: f32, factor1: f32) -> f32 {
+    pyo3::prepare_freethreaded_python();
     let product = Python::with_gil(|py| -> Result<f32, PyErr> {
         println!("Message from Rust.");
         let python_module = PyModule::import(py, "eesunhong.python_module")?;
