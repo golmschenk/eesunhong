@@ -30,7 +30,10 @@ jobs:
         if: runner.os == 'Linux'
         uses: pypa/cibuildwheel@v2.16.2
         env:
-          CIBW_BEFORE_ALL_LINUX: 'PATH=/home/runner/.cargo/bin/rustc:$PATH'
+          CIBW_BEFORE_ALL_LINUX: >
+            curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y &&
+            source "$HOME/.cargo/env" &&
+            rustup default stable
 
       - name: Build wheels (Windows)
         if: runner.os == 'Windows'
