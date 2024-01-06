@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.17)
 project(eesunhong LANGUAGES Fortran)
 
 # Skip the build if the user is manually building.
-if("$ENV{MANUAL_CMAKE_BUILD}" STREQUAL "1")
+if("$ENV{EESUNHONG_ONLY_INSTALL_PYTHON}" STREQUAL "1")
     message(STATUS "Manual build set, skipping build.")
     return()
 endif()
@@ -13,7 +13,7 @@ set(BUILD_TESTING OFF)
 include(FetchContent)
 
 # Enable Python.
-find_package(Python REQUIRED Interpreter Development.Module)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
 
 # Enable Rust.
 FetchContent_Declare(
@@ -36,10 +36,8 @@ set(BUILD_TESTING ON)
 
 ## Rust build.
 corrosion_import_crate(MANIFEST_PATH Cargo.toml)
-if("$ENV{NO_RPATH_CHANGE}" STREQUAL "1")
-    # Required to make sure Rust uses the correct path to libpython at runtime.
-    corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
-endif()
+# Required to make sure Rust uses the correct path to libpython at runtime.
+corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
 
 ## Main Fortran build.
 add_library(polyroots OBJECT third_party/polyroots-fortran/polyroots_cmplx_roots_gen.f90)

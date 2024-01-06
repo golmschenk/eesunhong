@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        python_version: ['3.8', '3.11']
 
     steps:
       - uses: actions/checkout@v3
@@ -22,37 +23,29 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-      - name: build_wheels_mac_os
-        if: runner.os == 'macOS'
-        uses: pypa/cibuildwheel@v2.16.2
-
-      - name: build_wheels_linux
-        if: runner.os == 'Linux'
-        uses: pypa/cibuildwheel@v2.16.2
-        env:
-          CIBW_BEFORE_ALL_LINUX: >
-            curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y &&
-            source "$HOME/.cargo/env" &&
-            rustup default stable &&
-            export NO_RPATH_CHANGE=1
-
-      - name: Build wheels (Windows)
-        if: runner.os == 'Windows'
-        uses: pypa/cibuildwheel@v2.16.2
-        env:
-          CMAKE_GENERATOR: MinGW Makefiles
-
-      - uses: actions/upload-artifact@v3
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          path: ./wheelhouse/*.whl
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }
+
+      - name: windows_specific_set_up
+        if: runner.os == 'Windows'
+        run: >
+          export CMAKE_GENERATOR="MinGW Makefiles"
+
+      - name: build
+        run: pip install $GITHUB_WORKSPACE
+
+      - name: test
+        run: pytest -m "not slow" $GITHUB_WORKSPACE
 
   make_sdist:
-    name: Make SDist
+    name: make_sdist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build SDist
+      - name: build_sdist
         run: pipx run build --sdist
 
       - uses: actions/upload-artifact@v3
