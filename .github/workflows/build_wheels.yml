@@ -46,10 +46,11 @@ jobs:
         run: ps -p $$
 
       - name: build
-        run: >
-          python3 -m pip install -v $GITHUB_WORKSPACE
+        shell: bash -el {0}
+        run: python3 -m pip install -v $GITHUB_WORKSPACE
 
       - name: test
+        shell: bash -el {0}
         run: python3 -m pytest -m "not slow" $GITHUB_WORKSPACE
 
   make_sdist:
