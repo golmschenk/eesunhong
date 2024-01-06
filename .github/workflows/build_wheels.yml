@@ -42,6 +42,9 @@ jobs:
       - name: which_python3
         run: which python3
 
+      - name: which_shell
+        run: ps -p $$
+
       - name: build
         run: >
           python3 -m pip install -v $GITHUB_WORKSPACE
