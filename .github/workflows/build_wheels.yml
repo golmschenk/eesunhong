@@ -23,22 +23,31 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
 
-#      - uses: conda-incubator/setup-miniconda@v3
-#        with:
-#          auto-update-conda: true
-#          python-version: ${{ matrix.python-version }}
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
 
       - name: windows_specific_set_up
         if: runner.os == 'Windows'
         run: >
           export CMAKE_GENERATOR="MinGW Makefiles"
 
+      - name: which_python
+        run: which python
+
+      - name: which_pip
+        run: which pip
+
+      - name: which_python3
+        run: which python3
+
       - name: build
         run: >
-          pip install -v $GITHUB_WORKSPACE
+          python3 -m pip install -v $GITHUB_WORKSPACE
 
       - name: test
-        run: pytest -m "not slow" $GITHUB_WORKSPACE
+        run: python3 -m pytest -m "not slow" $GITHUB_WORKSPACE
 
   make_sdist:
     name: make_sdist
