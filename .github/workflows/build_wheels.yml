@@ -34,9 +34,7 @@ jobs:
           export CMAKE_GENERATOR="MinGW Makefiles"
 
       - name: build
-        run: >
-          cd $GITHUB_WORKSPACE &&
-          pip install .
+        run: pip install -v $GITHUB_WORKSPACE
 
       - name: test
         run: pytest -m "not slow" $GITHUB_WORKSPACE

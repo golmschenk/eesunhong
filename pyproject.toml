@@ -6,6 +6,7 @@ dependencies = [
     "sphinx",
     "furo",
     "pytest",
+#    "fypp==3.2",
 ]
 
 [project.scripts]
