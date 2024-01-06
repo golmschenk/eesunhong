@@ -34,12 +34,15 @@ jobs:
           export CMAKE_GENERATOR="MinGW Makefiles"
 
       - name: which_python
+        shell: bash -el {0}
         run: which python
 
       - name: which_pip
+        shell: bash -el {0}
         run: which pip
 
       - name: which_python3
+        shell: bash -el {0}
         run: which python3
 
       - name: which_shell
@@ -47,11 +50,11 @@ jobs:
 
       - name: build
         shell: bash -el {0}
-        run: python3 -m pip install -v $GITHUB_WORKSPACE
+        run: pip install -v $GITHUB_WORKSPACE
 
       - name: test
         shell: bash -el {0}
-        run: python3 -m pytest -m "not slow" $GITHUB_WORKSPACE
+        run: pytest -m "not slow" $GITHUB_WORKSPACE
 
   make_sdist:
     name: make_sdist
