@@ -5,8 +5,12 @@ requires-python = ">=3.8"
 dependencies = [
     "sphinx",
     "furo",
+]
+
+[project.optional-dependencies]
+dev = [
     "pytest",
-#    "fypp==3.2",
+    "numpy",
 ]
 
 [project.scripts]

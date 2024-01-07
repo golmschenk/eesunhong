@@ -50,7 +50,7 @@ jobs:
 
       - name: build
         shell: bash -l {0}
-        run: pip install -v $GITHUB_WORKSPACE
+        run: pip install -v "$GITHUB_WORKSPACE[dev]"
 
       - name: test
         shell: bash -l {0}
