@@ -34,6 +34,12 @@ jobs:
           echo "CMAKE_GENERATOR=\"MinGW Makefiles\"" >> $GITHUB_ENV
           echo "SKBUILD_CMAKE_ARGS=-G\"MinGW Makefiles\"" >> $GITHUB_ENV
 
+      - name: windows_build
+        shell: bash -l {0}  # Required due to how the conda action works.
+        run: pip install -v "$GITHUB_WORKSPACE[dev]"
+        env:
+          CMAKE_GENERATOR: MinGW Makefiles
+
       - name: build
         shell: bash -l {0}  # Required due to how the conda action works.
         run: pip install -v "$GITHUB_WORKSPACE[dev]"
