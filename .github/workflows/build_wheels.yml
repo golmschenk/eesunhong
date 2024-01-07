@@ -33,27 +33,12 @@ jobs:
         run: >
           export CMAKE_GENERATOR="MinGW Makefiles"
 
-      - name: which_python
-        shell: bash -l {0}
-        run: which python
-
-      - name: which_pip
-        shell: bash -l {0}
-        run: which pip
-
-      - name: which_python3
-        shell: bash -l {0}
-        run: which python3
-
-      - name: which_shell
-        run: ps -p $$
-
       - name: build
-        shell: bash -l {0}
+        shell: bash -l {0}  # Required due to how the conda action works.
         run: pip install -v "$GITHUB_WORKSPACE[dev]"
 
       - name: test
-        shell: bash -l {0}
+        shell: bash -l {0}  # Required due to how the conda action works.
         run: pytest -m "not slow" $GITHUB_WORKSPACE
 
   make_sdist:
