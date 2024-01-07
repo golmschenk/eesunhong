@@ -28,6 +28,10 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python_version }}
 
+      - name: windows_specific_set_up
+        if: runner.os == 'Windows'
+        run: echo "CMAKE_GENERATOR=\"MinGW Makefiles\"" >> $GITHUB_ENV
+
       - name: build
         shell: bash -l {0}  # Required due to how the conda action works.
         run: pip install -v "$GITHUB_WORKSPACE[dev]"
