@@ -32,7 +32,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           echo "CMAKE_GENERATOR=\"MinGW Makefiles\"" >> $GITHUB_ENV
-          echo "SKBUILD_CMAKE_ARGS: -G\"MinGW Makefiles\"" >> $GITHUB_ENV
+          echo "SKBUILD_CMAKE_ARGS=-G\"MinGW Makefiles\"" >> $GITHUB_ENV
 
       - name: build
         shell: bash -l {0}  # Required due to how the conda action works.
