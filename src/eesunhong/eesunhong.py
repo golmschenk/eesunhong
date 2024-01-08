@@ -18,8 +18,10 @@ elif platform_system_name == 'Linux':
 elif platform_system_name == 'Windows':
     winmode = 0
     os.add_dll_directory(f'{library_directory.absolute()}')
-    os.add_dll_directory(f'{library_directory.absolute()}/lib')
-    os.add_dll_directory(f'{library_directory.absolute()}/eesunhong.libs')
+    if library_directory.joinpath('lib').exists():
+        os.add_dll_directory(f'{library_directory.absolute()}/lib')
+    if library_directory.joinpath('eesunhong.libs').exists():
+        os.add_dll_directory(f'{library_directory.absolute()}/eesunhong.libs')
     library_path = library_directory.joinpath('eesunhong_fortran_library.dll')
     if not library_path.exists():
         library_path = library_directory.joinpath('libeesunhong_fortran_library.dll')
