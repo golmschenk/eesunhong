@@ -17,7 +17,7 @@ dev = [
 eesunhong_main = "eesunhong.main:main"
 
 [build-system]
-requires = ["scikit-build-core==0.6.0", "fypp==3.2"]
+requires = ["scikit-build-core==0.7.1", "fypp==3.2"]
 build-backend = "scikit_build_core.build"
 
 [tool.cibuildwheel]

@@ -37,18 +37,6 @@ set(BUILD_TESTING ON)
 ## Rust build.
 corrosion_import_crate(MANIFEST_PATH Cargo.toml)
 # Required to make sure Rust uses the correct path to libpython at runtime.
-message(LOG "Python_LIBRARY_DIRS: ${Python_LIBRARY_DIRS}")
-message(LOG "Python_LIBRARIES: ${Python_LIBRARIES}")
-message(LOG "Python_EXECUTABLE: ${Python_EXECUTABLE}")
-
-#add_library(python_library SHARED IMPORTED)
-#set_target_properties(python_library PROPERTIES
-#        IMPORTED_LOCATION "$<IGNORE_CONFIG:${Python3_LIBRARIES}>"
-#        INTERFACE_INCLUDE_DIRECTORIES "${Python_LIBRARY_DIRS}"
-#)
-
-#add_library(python_library ALIAS Python::Python)
-#corrosion_link_libraries(eesunhong_rust_library python_library)
 corrosion_add_target_local_rustflags(eesunhong_rust_library "-Clink-args=-Wl,-rpath,${Python_LIBRARY_DIRS}")
 
 ## Main Fortran build.
@@ -69,7 +57,7 @@ target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
         src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/geo_par.f src/eesunhong_real_complex_conversion.f90 src/eesunhong_astropy_interface.f90)
-target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library Python::Python)
+target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library)
 
 # Install eesunhong.
 if(SKBUILD)
@@ -82,6 +70,4 @@ else()  # Calling CMake directly instead of through scikit-build means this is a
 endif()
 
 install(TARGETS eesunhong_fortran_library DESTINATION ${library_directory})
-install(TARGETS eesunhong_rust_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_main DESTINATION ${binary_directory})
-install(TARGETS Python::Python DESTINATION ${binary_directory})
