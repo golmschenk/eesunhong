@@ -29,9 +29,9 @@ list(APPEND CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}")
 list(APPEND CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 list(APPEND CMAKE_INSTALL_RPATH "${library_directory}")
 set(CMAKE_MACOSX_RPATH TRUE)
-SET(CMAKE_SKIP_BUILD_RPATH FALSE)
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+#SET(CMAKE_SKIP_BUILD_RPATH FALSE)
+#SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+#SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Enable Rust.
 FetchContent_Declare(
@@ -78,10 +78,6 @@ add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f sr
 target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library Python::Python)
 
 # Install eesunhong.
-add_custom_command(TARGET eesunhong_rust_library POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:eesunhong_rust_library> "${library_directory}/$<TARGET_FILE_NAME:eesunhong_rust_library>"
-)
-
 install(TARGETS eesunhong_fortran_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_rust_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_main DESTINATION ${binary_directory})
