@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.19)
 project(eesunhong LANGUAGES Fortran)
 
 # Skip the build if the user is manually building.
-if("$ENV{EESUNHONG_ONLY_INSTALL_PYTHON}" STREQUAL "1")
+if ("$ENV{EESUNHONG_ONLY_INSTALL_PYTHON}" STREQUAL "1")
     message(STATUS "Manual build set, skipping build.")
     return()
-endif()
+endif ()
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(BUILD_TESTING OFF)
@@ -58,16 +58,17 @@ target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
         src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/geo_par.f src/eesunhong_real_complex_conversion.f90 src/eesunhong_astropy_interface.f90)
 target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library Python::Python)
+list(APPEND CMAKE_INSTALL_RPATH ${Python_LIBRARY_DIRS})
 
 # Install eesunhong.
-if(SKBUILD)
+if (SKBUILD)
     set(library_directory "${SKBUILD_PLATLIB_DIR}")
     set(binary_directory "${SKBUILD_PLATLIB_DIR}")
-else()  # Calling CMake directly instead of through scikit-build means this is a developer build.
+else ()  # Calling CMake directly instead of through scikit-build means this is a developer build.
     set(library_directory ".")
     set(binary_directory ".")
     set(CMAKE_INSTALL_PREFIX .)
-endif()
+endif ()
 
 install(TARGETS eesunhong_fortran_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_main DESTINATION ${binary_directory})
