@@ -71,4 +71,5 @@ else ()  # Calling CMake directly instead of through scikit-build means this is 
 endif ()
 
 install(TARGETS eesunhong_fortran_library DESTINATION ${library_directory})
+install(TARGETS eesunhong_rust_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_main DESTINATION ${binary_directory})
