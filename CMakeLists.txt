@@ -12,13 +12,25 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(BUILD_TESTING OFF)
 include(FetchContent)
 
+# Set build directories
+if (SKBUILD)
+    set(library_directory "${SKBUILD_PLATLIB_DIR}")
+    set(binary_directory "${SKBUILD_PLATLIB_DIR}")
+else ()  # Calling CMake directly instead of through scikit-build means this is a developer build.
+    set(library_directory ".")
+    set(binary_directory ".")
+    set(CMAKE_INSTALL_PREFIX .)
+endif ()
+
 # Enable Python.
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 list(APPEND CMAKE_INSTALL_RPATH ${Python_LIBRARY_DIRS})
+list(APPEND CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}")
+list(APPEND CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+list(APPEND CMAKE_INSTALL_RPATH "${library_directory}")
 set(CMAKE_MACOSX_RPATH TRUE)
 SET(CMAKE_SKIP_BUILD_RPATH FALSE)
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}")
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Enable Rust.
@@ -66,15 +78,6 @@ add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f sr
 target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library Python::Python)
 
 # Install eesunhong.
-if (SKBUILD)
-    set(library_directory "${SKBUILD_PLATLIB_DIR}")
-    set(binary_directory "${SKBUILD_PLATLIB_DIR}")
-else ()  # Calling CMake directly instead of through scikit-build means this is a developer build.
-    set(library_directory ".")
-    set(binary_directory ".")
-    set(CMAKE_INSTALL_PREFIX .)
-endif ()
-
 install(TARGETS eesunhong_fortran_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_rust_library DESTINATION ${library_directory})
 install(TARGETS eesunhong_main DESTINATION ${binary_directory})
