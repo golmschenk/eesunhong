@@ -8,4 +8,4 @@ edition = "2021"
 pyo3 = { version = "0.20.0" }
 
 [lib]
-crate-type = ["staticlib"]
+crate-type = ["cdylib"]
