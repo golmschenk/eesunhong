@@ -16,6 +16,7 @@ include(FetchContent)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 list(APPEND CMAKE_INSTALL_RPATH ${Python_LIBRARY_DIRS})
 set(CMAKE_MACOSX_RPATH 1)
+set(CMAKE_BUILD_RPATH_USE_ORIGIN 1)
 
 # Enable Rust.
 FetchContent_Declare(
