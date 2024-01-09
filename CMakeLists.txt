@@ -57,7 +57,7 @@ target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
         src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/geo_par.f src/eesunhong_real_complex_conversion.f90 src/eesunhong_astropy_interface.f90)
-target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library)
+target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static eesunhong_rust_library Python::Python)
 
 # Install eesunhong.
 if(SKBUILD)
