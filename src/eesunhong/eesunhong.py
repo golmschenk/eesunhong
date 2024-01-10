@@ -1,6 +1,6 @@
 import errno
 import os
-from ctypes import CDLL, POINTER, c_int, c_float
+from ctypes import CDLL, POINTER, c_int, c_double
 from pathlib import Path
 import platform
 
@@ -31,8 +31,8 @@ if not library_path.exists():
 fortran_library = CDLL(str(library_path), winmode=winmode)
 sort_light_curve_data_by_time = fortran_library.sort_light_curve_data_by_time
 sort_light_curve_data_by_time.argtypes = [POINTER(c_int),
-                                          POINTER(c_float),
-                                          POINTER(c_float),
-                                          POINTER(c_float),
+                                          POINTER(c_double),
+                                          POINTER(c_double),
+                                          POINTER(c_double),
                                           POINTER(c_int),
                                           POINTER(c_int)]
