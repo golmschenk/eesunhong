@@ -29,6 +29,7 @@ else:
 if not library_path.exists():
     raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(library_path.absolute()))
 fortran_library = CDLL(str(library_path), winmode=winmode)
+
 sort_light_curve_data_by_time = fortran_library.sort_light_curve_data_by_time
 sort_light_curve_data_by_time.argtypes = [POINTER(c_int),
                                           POINTER(c_double),
@@ -36,3 +37,11 @@ sort_light_curve_data_by_time.argtypes = [POINTER(c_int),
                                           POINTER(c_double),
                                           POINTER(c_int),
                                           POINTER(c_int)]
+
+compute_parallax_using_geo_par = fortran_library.geo_par
+compute_parallax_using_geo_par.argtypes = [POINTER(c_double),
+                                           POINTER(c_double),
+                                           POINTER(c_double),
+                                           POINTER(c_double),
+                                           POINTER(c_double),
+                                           POINTER(c_double)]
