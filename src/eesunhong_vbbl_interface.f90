@@ -1,5 +1,5 @@
 module eesunhong_vbbl_interface
-    use, intrinsic :: iso_c_binding, only : c_float, c_ptr, c_double, c_char
+    use, intrinsic :: iso_c_binding, only : c_int, c_float, c_ptr, c_double, c_char
     use stdlib_kinds, only : dp
     implicit none
     interface
@@ -12,6 +12,12 @@ module eesunhong_vbbl_interface
             import :: c_ptr
             type(c_ptr), value :: vbbl
         end subroutine destroy_vbbl_interface
+
+        subroutine set_parallax_system_for_vbbl_interface(vbbl, value) bind(c, name = 'set_parallax_system_for_vbbl')
+            import :: c_ptr, c_int
+            type(c_ptr), value :: vbbl
+            integer(c_int), value :: value
+        end subroutine set_parallax_system_for_vbbl_interface
 
         subroutine set_object_coordinates_for_vbbl_interface(vbbl, coordinates_file, directory_for_satellite_tables) &
                 bind(c, name = 'set_object_coordinates_for_vbbl')
@@ -41,6 +47,13 @@ contains
 
         call destroy_vbbl_interface(vbbl)
     end subroutine destroy_vbbl
+
+    subroutine set_parallax_system_for_vbbl(vbbl, value)
+        type(c_ptr), intent(in) :: vbbl
+        integer(c_int), intent(in) :: value
+
+        call set_parallax_system_for_vbbl_interface(vbbl, value)
+    end subroutine set_parallax_system_for_vbbl
 
     subroutine set_object_coordinates_for_vbbl(vbbl, coordinates_file, directory_for_satellite_tables)
         type(c_ptr), intent(in) :: vbbl
