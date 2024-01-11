@@ -57,3 +57,6 @@ set_object_coordinates_for_vbbl.argtypes = [c_void_p, c_char_p, c_char_p]
 
 compute_parallax_for_vbbl = eesunhong_fortran_library.compute_parallax_for_vbbl
 compute_parallax_for_vbbl.argtypes = [c_void_p, c_double, c_double, POINTER(c_double)]
+
+set_parallax_system_for_vbbl = eesunhong_fortran_library.set_parallax_system_for_vbbl
+set_parallax_system_for_vbbl.argtypes = [c_void_p, c_int]
