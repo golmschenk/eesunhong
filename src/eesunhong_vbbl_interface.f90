@@ -1,5 +1,6 @@
 module eesunhong_vbbl_interface
     use, intrinsic :: iso_c_binding, only : c_float, c_ptr, c_double, c_char
+    use stdlib_kinds, only : dp
     implicit none
     interface
         function create_vbbl_interface() bind(c, name = 'create_vbbl') result(vbbl)
@@ -57,4 +58,26 @@ contains
 
         call compute_parallax_for_vbbl_interface(vbbl, t, t0, Et)
     end subroutine compute_parallax_for_vbbl
+
+    subroutine create_vbbl_coordinates_file(a, b, c, d, e, f)
+        implicit none
+        real(dp), intent(in) :: a, b, c, d, e, f
+        character(len=50) :: str_a, str_b, str_c, str_d, str_e, str_f
+        character(len=256) :: line_to_write
+        integer :: iounit = 132
+
+        write(str_a, "(F0.4)") a
+        write(str_b, "(F0.4)") b
+        write(str_c, "(F0.4)") c
+        write(str_d, "(F0.4)") d
+        write(str_e, "(F0.4)") e
+        write(str_f, "(F0.4)") f
+
+        line_to_write = trim(adjustl(str_a)) // ":" // trim(adjustl(str_b)) // ":" // trim(adjustl(str_c)) // &
+                " " // trim(adjustl(str_d)) // ":" // trim(adjustl(str_e)) // ":" // trim(adjustl(str_f))
+
+        open(newunit=iounit, file="coordinates.txt", status="replace", action="write")
+        write(iounit, '(A)') line_to_write
+        close(iounit)
+    end subroutine create_vbbl_coordinates_file
 end module eesunhong_vbbl_interface

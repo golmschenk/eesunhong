@@ -15,6 +15,8 @@ c------------------------------------------------------------------------------
        use eesunhong_recipes_replacements,
      &     only : sort_light_curve_data_by_time
        use eesunhong_bilens, only: bilens, bilens_im
+       use eesunhong_vbbl_interface,
+     &     only : create_vbbl_coordinates_file
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
        parameter (mmax=30,maxdata=50000,ngmax=12000000)
@@ -153,6 +155,8 @@ c ---
          else
            delta = (abs(decd) + abs(decm)/60. + abs(decs)/3600.)
          endif
+         call create_vbbl_coordinates_file(
+     &       rah, ram, ras, decd, decm, decs)
 
          write(6,*) 'enter 1 for integration grid, 0 to skip;'
          write(6,*) ' and name of optional MCMC output file'
