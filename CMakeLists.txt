@@ -17,7 +17,7 @@ set(BUILD_TESTING ON)
 FetchContent_Declare(
         VBBinaryLensing
         GIT_REPOSITORY https://github.com/golmschenk/VBBinaryLensing.git
-        GIT_TAG 9562ad164b0d2ed235b0fd42a83ee4f1f725c79a  # Fork made to be used as eesunhong library.
+        GIT_TAG cc851ef4738c7231451ffefc4863c70065f41556  # Fork made to be used as eesunhong library.
 )
 FetchContent_MakeAvailable(VBBinaryLensing)
 
