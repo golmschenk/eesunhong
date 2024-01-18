@@ -2,6 +2,11 @@ cmake_minimum_required(VERSION 3.17)
 
 project(src/eesunhong LANGUAGES Fortran CXX)
 
+if("$ENV{SKIP_CMAKE_BUILD}" STREQUAL "1")
+    message(STATUS "Manual build set, skipping build.")
+    return()
+endif()
+
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(BUILD_TESTING OFF)
@@ -17,7 +22,7 @@ set(BUILD_TESTING ON)
 FetchContent_Declare(
         VBBinaryLensing
         GIT_REPOSITORY https://github.com/golmschenk/VBBinaryLensing.git
-        GIT_TAG cc851ef4738c7231451ffefc4863c70065f41556  # Fork made to be used as eesunhong library.
+        GIT_TAG bd7b19ce606261cb1ae5eebd800baa441d7d9bd2  # Fork made to be used as eesunhong library.
 )
 FetchContent_MakeAvailable(VBBinaryLensing)
 

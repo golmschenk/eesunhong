@@ -1,5 +1,5 @@
 module eesunhong_vbbl_interface
-    use, intrinsic :: iso_c_binding, only : c_int, c_float, c_ptr, c_double, c_char
+    use, intrinsic :: iso_c_binding, only : c_int, c_float, c_ptr, c_double, c_char, c_null_char
     use stdlib_kinds, only : dp
     implicit none
     interface
@@ -60,7 +60,8 @@ contains
         character(len=*), intent(in) :: coordinates_file
         character(len=*), intent(in) :: directory_for_satellite_tables
 
-        call set_object_coordinates_for_vbbl_interface(vbbl, coordinates_file, directory_for_satellite_tables)
+        call set_object_coordinates_for_vbbl_interface(vbbl, coordinates_file // c_null_char, &
+                directory_for_satellite_tables // c_null_char)
     end subroutine set_object_coordinates_for_vbbl
 
     subroutine compute_parallax_for_vbbl(vbbl, t, t0, Et)
@@ -89,8 +90,17 @@ contains
         line_to_write = trim(adjustl(str_a)) // ":" // trim(adjustl(str_b)) // ":" // trim(adjustl(str_c)) // &
                 " " // trim(adjustl(str_d)) // ":" // trim(adjustl(str_e)) // ":" // trim(adjustl(str_f))
 
-        open(newunit=iounit, file="coordinates.txt", status="replace", action="write")
+        open(newunit=iounit, file="tmp_coordinates.txt", status="replace", action="write")
         write(iounit, '(A)') line_to_write
         close(iounit)
     end subroutine create_vbbl_coordinates_file
+
+    subroutine delete_vbbl_coordinates_file()
+        implicit none
+        integer :: iounit = 132
+        integer :: stat = -1
+
+        open(unit=iounit, iostat=stat, file='tmp_coordinates.txt', status='old')
+        if (stat == 0) close(iounit, status='delete')
+    end subroutine delete_vbbl_coordinates_file
 end module eesunhong_vbbl_interface

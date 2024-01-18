@@ -20,7 +20,8 @@ c------------------------------------------------------------------------------
      &     only : create_vbbl_coordinates_file,
      &     set_parallax_system_for_vbbl,
      &     create_vbbl, destroy_vbbl,
-     &     set_object_coordinates_for_vbbl
+     &     set_object_coordinates_for_vbbl,
+     &     delete_vbbl_coordinates_file
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
        parameter (mmax=30,maxdata=50000,ngmax=12000000)
@@ -162,10 +163,13 @@ c ---
          endif
          call create_vbbl_coordinates_file(
      &       rah, ram, ras, decd, decm, decs)
+         ! TODO: `vbbl` should be destroyed, but not a great place to do that in the current code. The current location
+         !       is in an `if` that only occurs during the first call to the user fcn.
          vbbl = create_vbbl()
          call set_parallax_system_for_vbbl(vbbl, 1)
          call set_object_coordinates_for_vbbl(
-     &       vbbl, 'coordinates.txt', '.')
+     &       vbbl, 'tmp_coordinates.txt', '.')
+         call delete_vbbl_coordinates_file()
 
          write(6,*) 'enter 1 for integration grid, 0 to skip;'
          write(6,*) ' and name of optional MCMC output file'
@@ -1081,7 +1085,6 @@ ccc     &                       zalph,zgamm)
        endif
  998   format(1x,g18.11)
  999   format(g18.11)
-       call destroy_vbbl(vbbl)
 
        return
        end
