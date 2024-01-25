@@ -27,10 +27,13 @@ def verify_directories_match(run_directory, expected_resulting_run_directory):
 
 def verify_file_lists_match(run_directory, run_path_list, expected_path_list):
     if set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list]):
-        lines=100
+        lines_to_display = 100
         with open(run_directory.joinpath('run_1.out')) as run_1_out_file:
             run_1_out_content = run_1_out_file.readlines()
-        print(''.join(run_1_out_content[-lines:]), file=sys.stderr)
+        print('============================', file=sys.stderr)
+        print('Ending content of run_1.out ', file=sys.stderr)
+        print(''.join(run_1_out_content[-lines_to_display:]), file=sys.stderr)
+        print('============================', file=sys.stderr)
     assert set([path.name for path in run_path_list]) == set([path.name for path in expected_path_list])
 
 
