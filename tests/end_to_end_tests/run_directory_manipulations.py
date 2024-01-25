@@ -1,6 +1,7 @@
 import re
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -17,11 +18,20 @@ def clean_up_run(run_directory):
 def verify_directories_match(run_directory, expected_resulting_run_directory):
     expected_path_list = list(expected_resulting_run_directory.glob('*'))
     run_path_list = list(run_directory.glob('*'))
-    assert set([path.name for path in run_path_list]) == set([path.name for path in expected_path_list])
+    verify_file_lists_match(run_directory, run_path_list, expected_path_list)
     for expected_path in expected_path_list:
         run_path = run_directory.joinpath(expected_path.name)
         assert run_path.exists()
         verify_run_files_match(run_path, expected_path)
+
+
+def verify_file_lists_match(run_directory, run_path_list, expected_path_list):
+    if set([path.name for path in run_path_list]) != set([path.name for path in expected_path_list]):
+        lines=100
+        with open(run_directory.joinpath('run_1.out')) as run_1_out_file:
+            run_1_out_content = run_1_out_file.readlines()
+        print(''.join(run_1_out_content[-lines:]), file=sys.stderr)
+    assert set([path.name for path in run_path_list]) == set([path.name for path in expected_path_list])
 
 
 def verify_run_files_match(run_path, expected_run_path):
