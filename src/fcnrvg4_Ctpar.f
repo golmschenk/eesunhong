@@ -91,9 +91,9 @@ c------------------------------------------------------------------------------
 
        save
 
-       seed_put = 0
-       call random_seed(seed_put, seed_get)
        if(iflag.eq.1) then
+         seed_put = 0
+         call random_seed(seed_put, seed_get)
          pi=acos(-1.)
          twopi=2.d0*pi
          twobypi=2.d0/pi
