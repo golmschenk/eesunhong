@@ -11,7 +11,7 @@ requires = ["scikit-build-core==0.6.0", "fypp==3.2"]
 build-backend = "scikit_build_core.build"
 
 [tool.cibuildwheel]
-skip = "pp* cp36-* cp37-* *_i686"
+skip = "pp* cp36-* cp37-* cp38-* *_i686"
 build-verbosity = "3"
 test-requires = ["pytest", "numpy"]
 test-command = "pytest {package}/tests -m \"not slow\""

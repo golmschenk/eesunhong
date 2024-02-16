@@ -1,9 +1,10 @@
 module eesunhong_recipes_replacements
+    use stdlib_kinds, only : dp, int32
+    use iso_c_binding, only : c_double, c_int
+    use stdlib_sorting, only : sort_index, int_size
     implicit none
 contains
     subroutine sort_light_curve_data_by_time(number_of_data_points, time, magnification, sig, iclr, iclrind)
-        use stdlib_kinds, only : dp, int32
-        use stdlib_sorting, only : sort_index, int_size
         implicit none
         integer(int32), intent(in) :: number_of_data_points
         real(dp), intent(inout) :: time(:)
@@ -24,13 +25,11 @@ contains
 
     subroutine sort_light_curve_data_by_time_c_wrapper(number_of_data_points, time, magnification, sig, iclr, iclrind) &
             bind(c, name = 'sort_light_curve_data_by_time')
-        use stdlib_kinds, only : dp, int32
-        use iso_c_binding, only : c_float, c_int
         implicit none
         integer(c_int), intent(in) :: number_of_data_points
-        real(c_float), intent(inout) :: time(number_of_data_points)
-        real(c_float), intent(inout) :: magnification(number_of_data_points)
-        real(c_float), intent(inout) :: sig(number_of_data_points)
+        real(c_double), intent(inout) :: time(number_of_data_points)
+        real(c_double), intent(inout) :: magnification(number_of_data_points)
+        real(c_double), intent(inout) :: sig(number_of_data_points)
         integer(c_int), intent(inout) :: iclr(number_of_data_points)
         integer(c_int), intent(inout) :: iclrind(number_of_data_points)
         real(dp) :: f_time(number_of_data_points)

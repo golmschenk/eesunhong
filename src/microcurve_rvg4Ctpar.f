@@ -2,7 +2,8 @@ c==============================================================================
 
        subroutine microcurve(t,a,yfit,iclr,nimage,alpha,delta,
      &                       Ein_R,xcc,flon_obs,flat_obs,icheck,
-     &                       brgrid,bphigrid,ngr,nphimax,sxg,syg,sx,sy)
+     &                       brgrid,bphigrid,ngr,nphimax,sxg,syg,sx,sy,
+     &                       vbbl)
 
 c
 c   Author: David P. Bennett
@@ -51,11 +52,16 @@ c                 call sourceloc(newcall,sep,eps1,bx,by,sxe,sye)
 c                 call sourceloc(newcall,sep,eps1,bx,by,sxe,sye)
 c       call sourceloc(n,sep,eps1,bx,by,sx,sy)
 c------------------------------------------------------------------------------
-          use stdlib_kinds, only : dp, int32
-          use eesunhong_bilens, only: bilens, bilens_im
-          use eesunhong_real_complex_conversion,
-     &     only: from_2d_real_to_complex, from_complex_to_2d_real
+       use stdlib_kinds, only : dp, int32
+       use, intrinsic :: iso_c_binding, only : c_ptr
+       use eesunhong_bilens, only : bilens, bilens_im
+       use eesunhong_real_complex_conversion,
+     &     only : from_2d_real_to_complex, from_complex_to_2d_real
+       use eesunhong_vbbl_interface,
+     &     only : compute_parallax_for_vbbl
+
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+       type(c_ptr), intent(in) :: vbbl
 ccc       parameter(ncpts=16000,ndark=20000,nllmax=200,ngxmx=800,ngymx=200)
 ccc       parameter(ncpts=16000,ndark=20000,nllmax=200)
        parameter(ncpts=108000,ndark=5000,nllmax=200)
@@ -79,6 +85,7 @@ ccc       double precision bgridmax(2),bgridmin(2),dd(0:3)
        double precision a(30)
        double precision z(2,10),ampim(10),zr(10),zphi(10)
        complex(dp) :: z_in(10)
+       real(dp) :: et(2)
        integer icrhead(nllmax,nllmax),nxtcr(ncpts)
        integer icahead(ncaxgrid,ncaygrid),nxtca(ncpts)
        double precision ca_zr(ncpts),ca_zphi(ncpts)
@@ -206,7 +213,11 @@ ccc         if(isep0.eq.1) sep0=sep
 
 c      call Andy Gould's Parallax code
 c      -------------------------------
-       call geo_par(qn,qe,t,alpha,delta,tfix)
+!      call geo_par(qn,qe,t,alpha,delta,tfix)
+       call compute_parallax_for_vbbl(vbbl, t, tfix, et)
+       qn = et(1)
+       qe = et(2)
+
 
        if(flon_obs.eq.0.d0.and.flat_obs.eq.0.d0) then
          qtn = 0.d0

@@ -12,9 +12,16 @@ c
 c------------------------------------------------------------------------------
        use stdlib_random, only: random_seed
        use stdlib_kinds, only : dp, int32
+       use, intrinsic :: iso_c_binding, only : c_ptr
        use eesunhong_recipes_replacements,
      &     only : sort_light_curve_data_by_time
        use eesunhong_bilens, only: bilens, bilens_im
+       use eesunhong_vbbl_interface,
+     &     only : create_vbbl_coordinates_file,
+     &     set_parallax_system_for_vbbl,
+     &     create_vbbl, destroy_vbbl,
+     &     set_object_coordinates_for_vbbl,
+     &     delete_vbbl_coordinates_file
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
        parameter (mmax=30,maxdata=50000,ngmax=12000000)
@@ -59,6 +66,7 @@ c------------------------------------------------------------------------------
        character*30 starname,fitname
        character*20 blank20
        character*10 parname(30)
+       type(c_ptr) :: vbbl
        common/mcmc_output/nchar_mcmc,nrej_mcmc,char_mcmc
        common/seek_opt2/mcmc_file
        common/integrate/gridUstar
@@ -153,6 +161,15 @@ c ---
          else
            delta = (abs(decd) + abs(decm)/60. + abs(decs)/3600.)
          endif
+         call create_vbbl_coordinates_file(
+     &       rah, ram, ras, decd, decm, decs)
+         ! TODO: `vbbl` should be destroyed, but not a great place to do that in the current code. The current location
+         !       is in an `if` that only occurs during the first call to the user fcn.
+         vbbl = create_vbbl()
+         call set_parallax_system_for_vbbl(vbbl, 1)
+         call set_object_coordinates_for_vbbl(
+     &       vbbl, 'tmp_coordinates.txt', '.')
+         call delete_vbbl_coordinates_file()
 
          write(6,*) 'enter 1 for integration grid, 0 to skip;'
          write(6,*) ' and name of optional MCMC output file'
@@ -708,7 +725,8 @@ c  --------------------
           jc = iclr(i)
           call microcurve(t,a,yfit(ii,jc),jc,nimage(i),
      &                 alpha,delta,Ein_R,xcc,lon_obs(jc),lat_obs(jc),0,
-     &                 brgrid,bphigrid,ngr,nphimax,sxg,syg,ssx,ssy)
+     &                 brgrid,bphigrid,ngr,nphimax,sxg,syg,ssx,ssy,
+     &                 vbbl)
           maximages=max(maximages,nimage(i))
  300   continue
 c      nchar_mcmc = # of fit parameters + 1 for chi2
@@ -1006,7 +1024,8 @@ c        ------------------------
              if(A0(j).ne.0.) then
                call microcurve(t,a,yfits(j),j,nn,
      &                 alpha,delta,Ein_R,xcc,lon_obs(j),lat_obs(j),0,
-     &                 brgrid,bphigrid,ngr,nphimax,sxg,syg,ssx,ssy)
+     &                 brgrid,bphigrid,ngr,nphimax,sxg,syg,ssx,ssy,
+     &                 vbbl)
 ccc               call microcurve(t,a,yfits(j),cfits(j),j,nn,alpha,delta,-9.,
 ccc     &                       zalph,zgamm)
                yyfits(j)=A0(j)*yfits(j)+A2(j)
