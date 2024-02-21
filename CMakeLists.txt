@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.17)
 
-project(src/eesunhong LANGUAGES Fortran CXX)
+project(eesunhong LANGUAGES Fortran CXX)
 
 if("$ENV{SKIP_CMAKE_BUILD}" STREQUAL "1")
     message(STATUS "Manual build set, skipping build.")
