@@ -31,16 +31,12 @@ add_library(roots OBJECT third_party/roots-fortran/root_module.F90)
 add_library(eesunhong_internal OBJECT src/eesunhong_recipes_replacements.f90 src/geo_par.f src/eesunhong_geo_par_c_wrapper.f90)
 target_link_libraries(eesunhong_internal PUBLIC fortran_stdlib)
 
-add_custom_target(dummy_to_force_build_order)
-add_dependencies(dummy_to_force_build_order eesunhong_internal)
-
 add_library(eesunhong_fortran_library SHARED $<TARGET_OBJECTS:eesunhong_internal> $<TARGET_OBJECTS:roots> $<TARGET_OBJECTS:VBBinaryLensing>)
 target_link_libraries(eesunhong_fortran_library PUBLIC fortran_stdlib)
 # Without this was defaulting to CXX which was resulting in warnings with compact unwinding.
 set_target_properties(eesunhong_fortran_library PROPERTIES LINKER_LANGUAGE Fortran)
 
 add_library(eesunhong_complete_static STATIC $<TARGET_OBJECTS:eesunhong_internal> $<TARGET_OBJECTS:polyroots> $<TARGET_OBJECTS:roots>)
-add_dependencies(eesunhong_complete_static dummy_to_force_build_order)
 target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
