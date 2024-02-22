@@ -62,3 +62,7 @@ To compile using ``ifort``, make sure ``ifort`` is available in the path, then r
 
 prior to the build commands.
 
+Adding source files
+-------------------
+
+The file specifying which source files to compile, ``CMakeLists.txt``, may look somewhat confusing to those unfamiliar to CMake, especially due to the complexity added by importing remote GitHub dependencies and building both a Python library and the main binary executable. For Fortran developers, the main piece you will likely need to change is to add additional source files to be compiled. In most cases, you should add your new source files to the statement starting with ``add_executable(eesunhong_main``. If the source files will include functions or routines that should be callable from Python, the should generally be included in the statement starting with ``add_library(eesunhong_internal``.
