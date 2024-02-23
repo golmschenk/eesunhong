@@ -3,3 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
+  - gfortran>=13
+  - cxx-compiler>=1.7
+  - pip:
+      - cmake>=2.28
+      - ninja>=1.11
+      - fypp>=3.2
