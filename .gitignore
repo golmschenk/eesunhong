@@ -168,3 +168,4 @@ fabric.properties
 
 ### Project specific
 /build/
+/docs/build/
