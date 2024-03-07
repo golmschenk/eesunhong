@@ -2,7 +2,7 @@
 
 ```{toctree}
 :caption: 'Contents:'
-:maxdepth: 2
+:maxdepth: 4
 
 how_to_run_eesunhong
 file_explanations
