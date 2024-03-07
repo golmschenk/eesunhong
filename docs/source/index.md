@@ -31,7 +31,8 @@ Then install `eesunhong` within this environment.
 :caption: 'Contents:'
 :maxdepth: 2
 
-guides/guide_for_fortran_developers
+user_guides/index
+developer_guides/guide_for_fortran_developers
 ```
 
 # Indices and tables
