@@ -6,22 +6,22 @@ The only prerequisites before these steps are that you have git installed (which
 
 1. Clone the repository and enter the cloned project directory.
 
-   > ```sh
-   > git clone https://github.com/golmschenk/eesunhong
-   > cd eesunhong
-   > ```
+   ```sh
+   git clone https://github.com/golmschenk/eesunhong
+   cd eesunhong
+   ```
 
 2. Create a Conda virtual environment with the correct dependencies installed.
 
-   > ```sh
-   > conda env create --file=environments.yml
-   > ```
+   ```sh
+   conda env create --file=environments.yml
+   ```
 
 3. Activate the Conda environment.
 
-   > ```sh
-   > conda activate eesunhong_env
-   > ```
+   ```sh
+   conda activate eesunhong_env
+   ```
 
 In the future, whenever working on developing `eesunhong`, activate the existing environment with the above line. When you are done working, you can either deactivate the environment with `conda deactivate` or just close the terminal.
 
@@ -31,31 +31,31 @@ In the future, whenever working on developing `eesunhong`, activate the existing
 
 To build, first configure the build with:
 
-> ```sh
-> cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
-> ```
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+```
 
 Then build with:
 
-> ```sh
-> cmake --build build --config Debug
-> ```
+```sh
+cmake --build build --config Debug
+```
 
 Just the second build command is required for subsequent builds, and will only rebuild changed components.
 
 To clean the build, simply delete the build directory:
 
-> ```sh
-> rm -rf build
-> ```
+```sh
+rm -rf build
+```
 
 To build an optimized version, first clean the build, then run the configure and build commands again, but this time replacing `Debug` with `Release`.
 
 To compile using `ifort`, make sure `ifort` is available in the path, then run
 
-> ```sh
-> export FC=ifort
-> ```
+```sh
+export FC=ifort
+```
 
 prior to the build commands.
 
