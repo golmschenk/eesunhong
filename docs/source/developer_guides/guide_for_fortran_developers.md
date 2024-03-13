@@ -14,7 +14,7 @@ The only prerequisites before these steps are that you have git installed (which
 2. Create a Conda virtual environment with the correct dependencies installed.
 
    ```sh
-   conda env create --file=environments.yml
+   conda env create --file=environment.yml
    ```
 
 3. Activate the Conda environment.
