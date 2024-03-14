@@ -1,3 +1,4 @@
+import os
 import re
 import shutil
 import subprocess
@@ -82,7 +83,8 @@ def run_trial_with_output_file_cleaning(current_file_path):
     expected_directory = Path(current_file_path).parent.joinpath('expected_resulting_run_directory')
     clean_up_run(run_directory)
     run_trial(current_file_path, run_directory, expected_directory)
-    clean_up_run(run_directory)
+    if os.environ.get('EESUNHONG_NO_TEST_CLEANUP') != '1':
+        clean_up_run(run_directory)
 
 
 def run_trial_from_run_directory_template(current_file_path):
@@ -93,7 +95,8 @@ def run_trial_from_run_directory_template(current_file_path):
         shutil.rmtree(run_directory)
     shutil.copytree(template_run_directory, run_directory)
     run_trial(current_file_path, run_directory, expected_directory)
-    shutil.rmtree(run_directory)
+    if os.environ.get('EESUNHONG_NO_TEST_CLEANUP') != '1':
+        shutil.rmtree(run_directory)
 
 
 def run_trial(current_file_path, run_directory, expected_directory):
