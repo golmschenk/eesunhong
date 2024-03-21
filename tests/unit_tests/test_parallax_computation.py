@@ -124,3 +124,43 @@ def test_geo_par_and_vbbl_calculate_same_parallax():
     destroy_vbbl(vbbl)
 
     assert np.allclose(q_array_geo_par_case, et_vbbl_case, rtol=0.005)
+
+
+def test_geo_par_and_vbbl_calculate_same_parallax_for_j2000_epoch_time_half_year():
+    time_fix = 2451544.5 - 2450000  # J2000 epoch time, then offset by the standard microlensing offset.
+    time = time_fix + (365.25 / 2)  # Half a year from the parallax fix time.
+
+    qn_geo_par_case = np.array(np.nan, dtype=c_double)
+    qe_geo_par_case = np.array(np.nan, dtype=c_double)
+    t_geo_par_case = np.array(time, dtype=c_double)
+    alpha_geo_par_case = np.array(268.43250000000000, dtype=c_double)
+    delta_geo_par_case = np.array(-32.589311111111115, dtype=c_double)
+    tfix_geo_par_case = np.array(time_fix, dtype=c_double)
+
+    compute_parallax_using_geo_par(qn_geo_par_case.ctypes.data_as(POINTER(c_double)),
+                                   qe_geo_par_case.ctypes.data_as(POINTER(c_double)),
+                                   t_geo_par_case.ctypes.data_as(POINTER(c_double)),
+                                   alpha_geo_par_case.ctypes.data_as(POINTER(c_double)),
+                                   delta_geo_par_case.ctypes.data_as(POINTER(c_double)),
+                                   tfix_geo_par_case.ctypes.data_as(POINTER(c_double)))
+
+    q_array_geo_par_case = np.array([qn_geo_par_case, qe_geo_par_case])
+
+    vbbl = create_vbbl()
+    set_parallax_system_for_vbbl(vbbl, c_int(1))
+    coordinates_file_path = Path(__file__).parent.joinpath('test_parallax_computation_resources/coordinates.txt'
+                                                           ).absolute()
+    set_object_coordinates_for_vbbl(vbbl, str(coordinates_file_path).encode('utf-8'), '.'.encode('utf-8'))
+
+    t_vbbl_case = np.array(time, dtype=c_double)
+    t0_vbbl_case = np.array(time_fix, dtype=c_double)
+    et_vbbl_case = np.array([np.nan, np.nan], dtype=c_double)
+
+    compute_parallax_for_vbbl(vbbl,
+                              t_vbbl_case,
+                              t0_vbbl_case,
+                              et_vbbl_case.ctypes.data_as(POINTER(c_double)))
+
+    destroy_vbbl(vbbl)
+
+    assert np.allclose(q_array_geo_par_case, et_vbbl_case, rtol=0.005)
