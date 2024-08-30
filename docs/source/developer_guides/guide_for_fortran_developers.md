@@ -2,7 +2,7 @@
 
 ## Setting up the developer environment
 
-The only prerequisites before these steps are that you have git installed (which is included on many systems by default) and some version of Conda installed.
+The only prerequisites before these steps are that you have git installed (which is included on many systems by default) and some version of Conda installed (e.g., [Miniforge](https://github.com/conda-forge/miniforge)).
 
 1. Clone the repository and enter the cloned project directory.
 
@@ -27,7 +27,7 @@ In the future, whenever working on developing `eesunhong`, activate the existing
 
 ## Building
 
-`eesunhong` uses CMake for building. CMake is similar to Make, but allows builds to be much more toolchain agnostic (compiler, operating system, etc) as well as providing many other useful features (such as automatically downloading dependencies). All commands expected from inside the project directory.
+`eesunhong` uses CMake for building. CMake is similar to Make, but allows builds to be much more toolchain agnostic (compiler, operating system, etc) as well as providing many other useful features (such as automatically downloading dependencies). All commands are expected from inside the project directory.
 
 To build, first configure the build with:
 
