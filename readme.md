@@ -14,4 +14,4 @@ If you are on a more rare system (e.g., Windows on ARM), a precompiled binary ma
 Once installed, `eesunhong_main` will run the main executable.
 
 ## Documentation
-[See here for documentation.](https://qusi.readthedocs.io/en/latest/)
+[See here for documentation.](https://eesunhong.readthedocs.io/en/latest/index.html)
