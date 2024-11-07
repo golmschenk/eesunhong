@@ -38,11 +38,11 @@ These are the main steps in general. You may have additional steps depending on 
 
 16. Run Galactic model code and then code to sum over light curve MCMC output to get distribution of detected parameters.
 
-# I got the best-fit model! Now what? (Steps 10, 11, 12 from 'Light Curve Analysis Steps')
+## I got the best-fit model! Now what? (Steps 10, 11, 12 from 'Light Curve Analysis Steps')
 
 Nice you got here. So you did a few scans, and later a few fittings using `DSEEK` and got some nice fit-models. It is time to move for the MCMC steps. However, before getting so excited, there is one more thing to do. [This file was done copying part of the conversion between Clément & Stela, and Stela & Greg]
 
-## Refining your best fit-model:
+### Refining your best fit-model:
 
 1. Remove outliers data points (typically, data points where chi^2 > 16) - but check to see if any data points are removed from the vicinity of the planetary signal.
 
@@ -52,9 +52,9 @@ Nice you got here. So you did a few scans, and later a few fittings using `DSEEK
 
 Okay, now you have really your best fit model. And you are ready for starting your MCMC.
 
-## MCMC in 2-steps
+### MCMC in 2-steps
 
-### First MCMC Run
+#### First MCMC Run
 1. Create an MCMC without trying to optimize the exploration of the parameter space. *Notice that the coordinate of your event may be required or not depending on the version of Dave's code you are using.*
 
 ```
@@ -72,7 +72,7 @@ EXIT
 (Example in file p1d_5.in)
 Run it.
 
-### Second MCMC Run
+#### Second MCMC Run
 2. You can use the `mcmc_p1d_1.dat` (whatever name you called it) file to optimize the exploration, i.e., you use the covariance on the posterior to diagonalize the covariance matrix. The key line in the second file is:
 
 ```
@@ -90,10 +90,10 @@ It means 500000 trials, 2.3 and 0.7 are parameters for the proposal, 58000 is th
 
 (Example in files p1d_6.in . *I attached one without the coordinates, depending on your version of Dave's code, you should keep your coordinates there*)
 
-### Observations:
+#### Observations:
 - `0 mcmc_p1d_12.dat` Dave said I could use 1 instead of 0 in my [Stela's] case to make it go faster. (TODO: figure out what this `1` does instead of `0`)
 
-# How can I do my CMD plot?
+## How can I do my CMD plot?
 
 [This is a draft, we can write it better]
 
@@ -103,7 +103,7 @@ For the Color Magnitude Diagram you need:
 2. The color and brightness of your source star
 3. The color and brightness of the red clump centroid
 
-## OGLE Map:
+### OGLE Map:
 You can find which map you want to download, by typing the coordinates events on this website.
 [OGLE Field Finder](http://ogle.astrouw.edu.pl/radec2field.html)
 
@@ -112,13 +112,13 @@ The maps are here:
 
 I will suggest to plot your target in the sky to make sure yours is not in the corner. (Mine was, so I combined two maps)
 
-## Source Star:
+### Source Star:
 For the source star, you should get the source flux of your best model, and convert it to magnitude. For MOA, you should have Ian's calibration values to converted it.
 (I have a code that does it. I can share with you.)
 
-## Red Clump Centroid:
+### Red Clump Centroid:
 You should calculate the color and magnitude of the red clump centroid. (I used a code from Dave which calculates it for stars within a distant radius)
 
-## For the CMD plot
+### For the CMD plot
 - Plot the magnitude I vs the color V-I .
 - Do not include all the stars from the ogle map, but just ones within the radius used for the calculation of the red clump centroid.
