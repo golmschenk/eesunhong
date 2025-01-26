@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: build_wheels_on_${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -35,7 +35,7 @@ jobs:
           path: ./wheelhouse/*.whl
 
   make_sdist:
-    name: Make SDist
+    name: make_sdist
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -46,3 +46,46 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           path: dist/*.tar.gz
+
+  tag_and_release:
+    name: tag_version
+    needs: [build_wheels, make_sdist]
+    runs-on: ubuntu-latest
+    permissions: write-all
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: install_hatch
+        run: pipx install hatch
+      - name: get_version
+        run: |
+          echo "VERSION=$(hatch version)" >> $GITHUB_ENV
+      - name: check_if_tag_exists_for_version
+        run: |
+          if git show-ref --tags --verify --quiet "refs/tags/${VERSION}"; then
+            echo "Tag ${VERSION} exists."
+            echo "TAG_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "Tag ${VERSION} does not exist."
+            echo "TAG_EXISTS=false" >> $GITHUB_ENV
+          fi
+      - name: create_release_tag
+        uses: actions/github-script@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ env.TAG_EXISTS == 'false' }}
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/tags/${process.env.VERSION}`,
+              sha: context.sha,
+            })
+      - name: create_release_from_tag
+        uses: softprops/action-gh-release@v2
+        if: ${{ env.TAG_EXISTS == 'false' }}
+        with:
+          tag_name: ${{ env.VERSION }}
