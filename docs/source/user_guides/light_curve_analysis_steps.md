@@ -79,7 +79,7 @@ Run it.
 DSEEK     500000 2.3 0.7 58000 60241
 ```
 
-It means 500000 trials, 2.3 and 0.7 are parameters for the proposal, 58000 is the number of sample you throw away to select what you keep to use to compute the covariance, 60241 is the total number of line in the mcmc output file from step 1. So the sub-steps are:
+It means 500000 trials, 2.3 and 0.7 are parameters for the proposal, 58000 is the number of samples you keep to use to compute the covariance, 60241 is the total number of line in the mcmc output file from step 1. So the sub-steps are:
 
 2.a Change your `DSEEK` line
 2.b Before running it, copy/paste the file `mcmc_p1d_1.dat` with the name `mcmc_p1d_12.dat` because the run can append the MCMC samples at the end of the mcmc file you specify on the line:
