@@ -26,19 +26,19 @@ These are the main steps in general. You may have additional steps depending on 
 
 10. Do additional modeling runs if needed.
 
-11. Once you have the best fit, renormalize the error bars and throw out outliers once you are sure you have a good fit. (Be careful not to throw out good data that disagrees with your model.)
+11. Once you have the best fit, renormalize the error bars and throw out outliers once you are sure you have a good fit. Be careful not to throw out good data that disagrees with your model. [See below for more details]
 
-12. Rerun model with correct error bars to find the best fits, being sure to sample all degenerate models.
+12. Rerun model with correct error bars to find the best fits, being sure to sample all degenerate models. [See below for more details]
 
-13. Run code with MCMC call. This is normally a 2-step procedure to ensure that the posterior distribution is well sampled.
+13. Run code with MCMC call. This is normally a 2-step procedure to ensure that the posterior distribution is well sampled. [See below for more details]
 
-14. Download OGLE-III photometry map, and find the red clump centroid. Use Nataf+16 to estimate the extinction.
+14. Download OGLE-III photometry map, and find the red clump centroid. Use Nataf+16 to estimate the extinction. [See below for more details]
 
 15. Determine the source magnitude and color and get the extinction correction magnitude and color to determine theta_*, mu_rel, and theta_E.
 
 16. Run Galactic model code and then code to sum over light curve MCMC output to get distribution of detected parameters.
 
-## I got the best-fit model! Now what? (Steps 10, 11, 12 from 'Light Curve Analysis Steps')
+## I got the best-fit model! Now what? (Clarification regarding Steps 11 and 12 from 'Light Curve Analysis Steps')
 
 Nice you got here. So you did a few scans, and later a few fittings using `DSEEK` and got some nice fit-models. It is time to move for the MCMC steps. However, before getting so excited, there is one more thing to do. [This file was done copying part of the conversion between Clément & Stela, and Stela & Greg]
 
@@ -52,9 +52,9 @@ Nice you got here. So you did a few scans, and later a few fittings using `DSEEK
 
 Okay, now you have really your best fit model. And you are ready for starting your MCMC.
 
-### MCMC in 2-steps
+## MCMC in 2-steps (Clarification regarding Step 13 from 'Light Curve Analysis Steps')
 
-#### First MCMC Run
+### First MCMC Run
 1. Create an MCMC without trying to optimize the exploration of the parameter space. *Notice that the coordinate of your event may be required or not depending on the version of Dave's code you are using.*
 
 ```
@@ -72,7 +72,7 @@ EXIT
 (Example in file p1d_5.in)
 Run it.
 
-#### Second MCMC Run
+### Second MCMC Run
 2. You can use the `mcmc_p1d_1.dat` (whatever name you called it) file to optimize the exploration, i.e., you use the covariance on the posterior to diagonalize the covariance matrix. The key line in the second file is:
 
 ```
@@ -93,7 +93,7 @@ It means 500000 trials, 2.3 and 0.7 are parameters for the proposal, 58000 is th
 #### Observations:
 - `0 mcmc_p1d_12.dat` Dave said I could use 1 instead of 0 in my [Stela's] case to make it go faster. (TODO: figure out what this `1` does instead of `0`)
 
-## How can I do my CMD plot?
+## How can I do my CMD plot? (Clarification regarding Step 14 from 'Light Curve Analysis Steps')
 
 [This is a draft, we can write it better]
 
