@@ -73,13 +73,34 @@ The parameter names are:
 - `piEN`: (related to parallax fitting)
 - `piEtheta`: (related to parallax fitting)
 
-(TODO - write about the command section)
+After specifying the model parameters, you may provide commands to the fitting scripts in the control section. Below is an example of the control section.
+```
+MB14360
+run_
+no limb
+17 55 1.513 -30 51 2.09
+0 run_1.dat
+SET EPS 1.e-5
+SET ERR 2.0
+DSEEK 3000
+EXIT
+```
+- `MB14360`: The first line on the control section should contain the name of the event as written in the parameter file name (`par{event_name}`).
+- `run_`: `run_prefix` name. Should be the first part of the name of this file. 
+- `no limb`: Tells eesunhong to assume the limb darkening constants provided in the instrument parameter file.
+- `17 55 1.513 -30 51 2.09`: Coordinates of the event, precessed to the time of peak magnification.
+- `0 run_1.dat`: This line is composed of two unrelated inputs. The numerical part may either be 0 or 1. If 1, the code will calculate and store the integration grid around the Einstein ring prior to doing the calculations. If 0, eesunhong will calculate this grid on the fly. So, setting it to 1 can save some time, but will not be helpful if orbital motion is included due to the changing geometry of the system. The second part is the name of the desired output file for an MCMC run. Only provide this name if doing an MCMC, or you will create an empty file.
+- `SET EPS 1.e-5`: TODO
+- `SET ERR 2.0`: TODO
+- `DSEEK 3000`: DSEEK is one of the fitting commands. It performs $\chi^2$ minimization using the Metropolis-Hastings algorithm. Other fitting commands available are SCAN, which can be used to perform an initial condition grid search to find starting points for DSEEK, and OSEEK, which is used to launch an MCMC. The usage of these commands is described in more detail in [light curve analysis steps](/docs/source/user_guides/light_curve_analysis_steps.md).
+- `EXIT`: This command should always be called at the end of your control file. It prints the best fit lightcurve and residuals in the `fit.lc_{run_prefix}_{run_number}` and the `resid.{run_prefix}{run_number}` files described below.
+
 
 ### Run output files - `{run_prefix}_{run_number}.out`
 
 (TODO)
 
-### Model fit files - `fit.lc.{run_prefix}_{run_number}`
+### Model fit files - `fit.lc_{run_prefix}_{run_number}`
 
 This file has three sections:
 
