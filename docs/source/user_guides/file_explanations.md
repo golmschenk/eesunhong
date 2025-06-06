@@ -92,7 +92,7 @@ EXIT
 - `0 run_1.dat`: This line is composed of two unrelated inputs. The numerical part may either be 0 or 1. If 1, the code will calculate and store the integration grid around the Einstein ring prior to doing the calculations. If 0, eesunhong will calculate this grid on the fly. So, setting it to 1 can save some time, but will not be helpful if orbital motion is included due to the changing geometry of the system. The second part is the name of the desired output file for an MCMC run. Only provide this name if doing an MCMC, or you will create an empty file.
 - `SET EPS 1.e-5`: TODO
 - `SET ERR 2.0`: TODO
-- `DSEEK 3000`: DSEEK is one of the fitting commands. It performs $\chi^2$ minimization using the Metropolis-Hastings algorithm. Other fitting commands available are SCAN, which can be used to perform an initial condition grid search to find starting points for DSEEK, and OSEEK, which is used to launch an MCMC. The usage of these commands is described in more detail in [light curve analysis steps](/docs/source/user_guides/light_curve_analysis_steps.md).
+- `DSEEK 3000`: DSEEK is one of the fitting commands. It performs $\chi^2$ minimization using the Metropolis-Hastings algorithm. Other fitting commands available are SCAN, which can be used to perform an initial condition grid search to find starting points for DSEEK, and OSEEK, which is used to launch an MCMC. The usage of these commands is described in more detail in [light curve analysis steps](light_curve_analysis_steps.md).
 - `EXIT`: This command should always be called at the end of your control file. It prints the best fit lightcurve and residuals in the `fit.lc_{run_prefix}_{run_number}` and the `resid.{run_prefix}{run_number}` files described below.
 
 
