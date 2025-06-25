@@ -65,7 +65,7 @@ no limb
 0 mcmc_p1d_1.dat
 SET EPS     1.e-5
 SET ERR     2.0
-DSEEK     200000
+OSEEK     200000
 EXIT
 ```
 
@@ -76,12 +76,12 @@ Run it.
 2. You can use the `mcmc_p1d_1.dat` (whatever name you called it) file to optimize the exploration, i.e., you use the covariance on the posterior to diagonalize the covariance matrix. The key line in the second file is:
 
 ```
-DSEEK     500000 2.3 0.7 58000 60241
+OSEEK     500000 2.3 0.7 58000 60241
 ```
 
 It means 500000 trials, 2.3 and 0.7 are parameters for the proposal, 58000 is the number of samples you keep to use to compute the covariance, 60241 is the total number of line in the mcmc output file from step 1. So the sub-steps are:
 
-2.a Change your `DSEEK` line
+2.a Change your `OSEEK` line
 2.b Before running it, copy/paste the file `mcmc_p1d_1.dat` with the name `mcmc_p1d_12.dat` because the run can append the MCMC samples at the end of the mcmc file you specify on the line:
 
 ```
