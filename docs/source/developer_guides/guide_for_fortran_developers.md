@@ -62,3 +62,47 @@ prior to the build commands.
 ## Adding source files
 
 The file specifying which source files to compile, `CMakeLists.txt`, may look somewhat confusing to those unfamiliar to CMake, especially due to the complexity added by importing remote GitHub dependencies, using multiple source languages, and building both a Python library and the main binary executable. For Fortran developers, the main piece you will likely need to change is to add additional source files to be compiled. In most cases, you should add your new source files to the statement starting with `add_executable(eesunhong_main`. If the source files will include functions or routines that should be callable from Python, they should generally be included in the statement starting with `add_library(eesunhong_internal`.
+
+## Running in debug mode
+
+Example of an executable script when running in debug mode with `gdb`. 
+
+```sh
+#!/usr/bin/env bash
+set -euo pipefail
+
+BUILD_DIR="../eesunhong/build"
+EXECUTABLE="eesunhong_main"
+#### -------------TEST 1-------------------
+INPUT_FILE="run_1.in"
+OUTPUT_FILE="run_1.out"
+#### --------------------------------
+
+echo "=== Sanity checks ==="
+if [[ ! -x "$BUILD_DIR/$EXECUTABLE" ]]; then
+	  echo "ERROR: executable not found: $BUILD_DIR/$EXECUTABLE"
+	    exit 1
+    fi
+
+    if [[ ! -f "$INPUT_FILE" ]]; then
+	      echo "ERROR: input file not found: $INPUT_FILE"
+	        exit 1
+	fi
+
+	echo "Executable : $BUILD_DIR/$EXECUTABLE"
+	echo "Input file : $INPUT_FILE"
+
+# Redirect gdb's entire output (including program stdout/stderr) to OUTPUT_FILE
+gdb "$BUILD_DIR/$EXECUTABLE" > "$OUTPUT_FILE" 2>&1 <<EOF
+set pagination off
+handle SIGSEGV stop
+run < $INPUT_FILE
+bt full
+EOF
+```
+
+
+
+
+
+
