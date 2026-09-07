@@ -42,6 +42,7 @@ c------------------------------------------------------------------------------
        double precision fmin(0:mxclr),fmax(0:mxclr)
        double precision scaus(nstep_max * 2)
        double precision tcaus(nstep_max * 2)
+       double precision one_over_t_e
        double precision fudge(0:mxclr),errmin(0:mxclr),dayoff(0:mxclr)
        double precision lon_obs(0:mxclr),lat_obs(0:mxclr)
        character*6 sfx(0:mxclr)
@@ -685,8 +686,9 @@ c        -----------------------------
 
 c  initialize source grid storage
 c  ------------------------------
-       Ustar=a(9)*a(1)
-       eps1 = a(6)
+       one_over_t_e = a(1)
+       Ustar=a(9)*one_over_t_e
+       eps1 = a(6)*one_over_t_e
        eps2 = 1.d0 - eps1
        if(a(9).gt.0.) then
          bgriddel0=gridUstar*Ustar
@@ -854,7 +856,8 @@ c        TODO: Remove this hack workaround after properly
          daymin = daymin - 1
 c        determine caustic crossing times
 c        --------------------------------
-         umin=a(3)
+         one_over_t_e = a(1)
+         umin=a(3) * one_over_t_e
          theta = a(5)
          ctheta=cos(theta)
          stheta=sin(theta)
@@ -871,8 +874,8 @@ c        --------------------------------
          sinfac=sin(thetaproj)
          do 400 i=-nstep,nstep,1
            vfac=ds*i
-           sx_norot=ctheta*vfac-stheta*a(3)
-           sy_norot=stheta*vfac+ctheta*a(3)
+           sx_norot=ctheta*vfac-stheta*umin
+           sy_norot=stheta*vfac+ctheta*umin
            sx=cosfac*sx_norot-sinfac*sy_norot
            sy=cosfac*sy_norot+sinfac*sx_norot
 
@@ -884,8 +887,8 @@ c        --------------------------------
                s1=vfac
                do 395 j=1,20
                  s=0.5*(s0+s1)
-                 sx_norot=ctheta*s-stheta*a(3)
-                 sy_norot=stheta*s+ctheta*a(3)
+                 sx_norot=ctheta*s-stheta*umin
+                 sy_norot=stheta*s+ctheta*umin
                  sx=cosfac*sx_norot-sinfac*sy_norot
                  sy=cosfac*sy_norot+sinfac*sx_norot
                  call bilens_im(sx,sy,nim_mid,iimage,z,ampim)
@@ -900,7 +903,7 @@ c        --------------------------------
  396           continue
                ncaus=ncaus+1
                scaus(ncaus)=s
-               tcaus(ncaus)=a(2)+scaus(ncaus)/a(1)
+               tcaus(ncaus)=a(2)+scaus(ncaus)/one_over_t_e
                nim00=nim
              endif
            endif
@@ -961,9 +964,9 @@ ccc 554     format('   A0',a6,'   A2',a6,/,2f12.3)
 
 c        write out fit lightcurve
 c        ------------------------
-         dt=abs(1./a(1))
+         dt=abs(1./one_over_t_e)
          t0=a(2)
-         umin=a(3)
+         umin=a(3) * one_over_t_e
          r0=0.
          delc=1.
          if(delfine.le.0.) delfine=0.1
