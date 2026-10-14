@@ -83,6 +83,7 @@ ccc       double precision bgridmax(2),bgridmin(2),dd(0:3)
        double precision famp0(-nbgridmax:nbgridmax),
      &                  fampn(-nbgridmax:nbgridmax)
        double precision a(30)
+       double precision one_over_t_e
        double precision z(2,10),ampim(10),zr(10),zphi(10)
        complex(dp) :: z_in(10)
        real(dp) :: et(2)
@@ -173,7 +174,8 @@ c    a(10)= t_fix (not a fit parameter)
 c    a(11)= piEx
 c    a(12)= piEy
 c    
-       eps1 = a(6)
+       one_over_t_e = a(1)
+       eps1 = a(6)*one_over_t_e
        eps2 = 1.d0-eps1
        w=twopi*a(7)
        v_sep=a(8)
@@ -253,7 +255,7 @@ c      -------------------------------
        dvfac = piex*(qn+qtn) + piey*(qe+qte)
        da3 =  -piex*(qe+qte) + piey*(qn+qtn)
        vfacp = vfac + dvfac
-       a3p   = a(3) + da3
+       a3p   = a(3)*one_over_t_e + da3
 
        sx_norot=ctheta*vfacp-stheta*a3p
        sy_norot=stheta*vfacp+ctheta*a3p
@@ -271,7 +273,7 @@ c      yes, polish the roots
 c      ---------------------
        polish = .true.
 
-       eps1=min(0.9999999d0,max(1.d-7,a(6)))
+       eps1=min(0.9999999d0,max(1.d-7,a(6)*one_over_t_e))
        eps2=1.d0-eps1
        t0 = a(2)
        sepdb=sep
@@ -1013,6 +1015,7 @@ c==============================================================================
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        double precision sxg(-ngr:ngr,0:ngphi),syg(-ngr:ngr,0:ngphi)
        double precision a(30)
+       double precision one_over_t_e
        common/locate_src/newcall
 
        save eps1_0,sep_0,ngr_0,ngphi_0
@@ -1030,7 +1033,8 @@ c    a(8) = v_sep = velocity in seperation direction.
 c    a(9) = Rstar = stellar radius in days
 c    a(10)= t_fix (not a fit parameter)
 c
-       eps1 = a(6)
+       one_over_t_e = a(1)
+       eps1 = a(6)*one_over_t_e
        sep=a(4)
        if(eps1_0.eq.eps1.and.sep_0.eq.sep.and.ngr.eq.ngr_0.and.
      &                                        ngphi.eq.ngphi_0) return
