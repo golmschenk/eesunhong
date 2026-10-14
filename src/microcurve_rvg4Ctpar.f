@@ -2548,7 +2548,16 @@ c==============================================================================
        use eesunhong_recipes_replacements,
      &     only: brent_wrapper_with_additional_lens_arguments
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-       external starbndr
+       interface
+         function starbndr(br,cosbphi,sinbphi,ssx,ssy,
+     &                     Ustar2,sep,eps1) result(value)
+           use stdlib_kinds, only : dp
+           implicit none
+           real(dp), intent(in) :: br,cosbphi,sinbphi
+           real(dp), intent(in) :: ssx,ssy,Ustar2,sep,eps1
+           real(dp) :: value
+         end function starbndr
+       end interface
 
 c        find the boundary
 c        -----------------
@@ -2569,7 +2578,16 @@ c==============================================================================
        use eesunhong_recipes_replacements,
      &     only: brent_wrapper_with_additional_lens_arguments
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-       external starbndphi
+       interface
+         function starbndphi(bphi,br,brdum,ssx,ssy,
+     &                       Ustar2,sep,eps1) result(value)
+           use stdlib_kinds, only : dp
+           implicit none
+           real(dp), intent(in) :: bphi,br,brdum,ssx,ssy
+           real(dp), intent(in) :: Ustar2,sep,eps1
+           real(dp) :: value
+         end function starbndphi
+       end interface
 
 c        find the boundary
 c        -----------------
@@ -2581,8 +2599,11 @@ c        -----------------
        return
        end
 
-       function starbndr(br,cosbphi,sinbphi,ssx,ssy,Ustar2,sep,eps1)
+       double precision function starbndr(br,cosbphi,sinbphi,
+     &                                    ssx,ssy,Ustar2,sep,eps1)
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+       double precision br,cosbphi,sinbphi,ssx,ssy,Ustar2,sep,eps1
+       intent(in) br,cosbphi,sinbphi,ssx,ssy,Ustar2,sep,eps1
        common/fudge_coords/ Ein_R,xcc
        common/locate_src/newcall
 
@@ -2594,8 +2615,11 @@ c        -----------------
        return
        end
 
-       function starbndphi(bphi,br,brdum,ssx,ssy,Ustar2,sep,eps1)
+       double precision function starbndphi(bphi,br,brdum,
+     &                                      ssx,ssy,Ustar2,sep,eps1)
        IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+       double precision bphi,br,brdum,ssx,ssy,Ustar2,sep,eps1
+       intent(in) bphi,br,brdum,ssx,ssy,Ustar2,sep,eps1
        common/fudge_coords/ Ein_R,xcc
        common/locate_src/newcall
 

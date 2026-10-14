@@ -16,8 +16,7 @@ target_link_libraries(eesunhong_internal PUBLIC fortran_stdlib)
 
 add_library(eesunhong_fortran_library SHARED $<TARGET_OBJECTS:eesunhong_internal> $<TARGET_OBJECTS:roots> $<TARGET_OBJECTS:VBBinaryLensing>)
 target_link_libraries(eesunhong_fortran_library PUBLIC fortran_stdlib)
-# Without this was defaulting to CXX which was resulting in warnings with compact unwinding.
-set_target_properties(eesunhong_fortran_library PROPERTIES LINKER_LANGUAGE Fortran)
+set_target_properties(eesunhong_fortran_library PROPERTIES LINKER_LANGUAGE CXX)
 
 add_library(eesunhong_complete_static STATIC $<TARGET_OBJECTS:eesunhong_internal> $<TARGET_OBJECTS:polyroots> $<TARGET_OBJECTS:roots>)
 target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
@@ -25,7 +24,6 @@ target_link_libraries(eesunhong_complete_static PUBLIC fortran_stdlib)
 add_executable(eesunhong_main src/main.f third_party/minuit/minuit_94a_dblb.f src/fcnrvg4_Ctpar.f src/bilens.f src/critical.f
         src/microcurve_rvg4Ctpar.f src/hexadec_only.f src/eesunhong_real_complex_conversion.f90 src/eesunhong_vbbl_interface.f90)
 target_link_libraries(eesunhong_main PUBLIC eesunhong_complete_static VBBinaryLensing_static)
-# Without this was defaulting to CXX which was resulting in warnings with compact unwinding.
-set_target_properties(eesunhong_main PROPERTIES LINKER_LANGUAGE Fortran)
+set_target_properties(eesunhong_main PROPERTIES LINKER_LANGUAGE CXX)
 
 include(cmake/install.cmake)
